@@ -1,6 +1,6 @@
 
 var HOST = 'http://natasha.b-labs.pro'
-HOST = 'http://localhost:4000'
+// HOST = 'http://localhost:4000'
 var EXTRACT_URL = HOST + '/api/extract';
 var VERSION_URL = HOST + '/api/version';
 var BUG_URL = HOST + '/api/issues';
