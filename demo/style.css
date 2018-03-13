@@ -1,0 +1,68 @@
+
+h1 {
+    font-family: Verdana, sans-serif;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+
+.group {
+    margin-top: 1em;
+}
+
+.note {
+    color: silver;
+    line-height: 1;
+    font-size: 12px;
+}
+
+.click {
+    border-bottom: 1px dashed;
+    cursor: pointer;
+}
+
+.warn {
+    color: #f9958e;
+}
+
+.swap {
+    display: none;
+}
+
+.view {
+    padding-top: 2em;
+
+    height: 100vh;
+    overflow: scroll;
+}
+
+/* https://stackoverflow.com/questions/20435166/contenteditable-not-working-in-safari-but-works-in-chrome */
+[contenteditable] {
+    -webkit-user-select: text;
+    user-select: text;
+}
+
+#markup {
+    font-family: Verdana, sans-serif;
+    font-size: 16px;
+    letter-spacing: .01em;
+    line-height: 1.6em;
+
+    white-space: pre-wrap;
+
+    outline: none; 
+}
+
+#facts {
+    font-family: monospace;
+    line-height: 1.1em;
+
+    white-space: pre-wrap;
+}
+
+.hljs {
+    background: none;
+}
+
