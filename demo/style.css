@@ -44,7 +44,11 @@ h1 {
     user-select: text;
 }
 
-#markup {
+.wrapper{
+    position: relative;
+}
+
+#text, #markup {
     font-family: Verdana, sans-serif;
     font-size: 16px;
     letter-spacing: .01em;
@@ -53,6 +57,13 @@ h1 {
     white-space: pre-wrap;
 
     outline: none; 
+}
+
+#markup {
+    color: transparent;
+    position: absolute;
+    top: 0;
+    z-index: -1;
 }
 
 #facts {

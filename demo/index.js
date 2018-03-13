@@ -1,6 +1,6 @@
 
-var HOST = 'http://localhost:4000'
-HOST = 'https://natasha.b-labs.pro'
+var HOST = 'http://natasha.b-labs.pro'
+HOST = 'http://localhost:4000'
 var EXTRACT_URL = HOST + '/api/extract';
 var VERSION_URL = HOST + '/api/version';
 var BUG_URL = HOST + '/api/issues';
@@ -16,8 +16,9 @@ var REPORTING = BUG.find('#reporting');
 var REPORTED = BUG.find('#reported');
 var ERROR = BUG.find('#error');
 
+var TEXT = $('#text');
+var TEXT_NODE = TEXT[0];
 var MARKUP = $('#markup');
-var MARKUP_NODE = MARKUP[0];
 var FACTSAREA = $('#facts');
 var FACTSAREA_NODE = FACTSAREA[0];
 
@@ -35,79 +36,6 @@ var SILVER = 'steelblue';
 
 
 var print = console.log
-
-
-////////
-//
-//    https://medium.com/compass-true-north/a-dancing-caret-the-unknown-perils-of-adjusting-cursor-position-f252734f595e
-//
-////////////
-
-
-function getCaretPosition(el){
-    var caretOffset = 0, sel;
-    if (typeof window.getSelection !== "undefined") {
-	var range = window.getSelection().getRangeAt(0);
-	var selected = range.toString().length;
-	var preCaretRange = range.cloneRange();
-	preCaretRange.selectNodeContents(el);
-	preCaretRange.setEnd(range.endContainer, range.endOffset);
-	caretOffset = preCaretRange.toString().length - selected;
-    }
-    return caretOffset;
-}
-
-
-function getAllTextnodes(el){
-    var n, a=[], walk=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null,false);
-    while(n=walk.nextNode()) a.push(n);
-    return a;
-}
-
-
-function getCaretData(el, position){
-    var node; nodes = getAllTextnodes(el);
-    for(var n = 0; n < nodes.length; n++) {
-	if (position > nodes[n].nodeValue.length && nodes[n+1]) {
-	    // remove amount from the position, go to next node
-	    position -= nodes[n].nodeValue.length;
-	} else {
-	    node = nodes[n];
-	    break;
-	}
-    }
-    // you'll need the node and the position (offset) to set the caret
-    return { node: node, position: position };
-}
-
-
-function setCaretPosition(d){
-    var sel = window.getSelection(),
-	range = document.createRange();
-    range.setStart(d.node, d.position);
-    range.collapse(true);
-    sel.removeAllRanges();
-    sel.addRange(range);
-}
-
-
-//////////////
-//
-//    https://stackoverflow.com/questions/18552336/prevent-contenteditable-adding-div-on-enter-chrome
-//
-/////////////
-
-
-function newLine(e){
-    if(e.keyCode==13){ //enter && shift
-	e.preventDefault(); //Prevent default browser behavior
-	if (e.shiftKey) {
-	    return;
-	}
-	document.execCommand('insertHTML', false, '\n');
-	return false;
-    }
-}
 
 
 //////////
@@ -436,7 +364,7 @@ function freeze() {
     PROGRESS = true;
     RUN.hide();
     RUNNING.show();
-    MARKUP.prop('contenteditable', false)
+    TEXT.prop('contenteditable', false)
 }
 
 
@@ -444,18 +372,8 @@ function unfreeze() {
     PROGRESS = false;
     RUN.show();
     RUNNING.hide();
-    MARKUP.prop('contenteditable', true)
-}
-
-
-function getCaret() {
-    return getCaretPosition(MARKUP_NODE);
-}
-
-
-function setCaret(index) {
-    var data = getCaretData(MARKUP_NODE, index);
-    setCaretPosition(data);
+    TEXT.prop('contenteditable', true)
+    TEXT.focus();
 }
 
 
@@ -471,16 +389,14 @@ function extract() {
     if (PROGRESS) {
 	return;
     }
-    var text = MARKUP.text();
+    var text = TEXT_NODE.innerText;
     freeze();
     $.post(EXTRACT_URL, {text: text}, null, 'json')
 	.done(function(data) {
 	    unfreeze();
 	    var data = parse(data);
 	    updateFacts(data.facts);
-	    index = getCaret();
 	    updateSpans(text, data.spans);
-	    setCaret(index);
 	}).fail(function(error) {
 	    unfreeze();
 	    FACTSAREA.text(formatError(error));
@@ -490,6 +406,7 @@ function extract() {
 
 function shiftEnter(event) {
     if ((event.keyCode == 13) && event.shiftKey) {
+	event.preventDefault();
 	extract();
     }
 }
@@ -513,10 +430,9 @@ function report() {
 }
 
 
-MARKUP.keyup(shiftEnter);
-MARKUP.keypress(newLine);
-MARKUP.on('paste', pastePlain);
-MARKUP.focus();
+TEXT.keypress(shiftEnter);
+TEXT.on('paste', pastePlain);
+TEXT.focus();
 
 updateVersions();
 
