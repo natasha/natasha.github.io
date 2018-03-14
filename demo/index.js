@@ -385,11 +385,14 @@ function formatError(error) {
 }
 
 
+
+
+
 function extract() {
     if (PROGRESS) {
 	return;
     }
-    var text = TEXT_NODE.innerText;
+    var text = TEXT_NODE.innerHTML;
     freeze();
     $.post(EXTRACT_URL, {text: text}, null, 'json')
 	.done(function(data) {
