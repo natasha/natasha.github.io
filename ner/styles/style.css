@@ -1,0 +1,121 @@
+
+body {
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    line-height: 1.3;
+}
+
+body .container {
+    margin-top: 2em;
+}
+
+h1, h2, h3, #intro, figcaption {
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin-top: 0;
+}
+
+h1 {
+    font-size: 40px;
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    font-size: 25px;
+    margin-top: 0.5em;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+a {
+    color: #1f77b4;
+    border-bottom: 1px solid #1f77b4;
+}
+
+/* Disable bootstrap link underlining */
+a:hover, a:focus {
+    text-decoration: none;
+}
+
+.note {
+    font-family: monospace;
+    font-size: 14px;
+}
+
+.highlight {
+    padding: 2em;
+    margin-left: -2em;
+    border-radius: 5px;
+    background: #ffc1071f;
+}
+
+/* DEMO */
+
+#demo {
+    margin: 1em 0 2em 0;
+
+    border-top: 1px solid #e4e4e4;
+    border-bottom: 1px solid #e4e4e4;
+}
+
+#demo #controls {
+    margin-top: 2em;
+    padding-bottom: 1em;
+}
+
+#demo input#running {
+    display: none;
+}
+
+#demo .scroll {
+    padding-top: 1em;
+    height: 50vh;
+    overflow: scroll;
+}
+
+#demo #editor {
+    position: relative;
+}
+
+#demo #editor #text, #demo #editor #markup {
+    line-height: 1.4em;
+    white-space: pre-wrap;
+
+    outline: none; 
+}
+
+#demo #editor #markup {
+    color: transparent;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}
+
+#demo #facts {
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 1.2em;
+
+    white-space: pre-wrap;
+}
+
+#demo #examples a {
+    border-bottom: 1px dashed;
+}
+
+/* HIGHLIGHT */
+
+.hljs {
+    background: none;
+}
+
+/* MISC */
+
+/* https://stackoverflow.com/questions/20435166/contenteditable-not-working-in-safari-but-works-in-chrome */
+[contenteditable] {
+    -webkit-user-select: text;
+    user-select: text;
+}
+

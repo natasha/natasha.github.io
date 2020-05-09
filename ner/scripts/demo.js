@@ -1,20 +1,11 @@
 
 var HOST = 'https://natasha.b-labs.pro'
-// HOST = 'http://localhost:4000'
-var EXTRACT_URL = HOST + '/api/extract';
-var VERSION_URL = HOST + '/api/version';
-var BUG_URL = HOST + '/api/issues';
+HOST = 'http://localhost:4000'
+var ENDPOINT = HOST + '/api/doc/spans';
 
-var VERSIONS = $('#versions');
 var RUN = $('#run');
 var RUNNING = $('#running');
 var PROGRESS = false;
-
-var BUG = $('#bug');
-var REPORT = BUG.find('#report');
-var REPORTING = BUG.find('#reporting');
-var REPORTED = BUG.find('#reported');
-var ERROR = BUG.find('#error');
 
 var TEXT = $('#text');
 var TEXT_NODE = TEXT[0];
@@ -22,17 +13,18 @@ var MARKUP = $('#markup');
 var FACTSAREA = $('#facts');
 var FACTSAREA_NODE = FACTSAREA[0];
 
+var EXAMPLE = $('#examples a')
+
 var COLORS = {
-    'Name': '#1f77b4',
-    'Address': '#ff7f0e',
-    'Date': '#2ca02c',
-    'Money': '#d62728',
+    'PER': '#1f77b4',
+    'LOC': '#ff7f0e',
+    'ORG': '#2ca02c',
+    // '#d62728',
     // '#9467bd',
     // '#e377c2',
     // '#bcbd22',
     // '#17becf',
 }
-var SILVER = 'steelblue';
 
 
 var print = console.log
@@ -213,10 +205,7 @@ function groupSpans(spans) {
 function formatTag(span, types) {
     var size = 2;
     var padding = 1 + span.level * (size + 1);
-    var color = SILVER;
-    if (span.type != undefined) {
-	color = COLORS[span.type];
-    }
+    var color = COLORS[span.type];
     return {
 	open: ('<span style="'
 	       + 'border-bottom: ' + size + 'px solid; '
@@ -282,15 +271,35 @@ function updateSpans(text, spans) {
 ////////////
 
 
+function parseFact(item) {
+    var fact = {
+	text: item.text,
+	normal: item.normal,
+    };
+
+    if (item.fact == undefined) {
+	return fact;
+    }
+
+    fact.slots = {};
+    var slots = item.fact.slots;
+    for (var index = 0; index < slots.length; index++) {
+	var slot = slots[index];
+	fact.slots[slot.key] = slot.value;
+    }
+
+    return fact;
+}
+
 function parse(data) {
     var facts = [];
     var spans = [];
     for (var index = 0; index < data.length; index++) {
 	var item = data[index];
-	facts.push(item.fact);
+	facts.push(parseFact(item));
 	var span = makeSpan(
-	    item.span[0],
-	    item.span[1],
+	    item.start,
+	    item.stop,
 	    item.type
 	);
 	spans.push(span);
@@ -317,39 +326,6 @@ function updateFacts(facts) {
 
 function highlightFacts() {
     hljs.highlightBlock(FACTSAREA_NODE);
-}
-
-
-////////////
-//
-//   VERSIONS
-//
-///////////
-
-
-function formatVersions(data) {
-    var keys = [];
-    for (var key in data) {
-	keys.push(key);
-    }
-    keys.sort(function(a, b) {
-	return a.localeCompare(b);
-    })
-    var text = '';
-    keys.forEach(function(key) {
-	var value = data[key];
-	text += (key + '=' + value) + ' ';
-    });
-    return text;
-}
-
-
-function updateVersions() {
-    $.get(VERSION_URL, null, 'json')
-	.done(function(data) {
-	    var text = formatVersions(data);
-	    VERSIONS.text(text);
-	})
 }
 
 
@@ -385,16 +361,13 @@ function formatError(error) {
 }
 
 
-
-
-
-function extract() {
+function process() {
     if (PROGRESS) {
 	return;
     }
     var text = TEXT_NODE.innerHTML;
     freeze();
-    $.post(EXTRACT_URL, {text: text}, null, 'json')
+    $.post(ENDPOINT, {text: text}, null, 'json')
 	.done(function(data) {
 	    unfreeze();
 	    var data = parse(data);
@@ -406,30 +379,17 @@ function extract() {
 	});
 }
 
+function example() {
+    var text = $(this).attr('data-text');
+    TEXT_NODE.innerHTML = text;
+    process();
+}
 
 function shiftEnter(event) {
     if ((event.keyCode == 13) && event.shiftKey) {
 	event.preventDefault();
-	extract();
+	process();
     }
-}
-
-
-function report() {
-    var text = MARKUP.text();
-
-    REPORTING.show();
-
-    $.post(BUG_URL, {text: text, description: null}, null, 'json')
-	.done(function(data) {
-	    REPORTING.hide();
-	    REPORTED.show();
-	    REPORTED.delay(1000).hide(1000);
-	}).fail(function(error) {
-	    REPORTING.hide();
-	    ERROR.show();
-	    ERROR.delay(1000).hide(1000);
-	});
 }
 
 
@@ -437,9 +397,7 @@ TEXT.keypress(shiftEnter);
 TEXT.on('paste', pastePlain);
 TEXT.focus();
 
-updateVersions();
+EXAMPLE.click(example);
 
-REPORT.click(report);
-
-RUN.click(extract);
-extract();
+RUN.click(process);
+process();
