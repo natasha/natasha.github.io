@@ -3,6 +3,7 @@ var HOST = 'https://natasha.b-labs.pro'
 HOST = 'http://localhost:4000'
 var ENDPOINT = HOST + '/api/doc/spans';
 
+var BUTTON = $('#controls button')
 var RUN = $('#run');
 var RUNNING = $('#running');
 var PROGRESS = false;
@@ -14,18 +15,6 @@ var FACTSAREA = $('#facts');
 var FACTSAREA_NODE = FACTSAREA[0];
 
 var EXAMPLE = $('#examples a')
-
-var COLORS = {
-    'PER': '#1f77b4',
-    'LOC': '#ff7f0e',
-    'ORG': '#2ca02c',
-    // '#d62728',
-    // '#9467bd',
-    // '#e377c2',
-    // '#bcbd22',
-    // '#17becf',
-}
-
 
 var print = console.log
 
@@ -56,50 +45,6 @@ function pastePlain(e) {
 ///////////////
 
 
-function makeSpan(start, stop, type, level) {
-    return {
-	start: start,
-	stop: stop,
-	type: type,
-	level: level
-    }
-}
-
-
-function querySpans(spans, value) {
-    var results = [];
-    spans.forEach(function(span) {
-	if ((span.start <= value) && (value < span.stop)) {
-	    results.push(span)
-	}
-    });
-    return results;
-}
-
-
-function getMaxLevel(spans) {
-    var level = -1;
-    spans.forEach(function(span) {
-	if (level < span.level) {
-	    level = span.level;
-	}
-    });
-    return level;
-}
-
-
-function levelSpans(spans) {
-    var results = [];
-    spans.forEach(function(span) {
-	var found = querySpans(results, span.start);
-	var level = getMaxLevel(found);
-	span.level = level + 1;
-	results.push(span);
-    });
-    return results;
-}
-
-
 function sortSpans(spans) {
     spans.sort(function(a, b) {
 	return ((a.start - b.start)
@@ -109,157 +54,33 @@ function sortSpans(spans) {
     return spans;
 }
 
-
-function getBoundValues(spans) {
-    var values = [];
-    spans.forEach(function(span) {
-	values.push(span.start);
-	values.push(span.stop);
-    });
-    return values;
-}
-
-
-function uniqueValues(values) {
-    var set = {};
-    values.forEach(function(value) {
-	set[value] = value;
-    });
-    var values = [];
-    for (var key in set) {
-	values.push(set[key]);
-    }
-    values.sort(function(a, b) {
-	return a - b;
-    });
-    return values;
-}
-
-
-function chunkSpan(span, bounds) {
-    var results = [];
-    var previous = span.start;
-    bounds.forEach(function(bound) {
-	if ((span.start < bound) && (bound < span.stop)) {
-	    results.push(makeSpan(
-		previous, bound,
-		span.type, span.level
-	    ));
-	    previous = bound
-	}
-    });
-    results.push(makeSpan(
-	previous, span.stop,
-	span.type, span.level
-    ));
-    return results;
-}
-
-
-function chunkSpans(spans) {
-    var bounds = getBoundValues(spans);
-    bounds = uniqueValues(bounds);
-
-    var results = [];
-    spans.forEach(function(span) {
-	var chunks = chunkSpan(span, bounds);
-	chunks.forEach(function(chunk) {
-	    results.push(chunk);
-	});
-    });
-    return results;
-}
-
-
-function makeGroup(start, stop) {
+function formatTag(span) {
     return {
-	start: start,
-	stop: stop,
-	items: []
-    }
-}
-
-
-function groupSpans(spans) {
-    var previous = undefined;
-    var results = [];
-    spans.forEach(function(span) {
-	if (previous == undefined) {
-	    previous = makeGroup(span.start, span.stop);
-	}
-	if (previous.start == span.start) {
-	    previous.items.push(span);
-	} else {
-	    results.push(previous)
-	    previous = makeGroup(span.start, span.stop);
-	    previous.items.push(span);
-	}
-    });
-    if (previous != undefined) {
-	results.push(previous)
-    }
-    return results;
-}
-
-
-function formatTag(span, types) {
-    var size = 2;
-    var padding = 1 + span.level * (size + 1);
-    var color = COLORS[span.type];
-    return {
-	open: ('<span style="'
-	       + 'border-bottom: ' + size + 'px solid; '
-	       + 'padding-bottom: ' + padding + 'px; '
-	       + 'border-color: ' + color + '">'),
+	open: '<span class="box ' + span.type + '">',
 	close: '</span>'
     }
 }
 
-function formatSpans(text, groups, types) {
+function formatSpans(text, spans, types) {
     var html = '';
     var previous = 0;
-    groups.forEach(function(group) {
-	html += text.slice(previous, group.start);
-	var tags = [];
-	group.items.forEach(function(span) {
-	    tags.push(formatTag(span, types));
-	});
-	tags.forEach(function(tag) {
-	    html += tag.open;
-	});
-	html += text.slice(group.start, group.stop);
-	tags.forEach(function(tag) {
-	    html += tag.close;
-	});
-	previous = group.stop;
+    spans.forEach(function(span) {
+	html += text.slice(previous, span.start);
+	tag = formatTag(span);
+	print(tag);
+	html += tag.open;
+	html += text.slice(span.start, span.stop);
+	html += tag.close;
+	previous = span.stop;
     });
     html += text.slice(previous, text.length);
     return html;
 }
 
 
-function getSpanTypes(spans) {
-    var results = [];
-    spans.forEach(function(span) {
-	if (span.type != undefined) {
-	    results.push(span.type)
-	}
-    });
-    return results;
-}
-
-
 function updateSpans(text, spans) {
-    types = getSpanTypes(spans);
-    types = uniqueValues(types);
-
     spans = sortSpans(spans);
-    spans = levelSpans(spans);
-    spans = chunkSpans(spans);
-    spans = sortSpans(spans);
-    groups = groupSpans(spans);
-
-    html = formatSpans(text, groups, types);
+    html = formatSpans(text, spans);
     MARKUP.html(html);
 }
 
@@ -297,11 +118,11 @@ function parse(data) {
     for (var index = 0; index < data.length; index++) {
 	var item = data[index];
 	facts.push(parseFact(item));
-	var span = makeSpan(
-	    item.start,
-	    item.stop,
-	    item.type
-	);
+	var span = {
+	    start: item.start,
+	    stop: item.stop,
+	    type: item.type
+	};
 	spans.push(span);
     }
     return {
@@ -319,13 +140,6 @@ function formatJson(data) {
 function updateFacts(facts) {
     var text = formatJson(facts);
     FACTSAREA.text(text);
-
-    highlightFacts();
-}
-
-
-function highlightFacts() {
-    hljs.highlightBlock(FACTSAREA_NODE);
 }
 
 
@@ -340,7 +154,9 @@ function freeze() {
     PROGRESS = true;
     RUN.hide();
     RUNNING.show();
-    TEXT.prop('contenteditable', false)
+    BUTTON.prop('disabled', true);
+    EXAMPLE.addClass('disabled');
+    TEXT.prop('contenteditable', false);
 }
 
 
@@ -348,7 +164,9 @@ function unfreeze() {
     PROGRESS = false;
     RUN.show();
     RUNNING.hide();
-    TEXT.prop('contenteditable', true)
+    BUTTON.prop('disabled', false);
+    EXAMPLE.removeClass('disabled');
+    TEXT.prop('contenteditable', true);
     TEXT.focus();
 }
 
@@ -380,6 +198,9 @@ function process() {
 }
 
 function example() {
+    // jquery slides to top if href=#
+    event.preventDefault();
+
     var text = $(this).attr('data-text');
     TEXT_NODE.innerHTML = text;
     process();

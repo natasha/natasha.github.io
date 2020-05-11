@@ -39,7 +39,20 @@ a:hover, a:focus {
     text-decoration: none;
 }
 
+a.disabled {
+    pointer-events: none;
+    cursor: default;
+
+    color: #6e7074;
+    border-color: #6e7074;
+}
+
 .note {
+    font-family: monospace;
+    font-size: 14px;
+}
+
+table caption {
     font-family: monospace;
     font-size: 14px;
 }
@@ -51,26 +64,67 @@ a:hover, a:focus {
     background: #ffc1071f;
 }
 
+/* SPAN */
+
+span.box {
+    padding: 1px;
+    margin: 0 -2px 0 -2px;
+    border-radius: 4px;
+}
+
+span.box .label {
+    vertical-align: middle;
+    margin-left: 2px;
+    font-size: 0.7em;
+}
+
+span.box.PER {
+    border: 1px solid #bbdefb;
+    background: #e3f2fd;
+}
+
+span.box.PER .label {
+    color: #64b5f6;
+}
+
+span.box.LOC {
+    border: 1px solid #c8e6c9;
+    background: #e8f5e9;
+}
+
+span.box.LOC .label {
+    color: #66bb6a;
+}
+
+span.box.ORG {
+    border: 1px solid #ffcdd2;
+    background: #ffebee;
+}
+
+span.box.ORG .label {
+    color: #e57373;
+}
+
 /* DEMO */
 
 #demo {
-    margin: 1em 0 2em 0;
+    margin: 0 0 1em -2em;
+    padding: 0 2em 2em 2em;
 
-    border-top: 1px solid #e4e4e4;
-    border-bottom: 1px solid #e4e4e4;
+    border: 1px solid #e4e4e4;
+    border-radius: 5px;
 }
 
 #demo #controls {
-    margin-top: 2em;
-    padding-bottom: 1em;
+    margin-top: 1em;
 }
 
-#demo input#running {
+#demo button#running {
     display: none;
 }
 
 #demo .scroll {
-    padding-top: 1em;
+    padding-top: 2em;
     height: 50vh;
     overflow: scroll;
 }
@@ -80,9 +134,7 @@ a:hover, a:focus {
 }
 
 #demo #editor #text, #demo #editor #markup {
-    line-height: 1.4em;
     white-space: pre-wrap;
-
     outline: none; 
 }
 
@@ -96,7 +148,6 @@ a:hover, a:focus {
 #demo #facts {
     font-family: monospace;
     font-size: 14px;
-    line-height: 1.2em;
 
     white-space: pre-wrap;
 }
@@ -105,13 +156,28 @@ a:hover, a:focus {
     border-bottom: 1px dashed;
 }
 
-/* HIGHLIGHT */
+/* ARCH */
 
-.hljs {
-    background: none;
+#arch td {
+    vertical-align: middle;
+    text-align: center;
 }
 
-/* MISC */
+#arch #comb {
+    font-size: 1.5em;
+}
+
+#arch .bracket {
+    font-size: 4em;
+    font-family: serif;
+    padding-bottom: 0.2em;
+}
+
+#arch .dash {
+    font-size: 1.5em;
+}
+
+/* COMPAT */
 
 /* https://stackoverflow.com/questions/20435166/contenteditable-not-working-in-safari-but-works-in-chrome */
 [contenteditable] {
