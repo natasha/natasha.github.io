@@ -156,25 +156,14 @@ span.box.ORG .label {
     border-bottom: 1px dashed;
 }
 
-/* ARCH */
+/* FOOTER */
 
-#arch td {
-    vertical-align: middle;
-    text-align: center;
+#footer {
+    margin-bottom: 2em;
 }
 
-#arch #comb {
-    font-size: 1.5em;
-}
-
-#arch .bracket {
-    font-size: 4em;
-    font-family: serif;
-    padding-bottom: 0.2em;
-}
-
-#arch .dash {
-    font-size: 1.5em;
+#footer img {
+    border-radius: 5px;
 }
 
 /* COMPAT */
