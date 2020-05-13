@@ -59,6 +59,10 @@ a.disabled {
     background: #ffc1071f;
 }
 
+.hanging-arrow {
+    margin-left: -1em;
+}
+
 /* SPAN */
 
 span.box {
