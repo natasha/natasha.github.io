@@ -6,10 +6,10 @@ body {
 }
 
 body .container {
-    margin-top: 2em;
+    margin-top: 2em 0 2em 0;
 }
 
-h1, h2, h3, #intro, figcaption {
+h1, h2, h3 {
     line-height: 1;
     letter-spacing: -0.04em;
     margin-top: 0;
@@ -52,11 +52,6 @@ a.disabled {
     font-size: 14px;
 }
 
-table caption {
-    font-family: monospace;
-    font-size: 14px;
-}
-
 .highlight {
     padding: 2em;
     margin-left: -2em;
@@ -83,26 +78,14 @@ span.box.PER {
     background: #e3f2fd;
 }
 
-span.box.PER .label {
-    color: #64b5f6;
-}
-
 span.box.LOC {
     border: 1px solid #c8e6c9;
     background: #e8f5e9;
 }
 
-span.box.LOC .label {
-    color: #66bb6a;
-}
-
 span.box.ORG {
     border: 1px solid #ffcdd2;
     background: #ffebee;
-}
-
-span.box.ORG .label {
-    color: #e57373;
 }
 
 /* DEMO */
@@ -119,7 +102,7 @@ span.box.ORG .label {
     margin-top: 1em;
 }
 
-#demo button#running {
+#demo button #running {
     display: none;
 }
 
@@ -156,11 +139,14 @@ span.box.ORG .label {
     border-bottom: 1px dashed;
 }
 
-/* FOOTER */
+/* ERRORS */
 
-#footer {
-    margin-bottom: 2em;
+#errors .error {
+    border-bottom: 2px dotted #E57377;
 }
+
+
+/* FOOTER */
 
 #footer img {
     border-radius: 5px;
