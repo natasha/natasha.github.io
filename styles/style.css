@@ -108,6 +108,16 @@ a.disabled {
     border-bottom: 1px dashed;
 }
 
+/* OTHER */
+
+#libs dt, #princ dt {
+    margin-top: 1em;
+}
+
+.table td, .table th {
+    padding: 0.5em 0.5em 0.5em 0;
+}
+
 /* COMPAT */
 
 /* https://stackoverflow.com/questions/20435166/contenteditable-not-working-in-safari-but-works-in-chrome */
