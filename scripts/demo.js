@@ -1,6 +1,6 @@
 
-var HOST = 'https://natasha.b-labs.pro'
-HOST = 'http://localhost:4000'
+var HOST = 'https://natasha-demo.herokuapp.com'
+// HOST = 'http://localhost:4000'
 var ENDPOINT = HOST + '/api/doc/viz';
 
 var BUTTON = $('#control button')
