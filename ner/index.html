@@ -126,7 +126,7 @@
       	  </p>
 
       	  <p>
-      	    В конце 2018 года после <a href="https://arxiv.org/abs/1810.04805">статьи от Google про BERT</a> в англоязычном NLP случился большой прогресс. В 2019 ребята из <a href="https://deeppavlov.ai/">проекта DeepPavlov</a> адаптировали мультиязычный BERT для русского, появился <a href="http://docs.deeppavlov.ai/en/master/features/models/bert.html">RuBERT</a>. Поверх обучили CRF-голову, получился <a href="https://www.youtube.com/watch?v=eKTA8i8s-zs">DeepPavlov BERT NER</a> — SOTA для русского языка. У модели великолепное качество, в 2 раза меньше ошибок, чем у ближайшего преследователя <a href="https://github.com/deepmipt/ner">DeepPavlov NER</a>, но размер и производительность пугают: 6ГБ — потребление GPU RAM, 2ГБ — размер модели, 13 статей в секунду — производительность на хорошей GPU.
+      	    В конце 2018 года после <a href="https://arxiv.org/abs/1810.04805">статьи от Google про BERT</a> в англоязычном NLP случился большой прогресс. В 2019 ребята из <a href="https://deeppavlov.ai/">проекта DeepPavlov</a> адаптировали мультиязычный BERT для русского, появился <a href="http://docs.deeppavlov.ai/en/master/features/models/bert.html">RuBERT</a>. Поверх обучили <a href="http://homepages.inf.ed.ac.uk/csutton/publications/crftut-fnt.pdf">CRF-голову</a>, получился <a href="https://www.youtube.com/watch?v=eKTA8i8s-zs">DeepPavlov BERT NER</a> — SOTA для русского языка. У модели великолепное качество, в 2 раза меньше ошибок, чем у ближайшего преследователя <a href="https://github.com/deepmipt/ner">DeepPavlov NER</a>, но размер и производительность пугают: 6ГБ — потребление GPU RAM, 2ГБ — размер модели, 13 статей в секунду — производительность на хорошей GPU.
       	  </p>
 
       	  <p>
@@ -200,7 +200,7 @@
       	  </p>
 
       	  <p class="highlight">
-      	    Natasha (<a href="https://github.com/natasha/slovnet#ner">Slovnet NER</a>) = дообученный оптимизированный DeepPavlov BERT NER (<a href="https://github.com/natasha/slovnet/blob/master/scripts/02_bert_ner/main.ipynb">Slovnet BERT NER</a>) + дистиляция через синтетическую разметку (<a href="https://github.com/natasha/nerus">Nerus</a>) в WordCNN-CRF c квантованными эмбедингами (<a href="https://github.com/natasha/navec">Navec</a>) + движок для инференса на NumPy.
+      	    Natasha (<a href="https://github.com/natasha/slovnet#ner">Slovnet NER</a>) = дообученный оптимизированный DeepPavlov BERT NER (<a href="https://github.com/natasha/slovnet/blob/master/scripts/02_bert_ner/main.ipynb">Slovnet BERT NER</a>) + дистилляция через синтетическую разметку (<a href="https://github.com/natasha/nerus">Nerus</a>) в WordCNN-CRF c квантованными эмбедингами (<a href="https://github.com/natasha/navec">Navec</a>) + движок для инференса на NumPy.
       	  </p>
       	</div>
       </div>
@@ -208,7 +208,7 @@
       <div class="row">
       	<div class="col-6">
       	  <p>
-      	    Обучим тяжёлую модель c BERT-архитектурой на небольшом вручную аннотированном датасете. Разметим ей корпус новостей, получится большой грязный синтетический тренировочный датасет. Обучим на нём компактную примитивную модель. Этот процесс называется дистиляцией: тяжёлая модель — учитель, компактная — ученик. Рассчитываем, что BERT-архитектура избыточна для задачи NER, компактная модель несильно проиграет по качеству тяжёлой.
+      	    Теперь по порядку. План такой: обучим тяжёлую модель c BERT-архитектурой на небольшом вручную аннотированном датасете. Разметим ей корпус новостей, получится большой грязный синтетический тренировочный датасет. Обучим на нём компактную примитивную модель. Этот процесс называется дистилляцией: тяжёлая модель — учитель, компактная — ученик. Рассчитываем, что BERT-архитектура избыточна для задачи NER, компактная модель несильно проиграет по качеству тяжёлой.
       	  </p>
 
       	  <p>
@@ -382,7 +382,7 @@ p	    -->
 	</div>
       </div>
 
-      <h2>Дистиляция</h2>
+      <h2>Дистилляция</h2>
 
       <div class="row">
 	<div class="col-6">
