@@ -52,6 +52,14 @@ a.disabled {
     font-size: 14px;
 }
 
+.note ul {
+    padding-left: 0;
+}
+
+.note li {
+    list-style: none;
+}
+
 .highlight {
     padding: 2em;
     margin-left: -2em;

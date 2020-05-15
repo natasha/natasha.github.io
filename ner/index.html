@@ -31,15 +31,15 @@
       </div>
 
       <div class="row">
-	<div class="col-8">
-	  <p>
-	    <a href="/">
-	      <span class="hanging-arrow">←</span> Проект Natasha
-	    </a>
-	  </p>
+      	<div class="col-8">
+      	  <p>
+      	    <a href="/">
+      	      <span class="hanging-arrow">←</span> Проект Natasha
+      	    </a>
+      	  </p>
 
-	  <h1>Natasha — качественное компактное решение для извлечения именованных сущностей из новостных статей на русском языке</h1>
-	</div>
+      	  <h1>Natasha — качественное компактное решение для извлечения именованных сущностей из новостных статей на русском языке</h1>
+      	</div>
       </div>
 
       <div class="row">
@@ -48,7 +48,7 @@
       	    <a href="https://github.com/natasha/natasha">Библиотека Natasha</a> решает базовые задачи обработки естественного русского языка: сегментация на токены и предложения, морфологический и синтаксический анализ, лемматизация, извлечение именованных сущностей. Для новостных статей качество на всех задачах <a href="https://github.com/natasha/natasha#evaluation">сравнимо или превосходит существующие решения</a>. Библиотека поддерживает Python 3.5+ и PyPy3, не требует GPU, зависит только от NumPy.
       	  </p>
       	  <p>
-      	    В этой статье разберёмся, как Natasha решает задачу извлечение именованных сущностей.
+      	    В этой статье разберёмся, как Natasha решает задачу извлечения именованных сущностей. Стенд демонстрирует поиск подстрок с <span class="box PER">именами</span>, названиями <span class="box LOC">топонимов</span> и <span class="box ORG">организаций</span>:
       	  </p>
       	</div>
       </div>
@@ -188,7 +188,7 @@
       	    </tbody>
       	  </table>
       	  <div class="note">
-      	    Natasha использует NER-модель из библиотеки <a href="https://github.com/natasha/slovnet">Slovnet</a>. Качество на 1 процентный пункт ниже, чем у SOTA DeepPavlov BERT NER, размер модели в 75 раз меньше, потребление памяти в 30 раз меньше, скорость в 2 раза больше на CPU.
+      	    Natasha использует NER-модель из библиотеки <a href="https://github.com/natasha/slovnet">Slovnet</a>. Качество на 1 процентный пункт ниже, чем у SOTA DeepPavlov BERT NER, размер модели в 75 раз меньше, потребление памяти в 30 раз меньше, скорость в 2 раза больше на CPU. Сравнение со SpaCy, PullEnti и другими решениями для русскоязычного NER в <a href="https://github.com/natasha/slovnet#ner-1">репозитории Slovnet</a>.
       	  </div>
       	</div>
       </div>
@@ -208,7 +208,7 @@
       <div class="row">
       	<div class="col-6">
       	  <p>
-      	    Обучим тяжёлую модель c BERT-архитектурой на небольшом вручную анотированном датасете. Разметим ей корпус новостей, получится большой грязный синтетический тренировочный датасет. Обучим на нём компактную примитивную модель. Этот процесс называется дистиляцией: тяжёлая модель — учитель, компактная — ученик. Рассчитываем, что BERT-архитектура избыточна для задачи NER, компактная модель несильно проиграет по качеству тяжёлой.
+      	    Обучим тяжёлую модель c BERT-архитектурой на небольшом вручную аннотированном датасете. Разметим ей корпус новостей, получится большой грязный синтетический тренировочный датасет. Обучим на нём компактную примитивную модель. Этот процесс называется дистиляцией: тяжёлая модель — учитель, компактная — ученик. Рассчитываем, что BERT-архитектура избыточна для задачи NER, компактная модель несильно проиграет по качеству тяжёлой.
       	  </p>
 
       	  <p>
@@ -216,10 +216,13 @@
       	  </p>
       	</div>
       </div>
+
+      <h2>Модель-учитель</h2>
+      
       <div class="row">
       	<div class="col-6">
       	  <p>
-      	    Тяжёлая модель-учитель повторяет DeepPavlov BERT NER с небольшими улучшениями. Все бенчмарки измеряют качество NER на текстах новостей. Дообучим RuBERT на новостях. В репозитории <a href="https://github.com/natasha/corus">Corus</a> собраны ссылки на публичные русскоязычные новостные корпуса, в сумме 12 ГБ текстов. Используем техники из <a href="https://arxiv.org/abs/1907.11692">статьи от Facebook про RoBERTa</a>: большие агрегированные батчи, динамическая маска, отказ от предсказания следующего предложения (NSP). RuBERT использует огромный словарь на 120&nbsp;000 сабтокенов — наследие мультиязычного BERT от Google. Сократим размер до 50&nbsp;000 самых частотных для новостей, покрытие уменьшится на 5%. Получим <a href="https://github.com/natasha/slovnet/blob/master/scripts/01_bert_news/main.ipynb">NewsRuBERT</a>, модель предсказывает замаскированные сабтокены в новостях на 5% лучше чем RuBERT.
+      	    Тяжёлая модель-учитель повторяет DeepPavlov BERT NER с небольшими улучшениями. Все бенчмарки измеряют качество NER на текстах новостей. Дообучим RuBERT на новостях. В репозитории <a href="https://github.com/natasha/corus">Corus</a> собраны ссылки на публичные русскоязычные новостные корпуса, в сумме 12 ГБ текстов. Используем техники из <a href="https://arxiv.org/abs/1907.11692">статьи от Facebook про RoBERTa</a>: большие агрегированные батчи, динамическая маска, отказ от предсказания следующего предложения (NSP). RuBERT использует огромный словарь на 120&nbsp;000 сабтокенов — наследие мультиязычного BERT от Google. Сократим размер до 50&nbsp;000 самых частотных для новостей, покрытие уменьшится на 5%. Получим <a href="https://github.com/natasha/slovnet/blob/master/scripts/01_bert_news/main.ipynb">NewsRuBERT</a>, модель предсказывает замаскированные сабтокены в новостях на 5 процентных пункта лучше чем RuBERT (63% в топ-1).
       	  </p>
 
       	  <p>
@@ -235,11 +238,18 @@
       	</div>
 
       	<div class="note col-6">
-      	  С PyTorch 1.4 <a href="https://github.com/natasha/slovnet/blob/c4f961c23ba0eebb216cae3dc79817e8e6600a6f/slovnet/model/bert.py#L46-L106">реализация NewsRuBERT</a> занимает 100 строк на Python;
-	  <br/>
-      	  <a href="https://github.com/natasha/slovnet#ner-1">Сравнение качества и производительности</a> DeepPavlov BERT NER, Slovnet BERT NER и других решений задачи NER для русского языка.
+	  <ul>
+	    <li>
+      	      С PyTorch 1.4 <a href="https://github.com/natasha/slovnet/blob/c4f961c23ba0eebb216cae3dc79817e8e6600a6f/slovnet/model/bert.py#L46-L106">реализация NewsRuBERT</a> занимает 100 строк на Python;
+	    </li>
+	    <li>
+      	      <a href="https://github.com/natasha/slovnet#ner-1">Сравнение качества и производительности</a> DeepPavlov BERT NER, Slovnet BERT NER и других решений задачи NER для русского языка.
+	    </li>
+	  </ul>
       	</div>
       </div>
+
+      <h2>Синтетический датасет</h2>
 
       <div class="row">
       	<div class="col-6">
@@ -250,36 +260,38 @@
       </div>
 
       <div id="errors" class="row">
-	<div class="col-6">
-	  <p>
-	    Выборы <span class="box ORG">Верховного совета</span> <span class="box LOC">Аджарской автономной республики</span> назначены в соответствии с 241-ой статьей и 4-м пунктом 10-й статьи Конституционного закона <span class="box LOC">Грузии</span> О статусе <span class="box LOC">Аджарской автономной</span><span class="error"> республики</span>.
-	  </p>
-	  <p>
-	    <span class="box ORG">Следственное управление</span><span class="error"> при прокуратуре</span> требует наказать премьера <span class="box LOC">Якутии</span>.
-	  </p>
-	  <p>
-	    Страны <span class="error">Азии</span> и <span class="error">Африки</span> поддержали позицию <span class="box LOC">России</span> в конфликте с <span class="box LOC">Грузией</span>.
-	  </p>
-	  <p>
-	    Как сообщили в четверг корреспонденту <span class="box ORG">Агентства национальных новостей</span> в следственном управлении, еще 16 мая 2007 г. прокуратурой <span class="box LOC">Якутии</span> было возбуждено уголовное дело № 66144 по признакам преступления, предусмотренного ч. 4 ст. 159 УК <span class="box LOC">РФ</span> по факту причинения имущественного ущерба в размере 30 млн руб. государственному унитарному предприятию "<span class="box ORG">Дирекция по строительству</span><span class="error"> железной дороги</span> "<span class="box LOC">Беркакит-Томмот-Якутск</span>"".
-	  </p>
-	</div>
-	<div class="col-6">
-	  <p>
-	    У <span class="box PER">Владимира Стржалковского</span> появится помощник - специалист по проведению сделок <span class="error"><span class="box ORG">M</span>&A</span>.
-	  </p>
-	  <p>
-	    Начальник полигона твердых бытовых отходов "<span class="error">Игумново</span>" в <span class="box LOC">Нижегородской области</span> осужден за загрязнение атмосферы и грунтовых вод.
-	  </p>
-	  <p>
-	    Постоянный <span class="error">Секретариат</span> <span class="box ORG">ОССНАА</span> в <span class="box LOC">Каире</span> в пятницу заявил: Когда <span class="box PER">Саакашвили</span> стал президентом <span class="box LOC">Грузии</span>, он проявил стремление вступить в <span class="box ORG">НАТО</span>, <span class="box LOC">Европейский Союз</span> и установить более близкие отношения с <span class="box LOC">США</span>.
-	  </p>		
+      	<div class="col-6">
+      	  <p>
+      	    Выборы <span class="box ORG">Верховного совета</span> <span class="box LOC">Аджарской автономной республики</span> назначены в соответствии с 241-ой статьей и 4-м пунктом 10-й статьи Конституционного закона <span class="box LOC">Грузии</span> О статусе <span class="box LOC">Аджарской автономной</span><span class="error"> республики</span>.
+      	  </p>
+      	  <p>
+      	    <span class="box ORG">Следственное управление</span><span class="error"> при прокуратуре</span> требует наказать премьера <span class="box LOC">Якутии</span>.
+      	  </p>
+      	  <p>
+      	    Страны <span class="error">Азии</span> и <span class="error">Африки</span> поддержали позицию <span class="box LOC">России</span> в конфликте с <span class="box LOC">Грузией</span>.
+      	  </p>
+      	  <p>
+      	    Как сообщили в четверг корреспонденту <span class="box ORG">Агентства национальных новостей</span> в следственном управлении, еще 16 мая 2007 г. прокуратурой <span class="box LOC">Якутии</span> было возбуждено уголовное дело № 66144 по признакам преступления, предусмотренного ч. 4 ст. 159 УК <span class="box LOC">РФ</span> по факту причинения имущественного ущерба в размере 30 млн руб. государственному унитарному предприятию "<span class="box ORG">Дирекция по строительству</span><span class="error"> железной дороги</span> "<span class="box LOC">Беркакит-Томмот-Якутск</span>"".
+      	  </p>
+      	</div>
+      	<div class="col-6">
+      	  <p>
+      	    У <span class="box PER">Владимира Стржалковского</span> появится помощник - специалист по проведению сделок <span class="error"><span class="box ORG">M</span>&A</span>.
+      	  </p>
+      	  <p>
+      	    Начальник полигона твердых бытовых отходов "<span class="error">Игумново</span>" в <span class="box LOC">Нижегородской области</span> осужден за загрязнение атмосферы и грунтовых вод.
+      	  </p>
+      	  <p>
+      	    Постоянный <span class="error">Секретариат</span> <span class="box ORG">ОССНАА</span> в <span class="box LOC">Каире</span> в пятницу заявил: Когда <span class="box PER">Саакашвили</span> стал президентом <span class="box LOC">Грузии</span>, он проявил стремление вступить в <span class="box ORG">НАТО</span>, <span class="box LOC">Европейский Союз</span> и установить более близкие отношения с <span class="box LOC">США</span>.
+      	  </p>
 
-	  <div class="note">
-	    Примеры ошибок большого грязного обучающего датасета <a href="https://github.com/natasha/nerus">Nerus</a>. Сходу не всегда понятно в чём проблема, пропущенные участки помечены красным пунктиром.
-	  </div>
-	</div>
+      	  <div class="note">
+      	    Примеры ошибок большого грязного обучающего датасета <a href="https://github.com/natasha/nerus">Nerus</a>. Сходу не всегда понятно в чём проблема, пропущенные участки помечены красным пунктиром.
+      	  </div>
+      	</div>
       </div>
+
+      <h2>Модель-ученик</h2>
 
       <div class="row">
 	<div class="col-6">
@@ -306,7 +318,7 @@ https://viereck.ch/latex-to-svg/
     \text{Linear} \\
     \text{CRF} \\
 \end{pmatrix}
-	    -->
+p	    -->
 	  <p>
 	    <img src="images/comb.svg" class="img-fluid"/>
 	    <div class="note">Схема нейросетевых архитектур для задачи NER: энкодер токенов, энкодер контекста, декодер тегов. Расшифровка сокращений в <a href="https://arxiv.org/pdf/1806.05626.pdf">обзорной статье Yang (2018)</a>.</div>
@@ -315,16 +327,62 @@ https://viereck.ch/latex-to-svg/
 	  <p>
 	    Комбинаций архитектур много. Какую выбрать? Например, (CharCNN + Embedding)-WordBiLSTM-CRF — схема модели из <a href="https://arxiv.org/pdf/1709.09686.pdf">статьи про DeepPavlov NER</a>, SOTA для русского языка до 2019 года.
 	  </p>
-	</div>
-      </div>
 
-      <div class="row">
-	<div class="col-6">
 	  <p>
 	    Варианты с CharCNN, CharRNN пропускаем, запускать маленькую нейронную сеть по символам на каждом токене — не наш путь, слишком медленно. WordRNN тоже хотелось бы избежать, решение должно работать на CPU, перемножать матрицы на каждом токене медленно. Для NER выбор между Linear и CRF условный. Мы используем BIO-кодировку, порядок тегов важен. Приходится терпеть жуткие тормоза, использовать CRF. Остаётся один вариант — Embedding-WordCNN-CRF. Такая модель не учитывает регистр токенов, для NER это важно, "надежда" — просто слово, "Надежда" — возможно, имя. Добавим ShapeEmbedding — эмбединг с очертаниями токенов, например: "NER" — EN_XX, "Вайнович" — RU_Xx, "!" — PUNCT_!, "и" — RU_x, "5.1" — NUM, "Нью-Йорк" — RU_Xx-Xx. Схема Slovnet NER — (WordEmbedding + ShapeEmbedding)-WordCNN-CRF.
 	  </p>
 	</div>
+
+	<div class="note col-6">
+	  <p>
+	    Что такое CharCNN, CharRNN, WordCNN, WordRNN, CRF? Основные статьи на тему:
+	  </p>
+
+	  <ul>
+	    <li>
+	      2009 Ratinov, <a href="https://www.aclweb.org/anthology/W09-1119.pdf">Design Challenges and Misconceptions in Named Entity Recognition</a> — обзор донейросетевых методов;
+	    </li>
+
+	    <li>
+	      2011 Collobert, <a href="https://arxiv.org/pdf/1103.0398.pdf">Natural Language Processing (almost) from Scratch</a> — первое применение сетей, знаковая работа, автор всё придумал уже 10 лет назад;
+	    </li>
+
+	    <li>
+	      2015 Huang, <a href="https://arxiv.org/pdf/1508.01991.pdf">Bidirectional LSTM-CRF Models for Sequence Tagging</a> — первое примение WordBiLSTM-CRF;
+	    </li>
+
+	    <li>
+	      2016 Ling, <a href="https://arxiv.org/pdf/1508.02096.pdf">Compositional Character Models for Open Vocabulary Word Representation</a> — CharBiLSTM;
+	    </li>
+
+	    <li>
+	      2016 Chiu, Nichols, <a href="https://www.aclweb.org/anthology/Q16-1026.pdf">Named Entity Recognition with Bidirectional LSTM-CNNs</a> — CharCNN;
+	    </li>
+
+	    <li>
+	      2016 Ma, Hovy, <a href="https://arxiv.org/pdf/1603.01354.pdf">End-to-end Sequence Labeling via Bi-directional LSTM-CNNs-CRF</a> — CharCNN-WordBiLSTM-CRF;
+	    </li>
+
+	    <li>
+	      2016 Lampe, <a href=" https://arxiv.org/pdf/1603.01360.pdf">Neural Architectures for Named Entity Recognition</a> — WordStackLSTM, экзотический вариант, используется в SpaCy;
+	    </li>
+
+	    <li>
+	      2017 Yang, <a href=" https://arxiv.org/pdf/1703.06345.pdf">Transfer learning for sequence tagging with hierarchical recurrent networks</a> — первые попытки применить transfer learing;
+	    </li>
+
+	    <li>
+	      2018 Peters, <a href="https://arxiv.org/pdf/1802.05365.pdf">Deep contextualized word representations</a> — transfer learing через language modeling;
+	    </li>
+
+	    <li>
+	      2019, <a href="https://arxiv.org/pdf/1909.00100.pdf">Small and Practical BERT Models for Sequence Labeling</a> — BERT;
+	    </li>
+	  </ul>
+	</div>
       </div>
+
+      <h2>Дистиляция</h2>
 
       <div class="row">
 	<div class="col-6">
@@ -345,10 +403,12 @@ https://viereck.ch/latex-to-svg/
 	    <img src="images/size.svg" class="img-fluid"/>
 	  </p>
 	  <div class="note">
-	    Качество Slovnet NER, зависимость от числа синтетических обучающих примеров. Серая линия — качество Slovnet BERT NER.
+	    Качество Slovnet NER, зависимость от числа синтетических обучающих примеров. Серая линия — качество Slovnet BERT NER. Slovnet NER не видит размеченных вручную примеров, обучается только на синтетических данных.
 	  </div>
 	</div>
       </div>
+
+      <h2>Квантизация</h2>
 
       <div class="row">
 	<div class="col-6">
@@ -364,13 +424,15 @@ https://viereck.ch/latex-to-svg/
 
       </div>
 
+      <h2>Инференс</h2>
+
       <div class="row">
 	<div class="col-6">
 	  <p>
 	    Slovnet NER использует PyTorch для обучения. Пакет PyTorch весит 700МБ, не хочется тянуть его в продакшн для инференса. PyTorch <a href="https://github.com/pytorch/pytorch/issues/17835">не работает с интерпретатором PyPy</a>. Slovnet используется в связке с <a href="https://github.com/natasha/yargy">Yargy-парсером</a> аналогом <a href="https://yandex.ru/dev/tomita/">яндексового Tomita-парсера</a>. С PyPy Yargy работает в 2-10 раз быстрее, зависит от сложности грамматик. Не хочется терять скорость из-за зависимости от PyTorch.
 	  </p>
 	  <p>
-	    Стандартное решение — использовать <a href="https://pytorch.org/docs/stable/jit.html">TorchScript</a> или <a href="https://pytorch.org/docs/stable/onnx.html">сконвертировать модель в ONNX</a>, инференс делать в <a href="https://github.com/microsoft/onnxruntime">ONNXRuntime</a>. Slovnet NER использует нестандартные блоки: квантованные эмбединги, CRF-декодер + TorchScript и ONNXRuntime не поддерживают PyPy.
+	    Стандартное решение — использовать <a href="https://pytorch.org/docs/stable/jit.html">TorchScript</a> или <a href="https://pytorch.org/docs/stable/onnx.html">сконвертировать модель в ONNX</a>, инференс делать в <a href="https://github.com/microsoft/onnxruntime">ONNXRuntime</a>. Slovnet NER использует нестандартные блоки: квантованные эмбединги, CRF-декодер. TorchScript и ONNXRuntime не поддерживают PyPy.
 	  </p>
 	  <p>
 	    Slovnet NER — простая модель, <a href="https://github.com/natasha/slovnet/blob/master/slovnet/exec/model.py">вручную реализуем все блоки на NumPy</a>, используем веса, посчитанные PyTorch. Применим немного NumPy-магии, аккуратно реализуем <a href="https://github.com/natasha/slovnet/blob/master/slovnet/exec/model.py#L82-L112">блок CNN</a>, <a href="https://github.com/natasha/slovnet/blob/master/slovnet/exec/model.py#L154-L184">CRF-декодер</a>, распаковка квантованного эмбединга <a href="https://github.com/natasha/slovnet/blob/master/slovnet/exec/model.py#L229-L234">занимает 5 строк</a>. Скорость инференса на CPU такая же как с ONNXRuntime и PyTorch, 25 новостных статей в секунду на Core i5.
