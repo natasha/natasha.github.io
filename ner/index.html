@@ -47,9 +47,17 @@
       	  <p>
       	    <a href="https://github.com/natasha/natasha">Библиотека Natasha</a> решает базовые задачи обработки естественного русского языка: сегментация на токены и предложения, морфологический и синтаксический анализ, лемматизация, извлечение именованных сущностей. Для новостных статей качество на всех задачах <a href="https://github.com/natasha/natasha#evaluation">сравнимо или превосходит существующие решения</a>. Библиотека поддерживает Python 3.5+ и PyPy3, не требует GPU, зависит только от NumPy.
       	  </p>
+      	</div>
+      </div>
+
+      <div class="row">
+      	<div class="col-6">
       	  <p>
       	    В этой статье разберёмся, как Natasha решает задачу извлечения именованных сущностей. Стенд демонстрирует поиск подстрок с <span class="box PER">именами</span>, названиями <span class="box LOC">топонимов</span> и <span class="box ORG">организаций</span>:
       	  </p>
+      	</div>
+      	<div class="col-6 note">
+      	  Модель обучена на текстах новостей. На других тематиках качество хуже. Демо-стенд отвечает с задержкой, обрабатывает первые 1000 слов.
       	</div>
       </div>
       
@@ -238,14 +246,14 @@
       	</div>
 
       	<div class="note col-6">
-	  <ul>
-	    <li>
+      	  <ul>
+      	    <li>
       	      С PyTorch 1.4 <a href="https://github.com/natasha/slovnet/blob/c4f961c23ba0eebb216cae3dc79817e8e6600a6f/slovnet/model/bert.py#L46-L106">реализация NewsRuBERT</a> занимает 100 строк на Python;
-	    </li>
-	    <li>
+      	    </li>
+      	    <li>
       	      <a href="https://github.com/natasha/slovnet#ner-1">Сравнение качества и производительности</a> DeepPavlov BERT NER, Slovnet BERT NER и других решений задачи NER для русского языка.
-	    </li>
-	  </ul>
+      	    </li>
+      	  </ul>
       	</div>
       </div>
 
@@ -452,11 +460,46 @@ ner.navec(navec)</code></pre>
 	</div>
       </div>
 
+      <h2>Использование</h2>
+
       <div class="row">
 	<div class="col-6">
 	  <p>
 	    <a href="https://github.com/natasha/natasha#install">Инструкция по установке</a>, <a href="https://github.com/natasha/natasha#usage">пример использования</a>, <a href="http://nbviewer.jupyter.org/github/natasha/natasha/blob/master/docs.ipynb">документация</a> — в <a href="https://github.com/natasha/natasha">репозитории библиотеки Natasha</a>.
 	  </p>
+
+	  <p>
+	    Natasha объединяет под одним интерфейсом другие библиотеки проекта. Natasha хороша для демонстрации технологий. В работе стоит использовать низкоуровневые библиотеки напрямую:
+	    <ul>
+	      <li>
+		<a href="https://github.com/natasha/razdel">Razdel</a> — сегментация текста на предложения и токены;
+	      </li>
+	      <li>
+		<a href="https://github.com/natasha/navec">Navec</a> — качественный компактные эмбединги;
+	      </li>
+	      <li>
+		<a href="https://github.com/natasha/slovnet">Slovnet</a> — современные компактные модели для морфологии, синтаксиса, NER;
+	      </li>
+	      <li>
+		<a href="https://github.com/natasha/yargy">Yargy</a> — правила и словари для извлечения структурированной информации;
+	      </li>
+	      <li>
+		<a href="https://github.com/natasha/ipymarkup">Ipymarkup</a> — визуализация NER и синтаксической разметки;
+	      </li>
+	      <li>
+		<a href="https://github.com/natasha/corus">Corus</a> — коллекция ссылок на публичные русскоязычные датасеты;
+	      </li>
+	      <li>
+		<a href="https://github.com/natasha/nerus">Nerus</a> — большой корпус с автоматической разметкой именованных сущностей, морфологии и синтаксиса.
+	      </li>
+	    </ul>
+	  </p>
+
+	  <p>
+	    Natasha извлекает стандартные сущности: имена, названия топонимов и организаций. Решение показывает хорошее качество на новостях. Как работать с другими сущностями и типами текстов? Нужно обучить новую модель. Сделать это непросто. За компактный размер и скорость работы мы платим сложностью подготовки модели. <a href="https://github.com/natasha/slovnet/blob/master/scripts/02_bert_ner/main.ipynb">Скрипт-ноутбук для подготовки тяжёлой модели учителя</a>, <a href="https://github.com/natasha/slovnet/blob/master/scripts/05_ner/main.ipynb">скрипт-ноутбук для модели-ученика</a>, <a href="https://github.com/natasha/navec#development">инструкции по подготовке квантованных эмбедингов</a>.
+	  </p>
+
+	  <a href="http://t.me/natural_language_processing">@natural_language_processing</a> — чат пользователей, разработчиков проекта.
 	</div>
       </div>
 
