@@ -204,7 +204,7 @@
       	  </p>
 
       	  <p class="highlight">
-      	    Natasha (<a href="https://github.com/natasha/slovnet#ner">Slovnet NER</a>) = дообученный оптимизированный DeepPavlov BERT NER (<a href="https://github.com/natasha/slovnet/blob/master/scripts/02_bert_ner/main.ipynb">Slovnet BERT NER</a>) + дистилляция через синтетическую разметку (<a href="https://github.com/natasha/nerus">Nerus</a>) в WordCNN-CRF c квантованными эмбедингами (<a href="https://github.com/natasha/navec">Navec</a>) + движок для инференса на NumPy.
+      	    Natasha (<a href="https://github.com/natasha/slovnet#ner">Slovnet NER</a>) = <a href="https://github.com/natasha/slovnet/blob/master/scripts/02_bert_ner/main.ipynb">Slovnet BERT NER</a> — аналог DeepPavlov BERT NER + дистилляция через синтетическую разметку (<a href="https://github.com/natasha/nerus">Nerus</a>) в WordCNN-CRF c квантованными эмбедингами (<a href="https://github.com/natasha/navec">Navec</a>) + движок для инференса на NumPy.
       	  </p>
       	</div>
       </div>
@@ -226,11 +226,14 @@
       <div class="row">
       	<div class="col-6">
       	  <p>
-      	    Тяжёлая модель-учитель повторяет DeepPavlov BERT NER с небольшими улучшениями. Все бенчмарки измеряют качество NER на текстах новостей. Дообучим RuBERT на новостях. В репозитории <a href="https://github.com/natasha/corus">Corus</a> собраны ссылки на публичные русскоязычные новостные корпуса, в сумме 12 ГБ текстов. Используем техники из <a href="https://arxiv.org/abs/1907.11692">статьи от Facebook про RoBERTa</a>: большие агрегированные батчи, динамическая маска, отказ от предсказания следующего предложения (NSP). RuBERT использует огромный словарь на 120&nbsp;000 сабтокенов — наследие мультиязычного BERT от Google. Сократим размер до 50&nbsp;000 самых частотных для новостей, покрытие уменьшится на 5%. Получим <a href="https://github.com/natasha/slovnet/blob/master/scripts/01_bert_news/main.ipynb">NewsRuBERT</a>, модель предсказывает замаскированные сабтокены в новостях на 5 процентных пункта лучше чем RuBERT (63% в топ-1).
+      	    DeepPavlov BERT NER состоит из RuBERT-энкодера и CRF-головы. Тяжёлая модель-учитель повторяет архитектуру от DeepPavlov с небольшими улучшениями.
+	  </p>
+	  <p>
+	    Все бенчмарки измеряют качество NER на текстах новостей. Дообучим RuBERT на новостях. В репозитории <a href="https://github.com/natasha/corus">Corus</a> собраны ссылки на публичные русскоязычные новостные корпуса, в сумме 12 ГБ текстов. Используем техники из <a href="https://arxiv.org/abs/1907.11692">статьи от Facebook про RoBERTa</a>: большие агрегированные батчи, динамическая маска, отказ от предсказания следующего предложения (NSP). RuBERT использует огромный словарь на 120&nbsp;000 сабтокенов — наследие мультиязычного BERT от Google. Сократим размер до 50&nbsp;000 самых частотных для новостей, покрытие уменьшится на 5%. Получим <a href="https://github.com/natasha/slovnet/blob/master/scripts/01_bert_news/main.ipynb">NewsRuBERT</a>, модель предсказывает замаскированные сабтокены в новостях на 5 процентных пункта лучше чем RuBERT (63% в топ-1).
       	  </p>
 
       	  <p>
-      	    Обучим CRF-голову на 1000 статей из <a href="https://github.com/natasha/corus#load_ne5">Collection5</a>. Получим <a href="https://github.com/natasha/slovnet/blob/master/scripts/02_bert_ner/main.ipynb">Slovnet BERT NER</a>, качество на 0.5 процентных пункта лучше, чем у DeepPavlov BERT NER, размер модели меньше в 4 раза (473МБ), работает в 3 раза быстрее (40 статей в секунду).
+      	    Обучим NewsRuBERT-энкодер и CRF-голову на 1000 статей из <a href="https://github.com/natasha/corus#load_ne5">Collection5</a>. Получим <a href="https://github.com/natasha/slovnet/blob/master/scripts/02_bert_ner/main.ipynb">Slovnet BERT NER</a>, качество на 0.5 процентных пункта лучше, чем у DeepPavlov BERT NER, размер модели меньше в 4 раза (473МБ), работает в 3 раза быстрее (40 статей в секунду).
       	  </p>
 
       	  <p class="highlight">
