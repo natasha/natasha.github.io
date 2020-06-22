@@ -228,10 +228,10 @@
       <div class="row">
       	<div class="col-6">
       	  <p>
-      	    DeepPavlov BERT NER состоит из RuBERT-энкодера и CRF-головы. Тяжёлая модель-учитель повторяет эту архитектуру с небольшими улучшениями.
+      	    DeepPavlov BERT NER состоит из RuBERT-энкодера и CRF-головы. Наша тяжёлая модель-учитель повторяет эту архитектуру с небольшими улучшениями.
 	  </p>
 	  <p>
-	    Все бенчмарки измеряют качество NER на текстах новостей. Дообучим RuBERT на новостях. В репозитории <a href="https://github.com/natasha/corus">Corus</a> собраны ссылки на публичные русскоязычные новостные корпуса, в сумме 12 ГБ текстов. Используем техники из <a href="https://arxiv.org/abs/1907.11692">статьи от Facebook про RoBERTa</a>: большие агрегированные батчи, динамическая маска, отказ от предсказания следующего предложения (NSP). RuBERT использует огромный словарь на 120&nbsp;000 сабтокенов — наследие мультиязычного BERT от Google. Сократим размер до 50&nbsp;000 самых частотных для новостей, покрытие уменьшится на 5%. Получим <a href="https://github.com/natasha/slovnet/blob/master/scripts/01_bert_news/main.ipynb">NewsRuBERT</a>, модель предсказывает замаскированные сабтокены в новостях на 5 процентных пункта лучше чем RuBERT (63% в топ-1).
+	    Все бенчмарки измеряют качество NER на текстах новостей. Дообучим RuBERT на новостях. В репозитории <a href="https://github.com/natasha/corus">Corus</a> собраны ссылки на публичные русскоязычные новостные корпуса, в сумме 12 ГБ текстов. Используем техники из <a href="https://arxiv.org/abs/1907.11692">статьи от Facebook про RoBERTa</a>: большие агрегированные батчи, динамическая маска, отказ от предсказания следующего предложения (NSP). RuBERT использует огромный словарь на 120&nbsp;000 сабтокенов — наследие мультиязычного BERT от Google. Сократим размер до 50&nbsp;000 самых частотных для новостей, покрытие уменьшится на 5%. Получим <a href="https://github.com/natasha/slovnet/blob/master/scripts/01_bert_news/main.ipynb">NewsRuBERT</a>, модель предсказывает замаскированные сабтокены в новостях на 5 процентных пунктов лучше RuBERT (63% в топ-1).
       	  </p>
 
       	  <p>
@@ -438,7 +438,7 @@ p	    -->
       <div class="row">
 	<div class="col-6">
 	  <p>
-	    Slovnet NER использует PyTorch для обучения. Пакет PyTorch весит 700МБ, не хочется тянуть его в продакшн для инференса. PyTorch <a href="https://github.com/pytorch/pytorch/issues/17835">не работает с интерпретатором PyPy</a>. Slovnet используется в связке с <a href="https://github.com/natasha/yargy">Yargy-парсером</a> аналогом <a href="https://yandex.ru/dev/tomita/">яндексового Tomita-парсера</a>. С PyPy Yargy работает в 2-10 раз быстрее, зависит от сложности грамматик. Не хочется терять скорость из-за зависимости от PyTorch.
+	    Slovnet NER использует PyTorch для обучения. Пакет PyTorch весит 700МБ, не хочется тянуть его в продакшн для инференса. Ещё PyTorch <a href="https://github.com/pytorch/pytorch/issues/17835">не работает с интерпретатором PyPy</a>. Slovnet используется в связке с <a href="https://github.com/natasha/yargy">Yargy-парсером</a> аналогом <a href="https://yandex.ru/dev/tomita/">яндексового Tomita-парсера</a>. С PyPy Yargy работает в 2-10 раз быстрее, зависит от сложности грамматик. Не хочется терять скорость из-за зависимости от PyTorch.
 	  </p>
 	  <p>
 	    Стандартное решение — использовать <a href="https://pytorch.org/docs/stable/jit.html">TorchScript</a> или <a href="https://pytorch.org/docs/stable/onnx.html">сконвертировать модель в ONNX</a>, инференс делать в <a href="https://github.com/microsoft/onnxruntime">ONNXRuntime</a>. Slovnet NER использует нестандартные блоки: квантованные эмбединги, CRF-декодер. TorchScript и ONNXRuntime не поддерживают PyPy.
