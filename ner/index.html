@@ -463,15 +463,15 @@ p	    -->
 	  </p>
 	  <p>
 	    Техника работает на более сложных моделях: Slovnet Morph и Slovnet Syntax тоже реализованы на NumPy. Slovnet NER, Morph и Syntax используют общую таблицу эмбедингов. Вынесем веса в отдельный файл, таблица не дублируется в памяти и на диске:
-	    <pre><code>navec = Navec.load('navec_news_v1_1B_250K_300d_100q.tar')  # 25MB
-morph = Morph.load('slovnet_morph_news_v1.tar')  # 2MB
-syntax = Syntax.load('slovnet_syntax_news_v1.tar')  # 3MB
-ner = NER.load('slovnet_ner_news_v1.tar')  # 2MB
+	    <pre><code>>>> navec = Navec.load('navec_news_v1_1B.tar')  # 25MB
+>>> morph = Morph.load('slovnet_morph_news_v1.tar')  # 2MB
+>>> syntax = Syntax.load('slovnet_syntax_news_v1.tar')  # 3MB
+>>> ner = NER.load('slovnet_ner_news_v1.tar')  # 2MB
 
 # 25 + 2 + 3 + 2 вместо 25+2 + 25+3 + 25+2
-morph.navec(navec)
-syntax.navec(navec)
-ner.navec(navec)</code></pre>
+>>> morph.navec(navec)
+>>> syntax.navec(navec)
+>>> ner.navec(navec)</code></pre>
 	  </p>
 	</div>
       </div>
