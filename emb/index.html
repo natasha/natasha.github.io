@@ -1,0 +1,419 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Navec — компактные эмбединги для русского языка</title>
+    <meta name="title" content="Navec — компактные эмбединги для русского языка">
+    <meta property="og:title" content="Navec — компактные эмбединги для русского языка"/>
+    <meta property="twitter:title" content="Navec — компактные эмбединги для русского языка">
+
+    <meta name="description" content="Часть проекта Natasha, коллекция предобученных эмбедингов для русского языка, имеют компактный размер, высокое качество">
+    <meta property="og:description" content="Часть проекта Natasha, коллекция предобученных эмбедингов для русского языка, имеют компактный размер, высокое качество"/>
+    <meta property="twitter:description" content="Часть проекта Natasha, коллекция предобученных эмбедингов для русского языка, имеют компактный размер, высокое качество">
+
+    <meta name="keywords" content="русский язык, эмбединги, glove, квантизация, embeddings, quantization">
+
+    <meta property="og:type" content="website">
+    <meta property="twitter:card" content="summary_large_image">
+
+    <meta property="og:url" content="https://natasha.github.io/emb/">
+    <meta property="twitter:url" content="https://natasha.github.io/emb/">
+
+    <meta property="og:image" content="https://natasha.github.io/emb/images/preview.png"/>
+    <meta property="twitter:image" content="https://natasha.github.io/emb/images/preview.png">
+
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-P65FXVJ');</script>
+    <!-- End Google Tag Manager -->
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P65FXVJ"
+		      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="container">
+      <div class="row">
+      	<div class="col-8">
+      	  <p>
+      	    <a href="/">
+      	      <span class="hanging-arrow">←</span> Проект Natasha
+      	    </a>
+      	  </p>
+
+      	  <h1>Navec — компактные эмбединги для русского языка</h1>
+      	</div>
+      </div>
+
+      <div class="row">
+      	<div class="col-6">
+      	  <p>
+	    <a href="https://github.com/natasha/navec">Navec</a> — часть <a href="https://github.com/natasha">проекта Natasha</a>, коллекция предобученных эмбедингов для русского языка. <a class="local" href="#evaluation">Качество сравнимо или выше</a>, чем у <a href="https://rusvectores.org/ru/models/">статических моделей от RusVectores</a>, размер в 5–6 раз меньше (51МБ).	    
+      	  </p>
+
+	  <table id="hero" class="table table-borderless">
+	    <thead>
+	      <tr>
+		<th></th>
+		<th><a class="local" href="#evaluation">Качество</a></th>
+		<th>Размер модели, МБ</th>
+		<th>Размер словаря, ×10<sup>3</sup></th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr>
+		<th>Navec</th>
+		<td>0.719</td>
+		<td>50.6</td>
+		<td>500</td>
+	      </tr>
+
+	      <tr>
+		<th>RusVectores</th>
+		<td>0.638–0.726</td>
+		<td>220.6–2752.1</td>
+		<td>192–249</td>
+	      </tr>
+	    </tbody>
+	  </table>
+
+	</div>
+      </div>
+
+      <div class="row">
+	<div class="col-6">
+	  <p>
+	    В этой статье поговорим про старые добрые пословные эмбединги, совершившие революцию в NLP в 2013 году.
+	  </p>
+	</div>
+
+	<div class="col-4">
+	  <p class="note">
+	    python − счастье + страдание = perl
+	  </p>
+	</div>
+      </div>
+
+      <div class="row">
+	<div class="col-6">
+	  <p>
+	    Технология актуальна до сих пор. В проекте Natasha модели для NER, определения морфологии и синтаксисческих связей работают на пословных Navec-эмбедингах, <a href="https://github.com/natasha/slovnet#evaluation">показывают качество выше других открытых решений</a>.
+	  </p>
+	</div>
+
+	<div class="col-3">
+	  <p class="note">
+	    <a href="https://github.com/natasha/slovnet#ner">Slovnet NER</a>, <a href="https://github.com/natasha/slovnet#morphology">Slovnet Morph</a>, <a href="https://github.com/natasha/slovnet#syntax">Slovnet Syntax</a>
+	  </p>
+	</div>
+      </div>
+
+      <h2>RusVectores</h2>
+
+      <div class="row">
+	<div class="col-6">
+	  <p>
+	    Для русского языка принято использовать <a href="https://rusvectores.org/ru/models/">предобученные эмбединги от RusVectores</a>, у них есть неприятная особенность: в таблице записаны не слова, а пары «слово_POS-тег». Идея хорошая, для записи «стали_VERB» ожидаем вектор, похожий на «стал_VERB», «превратились_VERB», а для «стали_NOUN» — «медь_NOUN», «сталь_NOUN».
+	  </p>
+
+	  <p>
+	    На практике использовать такие эмбединги неудобно. Недостаточно разделить текст на токены, для каждого нужно как-то определить POS-тег. Таблица эмбедингов разбухает. Вместо одного слова «стать», мы храним 6: 2 разумных «стать_VERB», «стать_NOUN» и 4 странных «стать_ADV», «стать_PROPN», «стать_NUM», «стать_ADJ». В таблице из 250&nbsp;000 записей 195&nbsp;000 уникальных слов. Покрытие словаря уменьшается, модель работает хуже.
+	  </p>
+
+	</div>
+      </div>
+
+      <a name="evaluation"></a>
+      <h2>Качество</h2>
+
+      <div class="row">
+	<div class="col-6">
+	  <p>
+	    Оценим качество эмбедингов на синтетической задаче классификации. Возьмём пару слов, например, «чашка», «кувшин», для обоих найдём вектора-эмбединги, посчитаем косинусную меру близости, если она больше 0.5, ответ правильный, вектора хорошие.
+	  </p>
+
+	  <p>
+	    RusVectores использует небольшие <a href="https://arxiv.org/abs/1801.06407">аккуратно проверенные</a> тестовые списки пар: <a href="https://github.com/natasha/corus#load_simlex">SimLex965</a> и <a href="https://github.com/natasha/corus#load_russe_hj">HJ</a>. Добавим свежий <a href="https://github.com/natasha/corus#load_toloka_lrwc">LRWC</a> и большие датасеты из <a href="https://russe.nlpub.org/downloads/">проекта RUSSE</a>: <a href="https://github.com/natasha/corus#load_russe_rt">RT</a>, <a href="https://github.com/natasha/corus#load_russe_ae">AE</a>, <a href="https://github.com/natasha/corus#load_russe_ae">AE2</a>:
+	  </p>
+	</div>
+      </div>
+
+      <div class="row">
+      	<div class="col-7">
+
+	  <table id="eval" class="table table-borderless">
+	    <thead>
+      	      <tr>
+      		<th></th>
+      		<th></th>
+      		<th scope="col">Среднее качество на 6 датасетах</th>
+      		<th scope="col">Время загрузки, секунды</th>
+      		<th scope="col">Размер модели, МБ</th>
+      		<th scope="col">Размер словаря, ×10<sup>3</sup></th>
+      	      </tr>
+      	    </thead>
+
+      	    <tbody>
+      	      <tr>
+		<th>Navec</th>
+		<th><code>hudlit_12B_500K_300d_100q</code></th>
+		<td><b>0.719</b></td>
+		<td><b>1.0</b></td>
+		<td><b>50.6</b></td>
+		<td><b>500</b></td>
+	      </tr>
+
+	      <tr>
+		<th></th>
+		<th><code>news_1B_250K_300d_100q</code></th>
+		<td>0.653</td>
+		<td><b>0.5</b></td>
+		<td><b>25.4</b></td>
+		<td><b>250</b></td>
+	      </tr>
+
+	      <tr>
+		<th>RusVectores</th>
+		<th><code>ruscorpora_upos_cbow_300_20_2019</code></th>
+		<td><b>0.692</b></td>
+		<td>12.1</td>
+		<td><b>220.6</b></td>
+		<td>189</td>
+	      </tr>
+
+	      <tr>
+		<th></th>
+		<th><code>ruwikiruscorpora_upos_skipgram_300_2_2019</code></th>
+		<td>0.691</td>
+		<td>15.7</td>
+		<td>290.0</td>
+		<td>248</td>
+	      </tr>
+
+	      <tr>
+		<th></th>
+		<th><code>tayga_upos_skipgram_300_2_2019</code></th>
+		<td><b>0.726</b></td>
+		<td>15.7</td>
+		<td>290.7</td>
+		<td><b>249</b></td>
+	      </tr>
+
+	      <tr>
+		<th></th>
+		<th><code>tayga_none_fasttextcbow_300_10_2019</code></th>
+		<td>0.638</td>
+		<td>11.3</td>
+		<td>2741.9</td>
+		<td>192</td>
+	      </tr>
+
+	      <tr>
+		<th></th>
+		<th><code>araneum_none_fasttextcbow_300_5_2018</code></th>
+		<td>0.664</td>
+		<td><b>7.8</b></td>
+		<td>2752.1</td>
+		<td>195</td>
+	      </tr>
+
+	    </tbody>
+	  </table>
+
+      	</div>
+      </div>
+
+      <div class="row">
+	<div class="col-6">
+	  <p>
+	     Качество <code>hudlit_12B_500K_300d_100q</code> сравнимо или лучше, чем у решений RusVectores, словарь больше в 2–3 раза, размер модели меньше в 5–6 раз. Как удалось получить такое качество и размер?
+	  </p>
+	</div>
+      </div>
+
+      <h2>Принцип работы</h2>
+
+      <div class="row">
+	<div class="col-6">
+	  <p>
+	    <code>hudlit_12B_500K_300d_100q</code> — <a href="https://nlp.stanford.edu/projects/glove/">GloVe-эмбединги</a> обученные на <a href="https://github.com/natasha/corus#load_librusec">145ГБ художественной литературы</a>. Архив с текстами возьмём из <a href="https://russe.nlpub.org/downloads/">проекта RUSSE</a>. Используем <a href="https://github.com/stanfordnlp/GloVe">оригинальную реализацию GloVe на C</a>, обернём её в <a href="https://github.com/natasha/navec/blob/master/navec/train/glove.py">удобный Python-интерфейс</a>.
+	  </p>
+	</div>
+      </div>
+	  
+      <div class="row">
+	<div class="col-6">
+	  <p>
+	    Почему не word2vec? Эксперименты на большом датасете быстрее с GloVe. Один раз считаем таблицу колокаций, по ней готовим эмбединги разных размерностей, выбираем оптимальный вариант.
+	  </p>
+	</div>
+
+	<div class="col-4">
+	  <p class="note">
+	    Про матрицу колокаций написано в оригинальной статье <a href="https://nlp.stanford.edu/pubs/glove.pdf">GloVe: Global Vectors for Word Representation</a>.
+	  </p>
+	</div>
+      </div>
+      
+      <div class="row">
+	<div class="col-6">
+	  <p>
+	    Почему не fastText? В проекте Natasha мы работаем с текстами новостей. В них мало опечаток, проблему OOV-токенов решает большой словарь. 250&nbsp;000 строк в таблице <code>news_1B_250K_300d_100q</code> покрывают 98% слов в новостных статьях.
+	  </p>
+	</div>
+
+	<div class="col-4">
+	  <p class="note">
+	    Статья Давида Дале про компактный предобученный fastText для русского языка: <a href="https://habr.com/ru/post/489474/">Как сжать модель fastText в 100 раз</a>
+	  </p>
+	</div>
+      </div>
+
+      <div class="row">
+	<div class="col-6">
+	  <p>
+	    Размер словаря <code>hudlit_12B_500K_300d_100q</code> — 500&nbsp;000 записей, он покрывает 98% слов в художественных текстах. Оптимальная размерность векторов — 300. Таблица 500&nbsp;000 × 300 из float-чисел занимает 1.1ГБ, размер архива с весами <code>hudlit_12B_500K_300d_100q</code> — 51МБ. Дело в квантизации.
+	  </p>
+	</div>
+      </div>
+
+      <h2>Квантизация</h2>
+
+      <div class="row">
+	<div class="col-6">
+	  <p>
+	    Заменим 64-битные float-числа на 8-битные коды: [−∞, −0.86) — код 0, [−0.86, -0.79) — код 1, [-0.79, -0.74) — 2, …, [0.86, ∞) — 255. Размер таблицы уменьшится в 8 раз (143МБ):
+	  <p>
+	</div>
+      </div>
+
+      <div class="row">
+	<div class="col-6">
+	    <pre><code>Было:
+-0.220 -0.071  0.320 -0.279  0.376  0.409  0.340 -0.329  0.400
+ 0.046  0.870 -0.163  0.075  0.198 -0.357 -0.279  0.267  0.239
+ 0.111  0.057  0.746 -0.240 -0.254  0.504  0.202  0.212  0.570
+ 0.529  0.088  0.444 <b>-0.005</b> <b>-0.003</b> -0.350 -0.001  0.472  0.635
+-0.170  0.677  0.212  0.202 <b>-0.030</b>  0.279  0.229 -0.475 <b>-0.031</b>
+
+Стало:
+    63    105    215     49    225    230    219     39    228
+   143    255     78    152    187     34     49    204    198
+   163    146    253     58     55    240    188    191    246
+   243    155    234    <b>127</b>    <b>127</b>     35    128    237    249
+    76    251    191    188    <b>118</b>    207    195     18    <b>118</b>
+</code></pre>
+	</div>
+
+	<div class="col-4">
+	  <p class="note">
+	    Данные огрубляются, разные значения -0.005 и -0.003 заменяют одним кодом 127, -0.030 и -0.031 — 118.
+	  </p>
+	</div>
+      </div>
+
+      <div class="row">
+	<div class="col-6">
+	  <p>
+	    Заменим кодом не одно, а 3 числа. Таблица уменьшится ещё в 3 раза (~50МБ). Используем библиотеку <a href="http://yusukematsui.me/project/pqkmeans/pqkmeans.html">PQk-means</a>, подберём оптимальное разбиение на группы, качество на синтетических тестах упадёт на 1 процентный пункт.
+	  </p>
+
+	  <p>
+	    Квантованные эмбединги проигрывают обычным по скорости. Сжатый вектор перед использованием нужно распаковать. Аккуратно реализуем процедуру, <a href="https://github.com/natasha/navec/blob/master/navec/pq.py#L40-L43">применим Numpy-магию</a> в PyTorch <a href="https://github.com/natasha/slovnet/blob/master/slovnet/model/emb.py#L29-L39">использовуем <code>torch.gather</code></a>. В Slovnet NER доступ к таблице эмбедингов занимает 0.1% от общего времени вычислений.
+	  </p>
+	</div>
+      </div>
+
+      <h2>Использование</h2>
+
+      <div class="row">
+	<div class="col-6">
+	  <p>
+	    <a href="https://github.com/natasha/navec#downloads">Список предобученных моделей</a>, <a href="https://github.com/natasha/navec#installation">инструкция по установке</a> — в <a href="https://github.com/natasha/navec">репозитории Navec</a>.
+	  </p>
+
+	  <p>
+	    Модуль <code>NavecEmbedding</code> из <a href="https://github.com/natasha/slovnet">библиотеки Slovnet</a> интегрирует Navec в PyTorch-модели:
+	  </p>
+
+	  <pre><code>>>> import torch
+
+>>> from navec import Navec
+>>> from slovnet.model.emb import NavecEmbedding
+
+>>> path = 'hudlit_12B_500K_300d_100q.tar'  # 51MB
+>>> navec = Navec.load(path)  # ~1 sec, ~100MB RAM
+
+>>> words = ['навек', '&lt;unk>', '&lt;pad>']
+>>> ids = [navec.vocab[_] for _ in words]
+
+>>> emb = NavecEmbedding(navec)
+>>> input = torch.tensor(ids)
+
+>>> emb(input)  # 3 x 300
+tensor([[ 4.2000e-01,  3.6666e-01,  1.7728e-01,
+        [ 1.6954e-01, -4.6063e-01,  5.4519e-01,
+        [ 0.0000e+00,  0.0000e+00,  0.0000e+00,
+	  ...</code></pre>
+
+	</div>
+      </div>
+
+      <div id="footer">
+	<div class="row">
+      	  <div class="col-2">
+      	    <img src="/images/author.jpg" class="rounded img-fluid" alt="Александр Кукушкин">
+      	  </div>
+      	  <div class="col-4">
+      	    Александр Кукушкин, июнь 2020 года
+      	    <ul>
+      	      <li>
+		<a href="mailto:alex@alexkuk.ru">alex@alexkuk.ru</a>
+	      </li>
+
+      	      <li>
+		<a href="https://t.me/alexkuk">
+		  <img class="inline" src="/images/social/tg.svg" /> alexkuk
+		</a>
+	      </li>
+
+      	      <li>
+		<a href="https://vk.com/alexkuk">
+		  <img class="inline" src="/images/social/vk.svg" /> alexkuk
+		</a>
+	      </li>
+
+      	      <li>
+		<a href="https://github.com/kuk">
+		  <img class="inline" src="/images/social/gh.svg" /> kuk
+		</a>
+	      </li>
+      	    </ul>
+
+	    <a href="https://lab.alexkuk.ru/">Лаборатория анализа данных Александра Кукушкина</a>
+	      <p>
+		Лаборатория разрабатывает сервисы и коробочные продукты с использованием технологии Natasha, оказывает услуги анализа данных для российских компаний.
+	      </p>
+
+	  </div>
+	</div>
+
+	</div>
+      </div>
+
+    </div>
+
+    <script src="/scripts/popper.min.js" type="text/javascript"></script>
+    <script src="/scripts/bootstrap.min.js" type="text/javascript"></script>
+  </body>
+</html>
