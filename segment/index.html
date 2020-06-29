@@ -62,8 +62,9 @@
       <div class="row">
       	<div class="col-6">
       	  <p>
-	    <a href="https://github.com/natasha/razdel">Python-библиотека Razdel</a> — часть <a href="https://github.com/natasha">проекта Natasha</a>, делит русскоязычный текст на токенты и предложения:
-	    <pre><code>>>> from razdel import tokenize, sentenize
+	    <a href="https://github.com/natasha/razdel">Python-библиотека Razdel</a> — часть <a href="https://github.com/natasha">проекта Natasha</a>, делит русскоязычный текст на токены и предложения:
+      	  </p>
+	  <pre><code>>>> from razdel import tokenize, sentenize
 
 >>> text = 'Кружка-термос на 0.5л (50/64 см³, 516;...)'
 >>> tokens = list(tokenize(text))
@@ -84,7 +85,6 @@
  Substring(24, 40, '- "Не ра-ду-ют".'),
  Substring(41, 56, 'И т. д. и т. п.'),
  Substring(57, 76, 'В общем, вся газета')]</code></pre>
-      	  </p>
       	</div>
       </div>
 
@@ -421,7 +421,7 @@
       	    </dd>
 
       	    <dt>
-      	      Вокруг дефиса нет пробелов, это не начало прямой речи, объядиняем.
+      	      Вокруг дефиса нет пробелов, это не начало прямой речи, объединяем.
       	    </dt>
       	    <dd>
       	      <p class="example partition joins">

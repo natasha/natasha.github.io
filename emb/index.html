@@ -111,7 +111,7 @@
       <div class="row">
 	<div class="col-6">
 	  <p>
-	    Технология актуальна до сих пор. В проекте Natasha модели для NER, определения морфологии и синтаксисческих связей работают на пословных Navec-эмбедингах, <a href="https://github.com/natasha/slovnet#evaluation">показывают качество выше других открытых решений</a>.
+	    Технология актуальна до сих пор. В проекте Natasha модели для NER, определения морфологии и синтаксических связей работают на пословных Navec-эмбедингах, <a href="https://github.com/natasha/slovnet#evaluation">показывают качество выше других открытых решений</a>.
 	  </p>
 	</div>
 
@@ -258,13 +258,13 @@
       <div class="row">
 	<div class="col-6">
 	  <p>
-	    Почему не word2vec? Эксперименты на большом датасете быстрее с GloVe. Один раз считаем таблицу колокаций, по ней готовим эмбединги разных размерностей, выбираем оптимальный вариант.
+	    Почему не word2vec? Эксперименты на большом датасете быстрее с GloVe. Один раз считаем таблицу коллокаций, по ней готовим эмбединги разных размерностей, выбираем оптимальный вариант.
 	  </p>
 	</div>
 
 	<div class="col-4">
 	  <p class="note">
-	    Про матрицу колокаций написано в оригинальной статье <a href="https://nlp.stanford.edu/pubs/glove.pdf">GloVe: Global Vectors for Word Representation</a>.
+	    Про матрицу коллокаций написано в оригинальной статье <a href="https://nlp.stanford.edu/pubs/glove.pdf">GloVe: Global Vectors for Word Representation</a>.
 	  </p>
 	</div>
       </div>
@@ -333,7 +333,7 @@
 	  </p>
 
 	  <p>
-	    Квантованные эмбединги проигрывают обычным по скорости. Сжатый вектор перед использованием нужно распаковать. Аккуратно реализуем процедуру, <a href="https://github.com/natasha/navec/blob/master/navec/pq.py#L40-L43">применим Numpy-магию</a> в PyTorch <a href="https://github.com/natasha/slovnet/blob/master/slovnet/model/emb.py#L29-L39">использовуем <code>torch.gather</code></a>. В Slovnet NER доступ к таблице эмбедингов занимает 0.1% от общего времени вычислений.
+	    Квантованные эмбединги проигрывают обычным по скорости. Сжатый вектор перед использованием нужно распаковать. Аккуратно реализуем процедуру, <a href="https://github.com/natasha/navec/blob/master/navec/pq.py#L40-L43">применим Numpy-магию</a> в PyTorch <a href="https://github.com/natasha/slovnet/blob/master/slovnet/model/emb.py#L29-L39">используем <code>torch.gather</code></a>. В Slovnet NER доступ к таблице эмбедингов занимает 0.1% от общего времени вычислений.
 	  </p>
 	</div>
       </div>
