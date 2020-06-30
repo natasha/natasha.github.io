@@ -1,0 +1,242 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Corus — коллекция русскоязычных NLP-датасетов</title>
+    <meta name="title" content="Corus — коллекция русскоязычных NLP-датасетов">
+    <meta property="og:title" content="Corus — коллекция русскоязычных NLP-датасетов"/>
+    <meta property="twitter:title" content="Corus — коллекция русскоязычных NLP-датасетов">
+
+    <meta name="description" content="Ссылки на публичные русскоязычные датасеты, Python-пакет с функциями-загрузчиками">
+    <meta property="og:description" content="Ссылки на публичные русскоязычные датасеты, Python-пакет с функциями-загрузчиками"/>
+    <meta property="twitter:description" content="Ссылки на публичные русскоязычные датасеты, Python-пакет с функциями-загрузчиками">
+
+    <meta name="keywords" content="nlp, dataset, russian, русский, датасеты">
+
+    <meta property="og:type" content="website">
+    <meta property="twitter:card" content="summary_large_image">
+
+    <meta property="og:url" content="https://natasha.github.io/corus/">
+    <meta property="twitter:url" content="https://natasha.github.io/corus/">
+
+    <meta property="og:image" content="https://natasha.github.io/corus/images/preview.png"/>
+    <meta property="twitter:image" content="https://natasha.github.io/corus/images/preview.png">
+
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-P65FXVJ');</script>
+    <!-- End Google Tag Manager -->
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P65FXVJ"
+		      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="container">
+      <div class="alert alert-danger" role="alert">
+	Драфт, страница нигде не опубликована
+      </div>
+
+      <div class="row">
+      	<div class="col-8">
+      	  <p>
+      	    <a href="/">
+      	      <span class="hanging-arrow">←</span> Проект Natasha
+      	    </a>
+      	  </p>
+
+      	  <h1>Corus — коллекция русскоязычных NLP-датасетов</h1>
+      	</div>
+      </div>
+
+      <div class="row">
+      	<div class="col-6">
+      	  <p>
+	    <a href="https://github.com/natasha/corus">Corus</a> — коллекция ссылок на публичные русскоязычные NLP-датасеты + Python-пакет с функциями-загрузчиками:
+      	  </p>
+	  <pre><code>>>> from corus import <a href="https://github.com/natasha/corus#load_lenta">load_lenta</a>
+
+# wget https://github.com/yutkin/Lenta.Ru-News-Dataset/...
+>>> path = 'lenta-ru-news.csv.gz'
+>>> records = load_lenta(path)  # 2ГБ, 750K articles
+>>> next(records)
+
+LentaRecord(
+    url='https://lenta.ru/news/2018/12/14/cancer/',
+    title='Названы регионы России с\xa0самой высокой смертностью от\xa0рака',
+    text='Вице-премьер по социальным вопросам Татьяна Голикова рассказала, в каких регионах России зафиксирована наиболее высокая смертность от рака, сооб...',
+    topic='Россия',
+    tags='Общество'
+)</code></pre>
+
+	  <p>
+	    Некоторые полезные открытые датасеты для русского языка так хорошо спрятаны, что мало людей про них знает.
+	  </p>
+	</div>
+      </div>
+
+      <h2>Примеры</h2>
+
+      <h3>Корпус новостных статей</h3>
+
+      <div class="row">
+      	<div class="col-6">
+	  <p>
+	    Хотим обучить языковую модель на новостных статьях, нужно много текстов. Первым приходит в голову новостной срез <a href="https://tatianashavrina.github.io/taiga_site/">датасета Taiga</a> (~1ГБ). Многие знают про <a href="https://github.com/yutkin/Lenta.Ru-News-Dataset">дамп Lenta.ru на Github</a> (2ГБ). Остальные источники найти сложнее. В 2019 году на Диалоге проходил <a href="https://vk.com/headline_gen">конкурс про генерацию заголовков</a>, организаторы подготовили <a href="https://github.com/RossiyaSegodnya/ria_news_dataset">дамп РИА Новостей</a> за 4 года (3.7ГБ). В 2018 году Юрий Бабуров опубликовал <a href="https://github.com/buriy/russian-nlp-datasets/releases/tag/r4">выгрузку с 40 русскоязычных новостных ресурсов</a> (7.5ГБ). Волонтёры из <a href="http://ods.ai/">ODS</a> <a href="https://github.com/ods-ai-ml4sg/proj_news_viz/releases/tag/data">делятся архивами</a> (7ГБ), собранными для <a href="https://proj-news-viz-flask.herokuapp.com/">проекта про анализ новостной повестки</a>.
+	  </p>
+	</div>
+      </div>
+
+      <div class="row">
+	<div class="col-6">
+	  <p>
+	    В <a href="https://github.com/natasha/corus#reference">реестре Corus</a> ссылки на эти датасеты помечены тегом «news», для всех источников есть функции-загрузчики:
+	    <a href="https://github.com/natasha/corus#load_taiga_arzamas"><code>load_taiga_*</code></a>,
+	    <a href="https://github.com/natasha/corus#load_lenta"><code>load_lenta</code></a>,
+	    <a href="https://github.com/natasha/corus#load_ria"><code>load_ria</code></a>,
+	    <a href="https://github.com/natasha/corus#load_buriy_lenta"><code>load_buriy_*</code></a>,
+	    <a href="https://github.com/natasha/corus#load_ods_interfax"><code>load_ods_*</code></a>.
+	  </p>
+	</div>
+      </div>
+
+      <h3>NER</h3>
+
+      <div class="row">
+      	<div class="col-6">
+	  <p>
+	    Хотим обучить NER для русского языка, нужна разметка. Первым делом вспоминаем про <a href="https://github.com/dialogue-evaluation/factRuEval-2016/">данные конкурса factRuEval-2016</a>. У разметки есть недостатки: свой сложный формат, спаны сущностей пересекаются, есть неоднозначная категориям «LocOrg». Не все знают про <a href="http://labinform.ru/pub/named_entities/descr_ne.htm">коллекцию Named Entities 5</a> наследницу <a href="http://ai-center.botik.ru/Airec/index.php/ru/collections/28-persons-1000">Persons-1000</a>. Разметка в <a href="https://brat.nlplab.org/standoff.html">стандартном формате</a>, спаны не пересекаются, красота! Остальные три источника известны только самым преданным фанатам русскоязычного NER. Напишем на почту Ринату Гарееву, приложим ссылку на его <a href="https://www.researchgate.net/publication/262203599_Introducing_Baselines_for_Russian_Named_Entity_Recognition">статью 2013 года</a>, в ответ получим 250 новостных статей с помеченными именами и организациями. В 2019 году проводился <a href="http://bsnlp.cs.helsinki.fi/shared_task.html">конкурс BSNLP-2019</a> про NER для славянских языков, напишем организаторам, получим ещё 450 размеченных статей. В проекте WiNER <a href="https://www.aclweb.org/anthology/I17-1042/">придумали делать полуавтоматическую разметку NER из дампов Wikipedia</a>, <a href="https://github.com/dice-group/FOX/tree/master/input/Wikiner">большая выгрузка для русского доступна на Github</a>.
+	  </p>
+	</div>
+      </div>
+
+      <div class="row">
+	<div class="col-6">
+	  <p>
+	    Ссылки и функции для загрузки в реестре Corus:
+	    <a href="https://github.com/natasha/corus#load_factru"><code>load_factru</code></a>,
+	    <a href="https://github.com/natasha/corus#load_ne5"><code>load_ne5</code></a>,
+	    <a href="https://github.com/natasha/corus#load_gareev"><code>load_gareev</code></a>,
+	    <a href="https://github.com/natasha/corus#load_bsnlp"><code>load_bsnlp</code></a>,
+	    <a href="https://github.com/natasha/corus#load_wikiner"><code>load_wikiner</code></a>.
+	  </p>
+	</div>
+      </div>
+
+      <h2>Функции-загрузчики</h2>
+
+      <div class="row">
+      	<div class="col-6">
+	  <p>
+	    Для загрузки простого датасета код легко написать самому. <a href="https://github.com/yutkin/Lenta.Ru-News-Dataset">Дамп Lenta.ru</a> оформлен грамотно, <a href="https://github.com/natasha/corus/blob/master/corus/sources/lenta.py#L28-L30">код простой</a>. <a href="https://tatianashavrina.github.io/taiga_site/">Taiga</a> состоит из ~15 миллионов <a href="https://universaldependencies.org/format.html">CoNLL-U</a>-файлов, запакованных в zip-архивы. Чтобы загрузка работала быстро, не использовала много памяти и не угробила файловую систему, нужно аккуратно на низком уровне <a href="https://github.com/natasha/corus/blob/master/corus/zip.py">реализовать работу с zip-файлами</a>.
+	  </p>
+
+	  <p>
+	    Для каждого источника в Python-пакете Corus есть функция-загрузчик. Интерфейс доступа к Taiga не сложнее, чем к дампу Lenta.ru:
+	  </p>
+
+	  <pre><code>>>> from corus import load_taiga_proza_metas, load_taiga_proza
+
+>>> path = taiga/proza_ru.zip'
+>>> metas = load_taiga_proza_metas(path)
+>>> records = load_taiga_proza(path, metas)
+>>> next(records)
+
+TaigaRecord(
+    id='20151231005',
+    meta=Meta(
+        id='20151231005',
+        timestamp=datetime.datetime(2015, 12, 31, 23, 40),
+        genre='Малые формы',
+        topic='миниатюры',
+        author=Author(
+            name='Кальб',
+            readers=7973,
+            texts=92681,
+            url='http://www.proza.ru/avtor/sadshoot'
+        ),
+        title='С Новым Годом!',
+        url='http://www.proza.ru/2015/12/31/1875'
+    ),
+    text='...Искры улыбок...\n... затмят фейерверки..\n..Смех и веселье...\n... прокатят по миру..\n..Праздник разносят... многие клерки..\n..Дух мандаринов... подарки...зефирки....\n\nС Новым годом всех Вас!\n\n..с уважением к вам...Я...'
+)</code></pre>
+	  
+	</div>
+      </div>
+
+      <h2>Коллекция ссылок</h2>
+
+      <div class="row">
+      	<div class="col-6">
+	  <p>
+	    Перед тем как обзавестить загрузчиком и попасть в реестр, ссылки на источники копятся в <a href="https://github.com/natasha/corus/issues">разделе Issues</a>. В коллекции много интересного: <a href="https://github.com/natasha/corus/issues/30">новая версия Taiga</a>, <a href="https://github.com/natasha/corus/issues/26">568ГБ русского текста из Common Crawl</a>, <a href="https://github.com/natasha/corus/issues/32">отзывы c Banki.ru</a> и <a href="https://github.com/natasha/corus/issues/16">Auto.ru</a>.
+	  </p>
+	</div>
+      </div>
+
+      <h2>Использование</h2>
+
+      <div class="row">
+      	<div class="col-6">
+	  <p>
+	    <a href="https://github.com/natasha/corus#reference">Список ссылок на источники</a>, <a href="https://github.com/natasha/corus#install">инструкция по установке</a> и <a href="https://nbviewer.jupyter.org/github/natasha/corus/blob/master/docs.ipynb">примеры использования</a> в <a href="https://github.com/natasha/corus">репозитории Corus</a>.
+	  </p>
+	</div>
+      </div>
+
+      <div id="footer">
+	<div class="row">
+      	  <div class="col-2">
+      	    <img src="/images/author.jpg" class="rounded img-fluid" alt="Александр Кукушкин">
+      	  </div>
+      	  <div class="col-4">
+      	    Александр Кукушкин, июнь 2020 года
+      	    <ul>
+      	      <li>
+		<a href="mailto:alex@alexkuk.ru">alex@alexkuk.ru</a>
+	      </li>
+
+      	      <li>
+		<a href="https://t.me/alexkuk">
+		  <img class="inline" src="/images/social/tg.svg" /> alexkuk
+		</a>
+	      </li>
+
+      	      <li>
+		<a href="https://vk.com/alexkuk">
+		  <img class="inline" src="/images/social/vk.svg" /> alexkuk
+		</a>
+	      </li>
+
+      	      <li>
+		<a href="https://github.com/kuk">
+		  <img class="inline" src="/images/social/gh.svg" /> kuk
+		</a>
+	      </li>
+      	    </ul>
+
+	    <a href="https://lab.alexkuk.ru/">Лаборатория анализа данных Александра Кукушкина</a>
+	      <p>
+		Лаборатория разрабатывает сервисы и коробочные продукты с использованием технологии Natasha, оказывает услуги анализа данных для российских компаний.
+	      </p>
+
+	  </div>
+	</div>
+      </div>
+
+    </div>
+
+    <script src="/scripts/popper.min.js" type="text/javascript"></script>
+    <script src="/scripts/bootstrap.min.js" type="text/javascript"></script>
+  </body>
+</html>
