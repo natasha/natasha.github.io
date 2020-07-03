@@ -1,0 +1,424 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Naeval — количественное сравнение систем для русскоязычного NLP</title>
+    <meta name="title" content="Naeval — количественное сравнение систем для русскоязычного NLP">
+    <meta property="og:title" content="Naeval — количественное сравнение систем для русскоязычного NLP">
+    <meta property="twitter:title" content="Naeval — количественное сравнение систем для русскоязычного NLP">
+
+    <meta name="description" content="Задачи: сегментация на токены и предложения, определение морфологии и синтаксиса, NER, лемматизация">
+    <meta property="og:description" content="Задачи: сегментация на токены и предложения, определение морфологии и синтаксиса, NER, лемматизация">
+    <meta property="twitter:description" content="Задачи: сегментация на токены и предложения, определение морфологии и синтаксиса, NER, лемматизация">
+
+    <meta name="keywords" content="nlp, russian, morphology, syntax, ner, lemma, русский язык, морфология, синтаксис, лемма">
+
+    <meta property="og:type" content="website">
+    <meta property="twitter:card" content="summary_large_image">
+
+    <meta property="og:url" content="https://natasha.github.io/naeval/">
+    <meta property="twitter:url" content="https://natasha.github.io/naeval/">
+
+    <meta property="og:image" content="https://natasha.github.io/naeval/images/preview.png">
+    <meta property="twitter:image" content="https://natasha.github.io/naeval/images/preview.png">
+
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-P65FXVJ');</script>
+    <!-- End Google Tag Manager -->
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P65FXVJ"
+		      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="container">
+      <div class="alert alert-danger" role="alert">
+	Драфт, страница нигде не опубликована
+      </div>
+
+      <div class="row">
+      	<div class="col-8">
+      	  <p>
+      	    <a href="/">
+      	      <span class="hanging-arrow">←</span> Проект Natasha
+      	    </a>
+      	  </p>
+
+      	  <h1>Naeval — количественное сравнение систем для русскоязычного NLP</h1>
+      	</div>
+      </div>
+
+      <div class="row">
+      	<div class="col-6">
+      	  <p>
+	    <a href="https://github.com/natasha">Проект Natasha</a> решает базовые задачи обработки естественного русского языка: сегментация на токены и предложения, анализ морфологии и синтаксиса, NER. Natasha — не научный проект, у нас нет цели побить SOTA. Важно измерить качество на публичных бенчмарках, постараться занять высокое место, не проиграв в производительности.
+      	  </p>
+
+	  <p>
+	    <a href="https://github.com/natasha/naeval">Naeval</a> — часть проекта Natasha, набор скриптов для оценки качества и скорости работы открытых инструментов для обработки естественного русского языка:
+	  </p>
+	</div>
+      </div>
+
+      <div class="row">
+	<div class="col-8">
+	  <table class="table table-borderless">
+	    <thead>
+	      <tr>
+		<th>Задача</th>
+		<th>Датасеты</th>
+		<th>Решения</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr>
+		<th>Токенизация</th>
+		<td>
+		  <a href="https://github.com/natasha/corus#load_ud_syntag">SynTagRus</a>,
+		  <a href="https://github.com/natasha/corus#load_morphoru_corpora">OpenCorpora</a>,
+		  <a href="https://github.com/natasha/corus#load_morphoru_gicrya">GICRYA</a>,
+		  <a href="https://github.com/natasha/corus#load_morphoru_rnc">RNC</a>
+		</td>
+		<td>
+		  <a href="https://github.com/natasha/naeval#spacy">SpaCy</a>,
+		  <a href="https://github.com/natasha/naeval#nltk">NLTK</a>,
+		  <a href="https://github.com/natasha/naeval#mystem">MyStem</a>,
+		  <a href="https://github.com/natasha/naeval#moses">Moses</a>,
+		  <a href="https://github.com/natasha/naeval#segtok">SegTok</a>,
+		  <a href="https://github.com/natasha/naeval#spacy_russian_tokenizer">SpaCy Russian Tokenizer</a>,
+		  <a href="https://github.com/natasha/naeval#rutokenizer">RuTokenizer</a>,
+		  <a href="https://github.com/natasha/naeval#razdel">Razdel</a>
+		</td>
+	      </tr>
+
+	      <tr>
+		<th>Сегментация предложений</th>
+		<td>
+		  <a href="https://github.com/natasha/corus#load_ud_syntag">SynTagRus</a>,
+		  <a href="https://github.com/natasha/corus#load_morphoru_corpora">OpenCorpora</a>,
+		  <a href="https://github.com/natasha/corus#load_morphoru_gicrya">GICRYA</a>,
+		  <a href="https://github.com/natasha/corus#load_morphoru_rnc">RNC</a>
+		  
+		</td>
+		<td>
+		  <a href="https://github.com/natasha/naeval#segtok">SegTok</a>,
+		  <a href="https://github.com/natasha/naeval#moses">Moses</a>,
+		  <a href="https://github.com/natasha/naeval#nltk">NLTK</a>,
+		  <a href="https://github.com/natasha/naeval#rutokenizer">RuSentTokenizer</a>,
+		  <a href="https://github.com/natasha/naeval#razdel">Razdel</a>
+		</td>
+	      </tr>
+
+	      <tr>
+		<th>Эмбединги</th>
+		<td>
+		  <a href="https://github.com/natasha/corus#load_simlex">SimLex965</a>,
+		  <a href="https://github.com/natasha/corus#load_russe_hj">HJ</a>,
+		  <a href="https://github.com/natasha/corus#load_toloka_lrwc">LRWC</a>,
+		  <a href="https://github.com/natasha/corus#load_russe_rt">RT</a>,
+		  <a href="https://github.com/natasha/corus#load_russe_ae">AE</a>,
+		  <a href="https://github.com/natasha/corus#load_russe_ae">AE2</a>
+		</td>
+		<td>
+		  <a href="https://rusvectores.org/ru/models/">RusVectores</a>,
+		  <a href="https://github.com/natasha/navec">Navec</a>
+		</td>
+	      </tr>
+
+	      <tr>
+		<th>Анализ морфологии</th>
+		<td>
+		  <a href="https://github.com/natasha/corus#load_gramru">GramRuEval2020</a> (SynTagRus, GSD, Lenta.ru, Taiga)
+		</td>
+		<td>
+		  <a href="https://github.com/natasha/naeval#deeppavlov_morph">DeepPavlov Morph</a>,
+		  <a href="https://github.com/natasha/naeval#deeppavlov_bert_morph">DeepPavlov BERT Morph</a>,
+		  <a href="https://github.com/natasha/naeval#rupostagger">RuPosTagger</a>,
+		  <a href="https://github.com/natasha/naeval#rnnmorph">RNNMorph</a>,
+		  <a href="https://github.com/natasha/naeval#maru">Maru</a>,
+		  <a href="https://github.com/natasha/naeval#udpipe">UDPipe</a>,
+		  <a href="https://github.com/natasha/naeval#spacy">SpaCy</a>,
+		  <a href="https://github.com/natasha/naeval#stanza">Stanza</a>,
+		  <a href="https://github.com/natasha/naeval#slovnet_morph">Slovnet Morph</a>,
+		  <a href="https://github.com/natasha/naeval#slovnet_bert_morph">Slovnet BERT Morph</a>
+		</td>
+	      </tr>
+
+	      <tr>
+		<th>Анализ синтаксиса</th>
+		<td>
+		  <a href="https://github.com/natasha/corus#load_gramru">GramRuEval2020</a> (SynTagRus, GSD, Lenta.ru, Taiga)
+		</td>
+		<td>
+		  <a href="https://github.com/natasha/naeval#deeppavlov_bert_syntax">DeepPavlov BERT Syntax</a>,
+		  <a href="https://github.com/natasha/naeval#udpipe">UDPipe</a>,
+		  <a href="https://github.com/natasha/naeval#spacy">SpaCy</a>,
+		  <a href="https://github.com/natasha/naeval#stanza">Stanza</a>,
+		  <a href="https://github.com/natasha/naeval#slovnet_syntax">Slovnet Syntax</a>,
+		  <a href="https://github.com/natasha/naeval#slovnet_bert_syntax">Slovnet BERT Syntax</a>
+		</td>
+	      </tr>
+
+	      <tr>
+		<th>NER</th>
+		<td>
+		  <a href="https://github.com/natasha/corus#load_factru">factRuEval-2016</a>,
+		  <a href="https://github.com/natasha/corus#load_ne5">Collection5</a>,
+		  <a href="https://github.com/natasha/corus#load_gareev">Gareev</a>,
+		  <a href="https://github.com/natasha/corus#load_bsnlp">BSNLP-2019</a>,
+		  <a href="https://github.com/natasha/corus#load_wikiner">WiNER</a>
+		</td>
+		<td>
+		  <a href="https://github.com/natasha/naeval#deeppavlov_ner">DeepPavlov NER</a>,
+		  <a href="https://github.com/natasha/naeval#deeppavlov_bert_ner">DeepPavlov BERT NER</a>,
+		  <a href="https://github.com/natasha/naeval#deeppavlov_slavic_bert_ner">DeepPavlov Slavic BERT NER</a>,
+		  <a href="https://github.com/natasha/naeval#pullenti">PullEnti</a>,
+		  <a href="https://github.com/natasha/naeval#spacy">SpaCy</a>,
+		  <a href="https://github.com/natasha/naeval#stanza">Stanza</a>,
+		  <a href="https://github.com/natasha/naeval#texterra">Texterra</a>,
+		  <a href="https://github.com/natasha/naeval#tomita">Tomita</a>,
+		  <a href="https://github.com/natasha/naeval#mitie">MITIE</a>,
+		  <a href="https://github.com/natasha/naeval#slovnet_ner">Slovnet NER</a>,
+		  <a href="https://github.com/natasha/naeval#slovnet_bert_ner">Slovnet BERT NER</a>
+		</td>
+	      </tr>
+
+	    </tbody>
+	  </table>
+	  
+	</div>
+      </div>
+
+      <div class="row">
+	<div class="col-6">
+	  <p class="note">
+	    Сетка датасетов и решений из <a href="https://github.com/natasha/naeval">репозитория Naeval</a>. Подробнее в разделах «Evaluation» репозиториев <a href="https://github.com/natasha/razdel#evaluation">Razdel</a>, <a href="https://github.com/natasha/navec#evaluation">Navec</a>, <a href="https://github.com/natasha/slovnet#evaluation">Slovnet</a>.
+	  </p>
+
+	  Дальше подробнее рассмотрим задачу NER.
+	</div>
+      </div>
+
+      <h2>Датасеты</h2>
+
+      <div class="row">
+	<div class="col-6">
+	  <p>
+	    Для русскоязычного NER существует 5 публичных бенчмарков: factRuEval-2016, Collection5, Gareev, BSNLP-2019, WiNER. Ссылки на источники собраны в <a href="https://github.com/natasha/corus">реестре Corus</a>. Все датасеты состоят из новостных статей, в текстах отмечены подстроки с именами, названиями организаций и топонимов. Что может быть проще?
+	  </p>
+
+	  <dl>
+	    <dt>У всех датасетов разный формат разметки</dt>
+	    <dd>
+	      <p>
+		Collection5 использует <a href="https://brat.nlplab.org/standoff.html">Standoff-формат</a> утилиты <a href="https://brat.nlplab.org/index.html">Brat</a>, Gareev и WiNER — разные диалекты <a href="https://en.wikipedia.org/wiki/Inside%E2%80%93outside%E2%80%93beginning_(tagging)">BIO-разметки</a>, BSNLP-2019 — <a href="http://bsnlp.cs.helsinki.fi/Guidelines_20190122.pdf">свой формат</a>, factRuEval-2016 — <a href="https://github.com/dialogue-evaluation/factRuEval-2016#%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%82-%D0%B4%D0%B5%D0%BC%D0%BE%D0%BD%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%BE%D0%B9-%D1%80%D0%B0%D0%B7%D0%BC%D0%B5%D1%82%D0%BA%D0%B8">своя нетривиальная спецификация</a>. Naeval приводит все источники к общему формату. Разметка состоит из спанов. Спан — тройка: тип сущности, начало и конец подстроки.
+	      </p>
+	    </dd>
+
+	    <dt>Типы сущностей</dt>
+	    <dd>
+	      <p>
+		factRuEval-2016 и Collection5 отдельно помечают полутопонимы полуорганизации: «Кремль», «ЕС», «СССР». BSNLP-2019 и WiNER выделяют названия событий:  «Чемпионат России», «Брексит». Naeval адаптирует и удаляет часть меток, оставляет эталонную тройку: имена людей, названия топонимов и организаций.
+	      </p>
+
+	      <!-- factru locorg -->
+	      <!-- ne5 geopolit media -->
+	      <!-- bsnlp proj event -->
+	      <!-- gareev no loc -->
+	      <!-- wikiner misc -->
+	    </dd>
+
+	    <dt>Вложенные спаны</dt>
+	    <dd>
+	      <p>
+		В factRuEval-2016 спаны пересекаются. Naeval упрощает разметку:
+	      </p>
+
+	      <pre>
+Было
+Теперь, как утверждают в Х5 Retail Group, куда входят 
+                         org_name───────              
+                         Org────────────              
+сети магазинов "Пятерочка", "Перекресток" и "Карусель",
+org_descr─────  org_name─    org_name───     org_name  
+Org──────────────────────                              
+org_descr─────                                         
+Org─────────────────────────────────────               
+org_descr─────                                         
+Org──────────────────────────────────────────────────  
+о повышении цен сообщили два поставщика рыбы и 
+морепродуктов и компания, поставляющая овощи и фрукты.
+
+Стало
+Теперь, как утверждают в Х5 Retail Group, куда входят
+                         ORG────────────
+сети магазинов "Пятерочка", "Перекресток" и "Карусель",
+                ORG──────    ORG────────     ORG─────     
+
+о повышении цен сообщили два поставщика рыбы и
+морепродуктов и компания, поставляющая овощи и фрукты.
+	      </pre>
+	    </dd>
+	  </dl>
+	</div>
+      </div>
+
+      <h2>Модели</h2>
+
+      <div class="row">
+	<div class="col-6">
+	  <p>
+	    Naeval сравнивает 12 открытых решений задачи NER для русского языка. Все инструменты <a href="https://github.com/natasha/naeval/tree/master/docker">завёрнуты в Docker-контейнеры</a> с веб-интерфейсом:
+	  </p>
+	  <pre>
+$ docker run -p 8080:8080 natasha/tomita-algfio
+2020-07-02 11:09:19 BIN: 'tomita-linux64', CONFIG: 'algfio'
+2020-07-02 11:09:19 Listening http://0.0.0.0:8080	    
+
+$ curl -X POST http://localhost:8080 --data \
+  'Глава государства Дмитрий Медведев и Председатель \
+  Правительства РФ Владимир Путин выразили глубочайшие \
+  соболезнования семье актрисы'
+
+&lt;document url="" di="5" bi="-1" date="2020-07-02">
+   &lt;facts>
+      &lt;Person pos="18" len="16" sn="0" fw="2" lw="3">
+         &lt;Name_Surname val="МЕДВЕДЕВ" />
+         &lt;Name_FirstName val="ДМИТРИЙ" />
+         &lt;Name_SurnameIsDictionary val="1" />
+      &lt;/Person>
+      &lt;Person pos="67" len="14" sn="0" fw="8" lw="9">
+         &lt;Name_Surname val="ПУТИН" />
+         &lt;Name_FirstName val="ВЛАДИМИР" />
+         &lt;Name_SurnameIsDictionary val="1" />
+      &lt;/Person>
+   &lt;/facts>
+&lt;/document></pre>
+
+	  <p>
+	    Некоторые решения так тяжело запустить и настроить, что мало людей ими пользуется. <a href="http://pullenti.ru/">PullEnti</a> — сложная система, построенная на правилах, заняла первой место на конкурсе factRuEval в 2016 году. Инструмент распространяется как SDK для C#. Работа над Naeval вылилась в <a href="http://github.com/pullenti">отдельный проект на Github</a> с набором обёрток для PullEnti: <a href="https://github.com/pullenti/PullentiServer">PullentiServer</a> — веб-сервер на С#, <a href="https://github.com/pullenti/pullenti-client">pullenti-client</a> — Python-клиент для PullentiServer.
+	  </p>
+
+	  <pre>
+$ docker run -p 8080:8080 pullenti/pullenti-server
+2020-07-02 11:42:02 [INFO] Init Pullenti v3.21 ...
+2020-07-02 11:42:02 [INFO] Load lang: ru, en
+2020-07-02 11:42:03 [INFO] Load analyzer: geo, org, person
+2020-07-02 11:42:05 [INFO] Listen prefix: http://*:8080/
+
+>>> from pullenti_client import Client
+
+>>> client = Client('localhost', 8080)
+>>> text = 'Глава государства Дмитрий Медведев и ' \
+...  'Председатель Правительства РФ Владимир Путин ' \
+...  'выразили глубочайшие соболезнования семье актрисы'
+>>> result = client(text)
+>>> result.graph</pre>
+
+	  <img src="images/graph.svg">
+	  
+	  <p>
+	    Формат разметки у всех инструментов немного отличается. Naeval загружает результаты, адаптирует типы сущностей, линеаризует спаны:
+	  </p>
+
+	  <pre>
+Было
+Напомним, парламент Южной Осетии на состоявшемся 19 декабря 
+          ORGANIZATION──────────                            
+                    GEO─────────                            
+заседании одобрил представление президента Республики 
+                                PERSON────────────────
+                                PERSONPROPERTY─────── 
+Леонида Тибилова об отставке председателя Верховного суда 
+────────────────             PERSON───────────────────────
+                             PERSONPROPERTY────────────── 
+                                          ORGANIZATION─── 
+Ацамаза Биченова.
+──────────────── 
+
+Стало
+Напомним, парламент Южной Осетии на состоявшемся 19 декабря 
+                    LOC─────────                            
+заседании одобрил представление президента Республики 
+Леонида Тибилова об отставке председателя Верховного суда 
+PER─────────────                          ORG────────────
+Ацамаза Биченова.
+PER─────────────</pre>
+
+	</div>
+      </div>
+
+      <h2>Сравнение</h2>
+
+      <div class="row">
+	<div class="col-6">
+	  <p>
+	    Для каждой пары «система, датасет» Naeval вычисляет <a href="https://github.com/natasha/naeval/blob/master/naeval/ner/score.py">F1-меру по токенам</a>, публикует <a href="https://github.com/natasha/naeval#ner">таблицу с оценками качества</a>.
+	  </p>
+
+	  <p>
+	    Natasha — не научный проект, для нас важна практичность решения. Naeval измеряет время старта, скорость работы, размер модели и потребление RAM. <a href="https://github.com/natasha/naeval#ner">Таблица с результатами в репозитории</a>.
+	  </p>
+
+	  <p>
+	    Мы подготовили датасеты, завернули системы в Docker-контейнеры и посчитали метрики для 5 других задач русскоязычного NLP, результаты в репозитории Naeval: <a href="https://github.com/natasha/naeval#tokenization">токенизация</a>, <a href="https://github.com/natasha/naeval#sentence-segmentation">сегментация на предложения</a>, <a href="https://github.com/natasha/naeval#pretrained-embeddings">эмбединги</a>, <a href="https://github.com/natasha/naeval#morphology-taggers">анализ морфологии</a> и <a href="https://github.com/natasha/naeval#syntax-parser">синтаксиса</a>.
+	  </p>
+
+	  <p>
+	    <a href="https://t.me/natural_language_processing"><img class="inline" src="/images/social/tg.svg" /> natural_language_processing</a> — чат пользователей, разработчиков проекта.
+	  </p>
+
+	</div>
+      </div>
+
+      <div id="footer">
+	<div class="row">
+      	  <div class="col-2">
+      	    <img src="/images/author.jpg" class="rounded img-fluid" alt="Александр Кукушкин">
+      	  </div>
+      	  <div class="col-4">
+      	    Александр Кукушкин, июль 2020 года
+      	    <ul>
+      	      <li>
+		<a href="mailto:alex@alexkuk.ru">alex@alexkuk.ru</a>
+	      </li>
+
+      	      <li>
+		<a href="https://t.me/alexkuk">
+		  <img class="inline" src="/images/social/tg.svg" /> alexkuk
+		</a>
+	      </li>
+
+      	      <li>
+		<a href="https://github.com/kuk">
+		  <img class="inline" src="/images/social/gh.svg" /> kuk
+		</a>
+	      </li>
+      	    </ul>
+
+	    <a href="https://lab.alexkuk.ru/">Лаборатория анализа данных Александра Кукушкина</a>
+	      <p>
+		Лаборатория разрабатывает сервисы и коробочные продукты с использованием технологии Natasha, оказывает услуги анализа данных для российских компаний.
+	      </p>
+
+	  </div>
+	</div>
+      </div>
+
+    </div>
+
+    <script src="/scripts/popper.min.js" type="text/javascript"></script>
+    <script src="/scripts/bootstrap.min.js" type="text/javascript"></script>
+  </body>
+</html>

@@ -1,0 +1,265 @@
+<svg width="482pt" height="374pt" viewBox="0.00 0.00 482.48 373.99" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="width: 100%; height: 100%;">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 369.9906)">
+<title>G</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-369.9906 478.4814,-369.9906 478.4814,4 -4,4"></polygon>
+<!-- 0 -->
+<g id="node1" class="node">
+<title>0</title>
+<polygon fill="#eeeeee" stroke="transparent" points="134.5125,-123.358 94.8102,-123.358 94.8102,-105.358 134.5125,-105.358 134.5125,-123.358"></polygon>
+<text text-anchor="middle" x="114.6613" y="-111.358" font-family="sans" font-size="10.00" fill="#000000">State</text>
+</g>
+<!-- 1 -->
+<g id="node2" class="node">
+<title>1</title>
+<polygon fill="#aec7e8" stroke="transparent" points="400.729,-322.5142 287.5981,-322.5142 287.5981,-304.5142 400.729,-304.5142 400.729,-322.5142"></polygon>
+<text text-anchor="middle" x="344.1635" y="-310.5142" font-family="sans" font-size="10.00" fill="#000000">PERSONPROPERTY</text>
+</g>
+<!-- 7 -->
+<g id="node8" class="node">
+<title>7</title>
+<polygon fill="#eeeeee" stroke="transparent" points="347.9443,-359.3019 245.0185,-359.3019 245.0185,-341.3019 347.9443,-341.3019 347.9443,-359.3019"></polygon>
+<text text-anchor="middle" x="296.4814" y="-347.3019" font-family="sans" font-size="10.00" fill="#000000">глава государства</text>
+</g>
+<!-- 1&#45;&gt;7 -->
+<g id="edge13" class="edge">
+<title>1-&gt;7</title>
+<path fill="none" stroke="#c0c0c0" d="M332.1313,-322.7973C325.6445,-327.802 317.5973,-334.0106 310.7909,-339.2619"></path>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" points="310.0785,-338.4853 308.3446,-341.1492 311.3613,-340.148 310.0785,-338.4853"></polygon>
+<text text-anchor="middle" x="309.9045" y="-332.6296" font-family="sans" font-size="8.00" fill="#c0c0c0">NAME</text>
+</g>
+<!-- 2 -->
+<g id="node3" class="node">
+<title>2</title>
+<polygon fill="#eeeeee" stroke="transparent" points="164.6527,-365.9906 92.1071,-365.9906 92.1071,-347.9906 164.6527,-347.9906 164.6527,-365.9906"></polygon>
+<text text-anchor="middle" x="128.3799" y="-353.9906" font-family="sans" font-size="10.00" fill="#000000">ВЛАДИМИР</text>
+</g>
+<!-- 3 -->
+<g id="node4" class="node">
+<title>3</title>
+<polygon fill="#eeeeee" stroke="transparent" points="247.4877,-24.4297 216.5944,-24.4297 216.5944,-6.4297 247.4877,-6.4297 247.4877,-24.4297"></polygon>
+<text text-anchor="middle" x="232.0411" y="-12.4297" font-family="sans" font-size="10.00" fill="#000000">RU</text>
+</g>
+<!-- 4 -->
+<g id="node5" class="node">
+<title>4</title>
+<polygon fill="#aec7e8" stroke="transparent" points="289.8267,-99.8646 251.3723,-99.8646 251.3723,-81.8646 289.8267,-81.8646 289.8267,-99.8646"></polygon>
+<text text-anchor="middle" x="270.5995" y="-87.8646" font-family="sans" font-size="10.00" fill="#000000">GEO</text>
+</g>
+<!-- 4&#45;&gt;3 -->
+<g id="edge14" class="edge">
+<title>4-&gt;3</title>
+<path fill="none" stroke="#c0c0c0" d="M265.8715,-81.6148C258.9336,-68.0417 245.9851,-42.7095 238.2763,-27.6282"></path>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" points="239.1082,-26.9485 236.8078,-24.7552 237.2383,-27.9044 239.1082,-26.9485"></polygon>
+<text text-anchor="middle" x="236.7321" y="-56.2215" font-family="sans" font-size="8.00" fill="#c0c0c0">ALPHA2</text>
+</g>
+<!-- 13 -->
+<g id="node14" class="node">
+<title>13</title>
+<polygon fill="#eeeeee" stroke="transparent" points="430.8338,-117.429 276.8865,-117.429 276.8865,-99.429 430.8338,-99.429 430.8338,-117.429"></polygon>
+<text text-anchor="middle" x="353.8601" y="-105.429" font-family="sans" font-size="10.00" fill="#000000">РОССИЙСКАЯ ФЕДЕРАЦИЯ</text>
+</g>
+<!-- 4&#45;&gt;13 -->
+<g id="edge18" class="edge">
+<title>4-&gt;13</title>
+<path fill="none" stroke="#c0c0c0" d="M289.9104,-94.9384C295.3599,-96.088 301.5337,-97.3904 307.8435,-98.7215"></path>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" points="307.7972,-99.7848 310.9494,-99.3767 308.2307,-97.73 307.7972,-99.7848"></polygon>
+<text text-anchor="middle" x="310.4336" y="-90.4299" font-family="sans" font-size="8.00" fill="#c0c0c0">NAME</text>
+</g>
+<!-- 15 -->
+<g id="node16" class="node">
+<title>15</title>
+<polygon fill="#eeeeee" stroke="transparent" points="355.64,-55.5967 324.1891,-55.5967 324.1891,-37.5967 355.64,-37.5967 355.64,-55.5967"></polygon>
+<text text-anchor="middle" x="339.9145" y="-43.5967" font-family="sans" font-size="10.00" fill="#000000">РФ</text>
+</g>
+<!-- 4&#45;&gt;15 -->
+<g id="edge16" class="edge">
+<title>4-&gt;15</title>
+<path fill="none" stroke="#c0c0c0" d="M284.9616,-81.6922C296.0213,-74.629 311.3385,-64.8467 322.9928,-57.4037"></path>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" points="323.6076,-58.257 325.5708,-55.7573 322.4773,-56.4871 323.6076,-58.257"></polygon>
+<text text-anchor="middle" x="292.4206" y="-71.148" font-family="sans" font-size="8.00" fill="#c0c0c0">NAME</text>
+</g>
+<!-- 16 -->
+<g id="node17" class="node">
+<title>16</title>
+<polygon fill="#eeeeee" stroke="transparent" points="325.6727,-18 252.0472,-18 252.0472,0 325.6727,0 325.6727,-18"></polygon>
+<text text-anchor="middle" x="288.86" y="-6" font-family="sans" font-size="10.00" fill="#000000">государство</text>
+</g>
+<!-- 4&#45;&gt;16 -->
+<g id="edge17" class="edge">
+<title>4-&gt;16</title>
+<path fill="none" stroke="#c0c0c0" d="M272.6235,-81.7908C275.9141,-67.0383 282.4278,-37.8365 286.1265,-21.2545"></path>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" points="287.1986,-21.271 286.8269,-18.1144 285.1489,-20.8138 287.1986,-21.271"></polygon>
+<text text-anchor="middle" x="268.9277" y="-53.1227" font-family="sans" font-size="8.00" fill="#c0c0c0">TYPE</text>
+</g>
+<!-- 19 -->
+<g id="node20" class="node">
+<title>19</title>
+<polygon fill="#eeeeee" stroke="transparent" points="350.7132,-164.3233 291.1984,-164.3233 291.1984,-146.3233 350.7132,-146.3233 350.7132,-164.3233"></polygon>
+<text text-anchor="middle" x="320.9558" y="-152.3233" font-family="sans" font-size="10.00" fill="#000000">РОССИЯ</text>
+</g>
+<!-- 4&#45;&gt;19 -->
+<g id="edge6" class="edge">
+<title>4-&gt;19</title>
+<path fill="none" stroke="#c0c0c0" d="M277.8143,-100.0999C286.7888,-111.5877 302.1165,-131.2079 311.8795,-143.7051"></path>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" points="311.08,-144.3874 313.7544,-146.1051 312.7349,-143.0945 311.08,-144.3874"></polygon>
+<text text-anchor="middle" x="283.2903" y="-123.5025" font-family="sans" font-size="8.00" fill="#c0c0c0">NAME</text>
+</g>
+<!-- 5 -->
+<g id="node6" class="node">
+<title>5</title>
+<polygon fill="#eeeeee" stroke="transparent" points="472.9791,-251.631 429.5149,-251.631 429.5149,-233.631 472.9791,-233.631 472.9791,-251.631"></polygon>
+<text text-anchor="middle" x="451.247" y="-239.631" font-family="sans" font-size="10.00" fill="#000000">MALE</text>
+</g>
+<!-- 6 -->
+<g id="node7" class="node">
+<title>6</title>
+<polygon fill="#eeeeee" stroke="transparent" points="405.0877,-228 333.6802,-228 333.6802,-210 405.0877,-210 405.0877,-228"></polygon>
+<text text-anchor="middle" x="369.384" y="-216" font-family="sans" font-size="10.00" fill="#000000">МЕДВЕДЕВ</text>
+</g>
+<!-- 8 -->
+<g id="node9" class="node">
+<title>8</title>
+<polygon fill="#aec7e8" stroke="transparent" points="132.2798,-284.9077 73.816,-284.9077 73.816,-266.9077 132.2798,-266.9077 132.2798,-284.9077"></polygon>
+<text text-anchor="middle" x="103.0479" y="-272.9077" font-family="sans" font-size="10.00" fill="#000000">PERSON</text>
+</g>
+<!-- 8&#45;&gt;2 -->
+<g id="edge3" class="edge">
+<title>8-&gt;2</title>
+<path fill="none" stroke="#c0c0c0" d="M105.9538,-285.209C110.5348,-299.872 119.438,-328.3692 124.5405,-344.7013"></path>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" points="123.611,-345.2475 125.5079,-347.7978 125.6154,-344.6212 123.611,-345.2475"></polygon>
+<text text-anchor="middle" x="92.1358" y="-316.5551" font-family="sans" font-size="8.00" fill="#c0c0c0">FIRSTNAME</text>
+</g>
+<!-- 14 -->
+<g id="node15" class="node">
+<title>14</title>
+<polygon fill="#eeeeee" stroke="transparent" points="43.3478,-262.5965 -.1163,-262.5965 -.1163,-244.5965 43.3478,-244.5965 43.3478,-262.5965"></polygon>
+<text text-anchor="middle" x="21.6157" y="-250.5965" font-family="sans" font-size="10.00" fill="#000000">MALE</text>
+</g>
+<!-- 8&#45;&gt;14 -->
+<g id="edge8" class="edge">
+<title>8-&gt;14</title>
+<path fill="none" stroke="#c0c0c0" d="M73.649,-267.8529C64.7226,-265.4072 55.008,-262.7455 46.4156,-260.3913"></path>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" points="46.4752,-259.319 43.3044,-259.5389 45.9202,-261.3444 46.4752,-259.319"></polygon>
+<text text-anchor="middle" x="52.0284" y="-265.7221" font-family="sans" font-size="8.00" fill="#c0c0c0">SEX</text>
+</g>
+<!-- 17 -->
+<g id="node18" class="node">
+<title>17</title>
+<polygon fill="#eeeeee" stroke="transparent" points="73.1238,-340.5186 22.2332,-340.5186 22.2332,-322.5186 73.1238,-322.5186 73.1238,-340.5186"></polygon>
+<text text-anchor="middle" x="47.6785" y="-328.5186" font-family="sans" font-size="10.00" fill="#000000">ПУТИН</text>
+</g>
+<!-- 8&#45;&gt;17 -->
+<g id="edge4" class="edge">
+<title>8-&gt;17</title>
+<path fill="none" stroke="#c0c0c0" d="M93.9048,-285.0907C84.3099,-294.7274 69.216,-309.8872 58.9046,-320.2436"></path>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" points="58.0241,-319.6396 56.6515,-322.5065 59.5123,-321.1213 58.0241,-319.6396"></polygon>
+<text text-anchor="middle" x="54.8441" y="-304.2671" font-family="sans" font-size="8.00" fill="#c0c0c0">LASTNAME</text>
+</g>
+<!-- 20 -->
+<g id="node21" class="node">
+<title>20</title>
+<polygon fill="#aec7e8" stroke="transparent" points="225.6167,-229.6726 112.4858,-229.6726 112.4858,-211.6726 225.6167,-211.6726 225.6167,-229.6726"></polygon>
+<text text-anchor="middle" x="169.0512" y="-217.6726" font-family="sans" font-size="10.00" fill="#000000">PERSONPROPERTY</text>
+</g>
+<!-- 8&#45;&gt;20 -->
+<g id="edge10" class="edge">
+<title>8-&gt;20</title>
+<path fill="none" stroke="#c0c0c0" d="M113.947,-266.7868C125.3434,-257.2497 143.2478,-242.2663 155.5361,-231.9828"></path>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" points="156.2885,-232.7223 157.9153,-229.9917 154.9408,-231.1118 156.2885,-232.7223"></polygon>
+<text text-anchor="middle" x="112.8138" y="-250.9848" font-family="sans" font-size="8.00" fill="#c0c0c0">ATTRIBUTE</text>
+</g>
+<!-- 9 -->
+<g id="node10" class="node">
+<title>9</title>
+<polygon fill="#eeeeee" stroke="transparent" points="268.337,-289.3629 185.8853,-289.3629 185.8853,-271.3629 268.337,-271.3629 268.337,-289.3629"></polygon>
+<text text-anchor="middle" x="227.1112" y="-277.3629" font-family="sans" font-size="10.00" fill="#000000">председатель</text>
+</g>
+<!-- 10 -->
+<g id="node11" class="node">
+<title>10</title>
+<polygon fill="#eeeeee" stroke="transparent" points="183.8239,-74.7668 97.1487,-74.7668 97.1487,-56.7668 183.8239,-56.7668 183.8239,-74.7668"></polygon>
+<text text-anchor="middle" x="140.4863" y="-62.7668" font-family="sans" font-size="10.00" fill="#000000">правительство</text>
+</g>
+<!-- 11 -->
+<g id="node12" class="node">
+<title>11</title>
+<polygon fill="#eeeeee" stroke="transparent" points="474.3743,-335.8776 408.8033,-335.8776 408.8033,-317.8776 474.3743,-317.8776 474.3743,-335.8776"></polygon>
+<text text-anchor="middle" x="441.5888" y="-323.8776" font-family="sans" font-size="10.00" fill="#000000">ДМИТРИЙ</text>
+</g>
+<!-- 12 -->
+<g id="node13" class="node">
+<title>12</title>
+<polygon fill="#aec7e8" stroke="transparent" points="427.0215,-287.0975 368.5577,-287.0975 368.5577,-269.0975 427.0215,-269.0975 427.0215,-287.0975"></polygon>
+<text text-anchor="middle" x="397.7896" y="-275.0975" font-family="sans" font-size="10.00" fill="#000000">PERSON</text>
+</g>
+<!-- 12&#45;&gt;1 -->
+<g id="edge7" class="edge">
+<title>12-&gt;1</title>
+<path fill="none" stroke="#c0c0c0" d="M383.9795,-287.2182C376.9039,-291.8911 368.2344,-297.6168 360.7936,-302.531"></path>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" points="360.0378,-301.7718 358.1131,-304.3013 361.1951,-303.5242 360.0378,-301.7718"></polygon>
+<text text-anchor="middle" x="350.4589" y="-296.4746" font-family="sans" font-size="8.00" fill="#c0c0c0">ATTRIBUTE</text>
+</g>
+<!-- 12&#45;&gt;5 -->
+<g id="edge1" class="edge">
+<title>12-&gt;5</title>
+<path fill="none" stroke="#c0c0c0" d="M411.5562,-268.964C418.6095,-264.2844 427.2518,-258.5507 434.6692,-253.6296"></path>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" points="435.4219,-254.3903 437.3412,-251.8568 434.2609,-252.6404 435.4219,-254.3903"></polygon>
+<text text-anchor="middle" x="415.1088" y="-262.8968" font-family="sans" font-size="8.00" fill="#c0c0c0">SEX</text>
+</g>
+<!-- 12&#45;&gt;6 -->
+<g id="edge2" class="edge">
+<title>12-&gt;6</title>
+<path fill="none" stroke="#c0c0c0" d="M393.3512,-268.8635C388.4604,-258.6883 380.5756,-242.284 375.1954,-231.0907"></path>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" points="376.131,-230.6132 373.8849,-228.3642 374.2382,-231.5229 376.131,-230.6132"></polygon>
+<text text-anchor="middle" x="362.7128" y="-251.5771" font-family="sans" font-size="8.00" fill="#c0c0c0">LASTNAME</text>
+</g>
+<!-- 12&#45;&gt;11 -->
+<g id="edge19" class="edge">
+<title>12-&gt;11</title>
+<path fill="none" stroke="#c0c0c0" d="M406.2345,-287.5028C413.3534,-295.4312 423.5691,-306.8087 431.1903,-315.2966"></path>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" points="430.6803,-316.3003 433.4659,-317.831 432.2429,-314.8972 430.6803,-316.3003"></polygon>
+<text text-anchor="middle" x="395.6011" y="-294.9997" font-family="sans" font-size="8.00" fill="#c0c0c0">FIRSTNAME</text>
+</g>
+<!-- 18 -->
+<g id="node19" class="node">
+<title>18</title>
+<polygon fill="#aec7e8" stroke="transparent" points="237.7639,-143.9509 146.0104,-143.9509 146.0104,-125.9509 237.7639,-125.9509 237.7639,-143.9509"></polygon>
+<text text-anchor="middle" x="191.8872" y="-131.9509" font-family="sans" font-size="10.00" fill="#000000">ORGANIZATION</text>
+</g>
+<!-- 18&#45;&gt;0 -->
+<g id="edge15" class="edge">
+<title>18-&gt;0</title>
+<path fill="none" stroke="#c0c0c0" d="M157.79,-125.8586C150.9842,-124.0438 143.9886,-122.1784 137.6647,-120.4921"></path>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" points="137.7872,-119.4381 134.6179,-119.6796 137.2461,-121.4672 137.7872,-119.4381"></polygon>
+<text text-anchor="middle" x="164.8426" y="-116.7753" font-family="sans" font-size="8.00" fill="#c0c0c0">PROFILE</text>
+</g>
+<!-- 18&#45;&gt;4 -->
+<g id="edge12" class="edge">
+<title>18-&gt;4</title>
+<path fill="none" stroke="#c0c0c0" d="M208.1964,-125.8162C220.7556,-118.7819 238.1493,-109.0397 251.3837,-101.6272"></path>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" points="252.2068,-102.3697 254.3111,-99.9876 251.1806,-100.5375 252.2068,-102.3697"></polygon>
+<text text-anchor="middle" x="220.8994" y="-115.3217" font-family="sans" font-size="8.00" fill="#c0c0c0">GEO</text>
+</g>
+<!-- 18&#45;&gt;10 -->
+<g id="edge5" class="edge">
+<title>18-&gt;10</title>
+<path fill="none" stroke="#c0c0c0" d="M185.1674,-125.9063C175.9832,-113.5446 159.4923,-91.3484 149.3183,-77.6544"></path>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" points="150.0038,-76.8164 147.3718,-75.0344 148.3181,-78.0688 150.0038,-76.8164"></polygon>
+<text text-anchor="middle" x="156.7956" y="-103.3804" font-family="sans" font-size="8.00" fill="#c0c0c0">TYPE</text>
+</g>
+<!-- 20&#45;&gt;9 -->
+<g id="edge11" class="edge">
+<title>20-&gt;9</title>
+<path fill="none" stroke="#c0c0c0" d="M177.8693,-229.7383C188.0999,-240.2562 204.9792,-257.6094 216.0723,-269.0141"></path>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" points="215.3657,-269.7935 218.2101,-271.2119 216.871,-268.3292 215.3657,-269.7935"></polygon>
+<text text-anchor="middle" x="185.4142" y="-250.9762" font-family="sans" font-size="8.00" fill="#c0c0c0">NAME</text>
+</g>
+<!-- 20&#45;&gt;18 -->
+<g id="edge9" class="edge">
+<title>20-&gt;18</title>
+<path fill="none" stroke="#c0c0c0" d="M171.4951,-211.4989C175.6157,-196.0311 183.9487,-164.7506 188.5852,-147.3458"></path>
+<polygon fill="#c0c0c0" stroke="#c0c0c0" points="189.7032,-147.2279 189.4609,-144.0587 187.674,-146.6873 189.7032,-147.2279"></polygon>
+<text text-anchor="middle" x="172.0402" y="-181.0223" font-family="sans" font-size="8.00" fill="#c0c0c0">REF</text>
+</g>
+</g>
+</svg>
