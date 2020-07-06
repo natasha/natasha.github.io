@@ -1,0 +1,282 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Nerus — большой синтетический русскоязычный датасет</title>
+    <meta name="title" content="">
+    <meta property="og:title" content="">
+    <meta property="twitter:title" content="">
+
+    <meta name="description" content="Разметка морфологии, синтаксиса, именованных сущностей">
+    <meta property="og:description" content="">
+    <meta property="twitter:description" content="">
+
+    <meta name="keywords" content="nlp, russian, dataset, morphology, syntax, ner, русский язык, датасет, морфология, синтаксис">
+
+    <meta property="og:type" content="website">
+    <meta property="twitter:card" content="summary_large_image">
+
+    <meta property="og:url" content="https://natasha.github.io/nerus/">
+    <meta property="twitter:url" content="https://natasha.github.io/nerus/">
+
+    <meta property="og:image" content="https://natasha.github.io/nerus/images/preview.png">
+    <meta property="twitter:image" content="https://natasha.github.io/nerus/images/preview.png">
+
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-P65FXVJ');</script>
+    <!-- End Google Tag Manager -->
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P65FXVJ"
+		      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="container">
+      <div class="alert alert-danger" role="alert">
+	Драфт, страница нигде не опубликована
+      </div>
+
+      <div class="row">
+      	<div class="col-8">
+      	  <p>
+      	    <a href="/">
+      	      <span class="hanging-arrow">←</span> Проект Natasha
+      	    </a>
+      	  </p>
+
+      	  <h1>Nerus — большой синтетический русскоязычный датасет с разметкой морфологии, синтаксиса и именованных сущностей</h1>
+      	</div>
+      </div>
+
+      <div class="row">
+      	<div class="col-6">
+      	  <p>
+	    В <a href="https://github.com/natasha">проекте Natasha</a> анализ морфологии, синтаксиса и извлечение именованных сущностей делают 3 компактные модели: <a href="https://github.com/natasha/slovnet#ner">Slovnet NER</a>, <a href="https://github.com/natasha/slovnet#morphology">Slovnet Morph</a> и <a href="https://github.com/natasha/slovnet#syntax">Slovnet Syntax</a>. <a href="https://github.com/natasha/slovnet#evaluation">Качество решений</a> на 1–5 процентных пунктов хуже, чем у тяжёлых аналогов c BERT-архитектурой, размер в 50-75 раз меньше, скорость на CPU в 2 раза больше. Модели обучены на огромном синтетическом <a href="https://github.com/natasha/nerus">датасете Nerus</a>, в архиве 700&nbsp;000 новостных статей с <a href="https://universaldependencies.org/format.html">CoNLL-U</a>-разметкой морфологии, синтаксиса и именованных сущностей:
+      	  </p>
+	</div>
+      </div>
+
+      <div class="row">
+      	<div class="col-11">
+	  <pre># newdoc id = 0
+# sent_id = 0_0
+# text = Вице-премьер по социальным вопросам Татьяна Голикова рассказала, в каких регионах России зафиксирована ...
+1    Вице-премьер   _   NOUN   _   Animacy=Anim|Case=Nom|Gend...   7   nsubj     _   Tag=O
+2    по             _   ADP    _   _                               4   case      _   Tag=O
+3    социальным     _   ADJ    _   Case=Dat|Degree=Pos|Number...   4   amod      _   Tag=O
+4    вопросам       _   NOUN   _   Animacy=Inan|Case=Dat|Gend...   1   nmod      _   Tag=O
+5    Татьяна        _   PROPN  _   Animacy=Anim|Case=Nom|Gend...   1   appos     _   Tag=B-PER
+6    Голикова       _   PROPN  _   Animacy=Anim|Case=Nom|Gend...   5   flat:name _   Tag=I-PER
+7    рассказала     _   VERB   _   Aspect=Perf|Gender=Fem|Moo...   0   root      _   Tag=O
+8    ,              _   PUNCT  _   _                               13  punct     _   Tag=O
+9    в              _   ADP    _   _                               11  case      _   Tag=O
+10   каких          _   DET    _   Case=Loc|Number=Plur            11  det       _   Tag=O
+11   регионах       _   NOUN   _   Animacy=Inan|Case=Loc|Gend...   13  obl       _   Tag=O
+12   России         _   PROPN  _   Animacy=Inan|Case=Gen|Gend...   11  nmod      _   Tag=B-LOC
+13   зафиксирована  _   VERB   _   Aspect=Perf|Gender=Fem|Num...   7   ccomp     _   Tag=O
+14   наиболее       _   ADV    _   Degree=Pos                      15  advmod    _   Tag=O
+15   высокая        _   ADJ    _   Case=Nom|Degree=Pos|Gender...   16  amod      _   Tag=O
+16   смертность     _   NOUN   _   Animacy=Inan|Case=Nom|Gend...   13  nsubj     _   Tag=O
+17   от             _   ADP    _   _                               18  case      _   Tag=O
+18   рака           _   NOUN   _   Animacy=Inan|Case=Gen|Gend...   16  nmod      _   Tag=O
+19   ,              _   PUNCT  _   _                               20  punct     _   Tag=O
+20   сообщает       _   VERB   _   Aspect=Imp|Mood=Ind|Number...   0   root      _   Tag=O
+21   РИА            _   PROPN  _   Animacy=Inan|Case=Nom|Gend...   20  nsubj     _   Tag=B-ORG
+22   Новости        _   PROPN  _   Animacy=Inan|Case=Nom|Gend...   21  appos     _   Tag=I-ORG
+23   .              _   PUNCT  _   _                               20  punct     _   Tag=O
+
+# sent_id = 0_1
+# text = По словам Голиковой, чаще всего онкологические заболевания становились причиной смерти в Псковской, Тверской, ...
+1   По              _   ADP    _   _                               2   case      _   Tag=O
+2   словам          _   NOUN   _   Animacy=Inan|Case=Dat|Gend...   9   parataxis _   Tag=O
+...</pre>
+
+	</div>
+      </div>
+
+      <div class="row">
+      	<div class="col-6">
+	  <p>
+	    Slovnet NER, Morph, Syntax — примитивные модели. Когда в обучающей выборке 1000 примеров, Slovnet NER отстаёт от тяжёлого BERT-аналога на 11 процентных пунктов, когда примеров 10&nbsp;000 — на 3 пункта, когда 500&nbsp;000 — на 1.
+	  </p>
+
+	  <p>
+	    Nerus — результат работы, тяжёлых моделей с BERT-архитектурой: <a href="https://github.com/natasha/slovnet/blob/master/scripts/02_bert_ner/main.ipynb">Slovnet BERT NER</a>, <a href="https://github.com/natasha/slovnet/blob/master/scripts/03_bert_morph/main.ipynb">Slovnet BERT Morph</a>, <a href="https://github.com/natasha/slovnet/blob/master/scripts/04_bert_syntax/main.ipynb">Slovnet BERT Syntax</a>. Обработка 700&nbsp;000 новостных статей занимает 20 часов на Tesla V100. Мы экономим время других исследователей, выкладываем готовый архив в открытый доступ:
+	  </p>
+	  <a id="download" class="btn btn-primary btn-lg">nerus_lenta.conllu.gz, 2GB</a>
+
+	  <p>
+	    У синтетической разметки высокое качество, подробнее в <a href="https://github.com/natasha/nerus#evaluation">репозитории Nerus</a>: точность определение морфологических тегов — 98%, синтаксических связей — 96%. Для NER оценки F1 по токенам: PER — 99%, LOC — 98%, ORG — 97%.
+	  </p>
+
+	</div>
+      </div>
+
+<!--       <div class="row"> -->
+<!-- 	<div class="col-11"> -->
+<!-- 	  <pre> -->
+<!-- Выборы Верховного совета Аджарской автономной республики назначены в соответствии с 241-ой статьей -->
+<!--        ORG────────────── LOC────────────────────────────              -->
+<!-- и 4-м пунктом 10-й статьи Конституционного закона Грузии <О статусе Аджарской автономной республики>. -->
+<!--                                                   LOC───            LOC─────────────────<span class="text-danger">~~~~~~~~~~~</span> -->
+                                   
+
+<!-- Следственное управление при прокуратуре требует наказать премьера Якутии. -->
+<!-- ORG────────────────────<span class="text-danger">~~~~~~~~~~~~~~~~</span>                           LOC─── -->
+
+<!-- Начальник полигона <Игумново> в Нижегородской области осужден за загрязнение атмосферы и грунтовых вод. -->
+<!--                     <span class="text-danger">ORG~~~~~</span>    LOC────────────────── -->
+
+<!-- Страны Азии и Африки поддержали позицию России в конфликте с Грузией. -->
+<!--        <span class="text-danger">LOC~</span>   <span class="text-danger">LOC~~~</span>                    LOC───               LOC────  </pre> -->
+<!-- 	</div> -->
+<!--       </div> -->
+
+      <div class="row">
+      	<div class="col-6">
+	  <p>
+	    Python-пакет Nerus организует удобный интерфейс для загрузки и визуализации разметки:
+	  </p>
+	</div>
+      </div>
+
+      <div class="row">
+	<div class="col-11">
+	  <pre>>>> from nerus import load_nerus
+
+>>> docs = load_nerus('nerus_lenta.conllu.gz')
+>>> doc = next(docs)
+>>> doc
+
+NerusDoc(
+    id='0',
+    sents=[NerusSent(
+         id='0_0',
+         text='Вице-премьер по социальным вопросам Татьяна Голикова рассказала, в каких регионах России ...
+         tokens=[NerusToken(
+              id='1',
+              text='Вице-премьер',
+              pos='NOUN',
+              feats={'Animacy': 'Anim',
+               'Case': 'Nom',
+               'Gender': 'Masc',
+               'Number': 'Sing'},
+              head_id='7',
+              rel='nsubj',
+              tag='O'
+          ),
+          NerusToken(
+              id='2',
+              text='по',
+              pos='ADP',
+...
+
+>>> doc.ner.print()
+Вице-премьер по социальным вопросам Татьяна Голикова рассказала, в каких регионах России зафиксирована наиболее 
+                                    PER─────────────                              LOC───                     
+высокая смертность от  рака, сообщает РИА Новости. По словам Голиковой, чаще всего онкологические заболевания
+                                      ORG────────            PER──────             
+...
+
+​
+>>> sent = doc.sents[0]
+>>> sent.morph.print()
+        Вице-премьер  NOUN|Animacy=Anim|Case=Nom|Gender=Masc|Number=Sing
+                  по  ADP
+          социальным  ADJ|Case=Dat|Degree=Pos|Number=Plur
+            вопросам  NOUN|Animacy=Inan|Case=Dat|Gender=Masc|Number=Plur
+             Татьяна  PROPN|Animacy=Anim|Case=Nom|Gender=Fem|Number=Sing
+            Голикова  PROPN|Animacy=Anim|Case=Nom|Gender=Fem|Number=Sing
+          рассказала  VERB|Aspect=Perf|Gender=Fem|Mood=Ind|Number=Sing
+...
+				   
+>>> sent.syntax.print()
+  ┌►┌─┌───── Вице-премьер  nsubj
+  │ │ │ ┌──► по            case
+  │ │ │ │ ┌► социальным    amod
+  │ │ └►└─└─ вопросам      nmod
+  │ └────►┌─ Татьяна       appos
+  │       └► Голикова      flat:name
+┌─└───────── рассказала    
+│   ┌──────► ,             punct
+│   │   ┌──► в             case
+│   │   │ ┌► каких         det
+│   │ ┌►└─└─ регионах      obl
+│   │ │ └──► России        nmod
+└──►└─└───── зафиксирована ccomp
+    │     ┌► наиболее      advmod
+    │   ┌►└─ высокая       amod
+    └►┌─└─── смертность    nsubj:pass
+      │   ┌► от            case
+      └──►└─ рака          nmod
+          ┌► ,             punct
+      ┌─┌─└─ сообщает      
+      │ └►┌─ РИА           nsubj
+      │   └► Новости       appos
+      └────► .             punct</pre>
+	</div>
+      </div>
+
+      <div class="row">
+      	<div class="col-6">
+	  <!-- <p class="highlight"> -->
+	  <!--   Nerus = <a href="https://github.com/yutkin/Lenta.Ru-News-Dataset">700&nbsp;000 новостей с Lenta.ru</a> + <a href="https://github.com/natasha/razdel">Razdel</a> + <a href="https://github.com/natasha/slovnet">Slovnet</a> BERT Morph, Syntax, NER + <a href="https://universaldependencies.org/format.html">CoNLL-U</a>. -->
+	  <!-- </p> -->
+
+	  <p>
+	    <a href="https://github.com/natasha/nerus#usage">Инструкция по установке, примеры использования</a>, <a href="https://github.com/natasha/nerus#evaluation">оценки качества</a> в репозитории Nerus. <a href="https://t.me/natural_language_processing"><img class="inline" src="/images/social/tg.svg" /> natural_language_processing</a> — чат пользователей, разработчиков проекта.
+	  </p>
+	</div>
+      </div>
+
+      <div id="footer">
+	<div class="row">
+      	  <div class="col-2">
+      	    <img src="/images/author.jpg" class="rounded img-fluid" alt="Александр Кукушкин">
+      	  </div>
+      	  <div class="col-4">
+      	    Александр Кукушкин, июнь 2020 года
+      	    <ul>
+      	      <li>
+		<a href="mailto:alex@alexkuk.ru">alex@alexkuk.ru</a>
+	      </li>
+
+      	      <li>
+		<a href="https://t.me/alexkuk">
+		  <img class="inline" src="/images/social/tg.svg" /> alexkuk
+		</a>
+	      </li>
+
+      	      <li>
+		<a href="https://github.com/kuk">
+		  <img class="inline" src="/images/social/gh.svg" /> kuk
+		</a>
+	      </li>
+      	    </ul>
+
+	    <a href="https://lab.alexkuk.ru/">Лаборатория анализа данных Александра Кукушкина</a>
+	      <p>
+		Лаборатория разрабатывает сервисы и коробочные продукты с использованием технологии Natasha, оказывает услуги анализа данных для российских компаний.
+	      </p>
+
+	  </div>
+	</div>
+      </div>
+
+    </div>
+
+    <script src="/scripts/popper.min.js" type="text/javascript"></script>
+    <script src="/scripts/bootstrap.min.js" type="text/javascript"></script>
+  </body>
+</html>
