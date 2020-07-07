@@ -62,7 +62,7 @@
       <div class="row">
       	<div class="col-6">
       	  <p>
-	    <a href="https://github.com/natasha/navec">Navec</a> — часть <a href="https://github.com/natasha">проекта Natasha</a>, коллекция предобученных эмбедингов для русского языка. <a class="local" href="#evaluation">Качество сравнимо или выше</a>, чем у <a href="https://rusvectores.org/ru/models/">статических моделей от RusVectores</a>, размер в 5–6 раз меньше (51МБ).	    
+	    <a href="https://github.com/natasha/navec">Библиотека Navec</a> — часть <a href="https://github.com/natasha">проекта Natasha</a>, коллекция предобученных эмбедингов для русского языка. <a class="local" href="#evaluation">Качество решения сравнимо или выше</a>, чем у <a href="https://rusvectores.org/ru/models/">статических моделей от RusVectores</a>, размер в 5–6 раз меньше:
       	  </p>
 
 	  <table id="hero" class="table table-borderless">
@@ -85,8 +85,8 @@
 	      <tr>
 		<th>RusVectores</th>
 		<td>0.638–0.726</td>
-		<td>220.6–2752.1</td>
-		<td>192–249</td>
+		<td>220.6–290.7</td>
+		<td>189–249</td>
 	      </tr>
 	    </tbody>
 	  </table>
@@ -111,13 +111,7 @@
       <div class="row">
 	<div class="col-6">
 	  <p>
-	    Технология актуальна до сих пор. В проекте Natasha модели для NER, определения морфологии и синтаксических связей работают на пословных Navec-эмбедингах, <a href="https://github.com/natasha/slovnet#evaluation">показывают качество выше других открытых решений</a>.
-	  </p>
-	</div>
-
-	<div class="col-3">
-	  <p class="note">
-	    <a href="https://github.com/natasha/slovnet#ner">Slovnet NER</a>, <a href="https://github.com/natasha/slovnet#morphology">Slovnet Morph</a>, <a href="https://github.com/natasha/slovnet#syntax">Slovnet Syntax</a>
+	    Технология актуальна до сих пор. В проекте Natasha модели для <a href="https://github.com/natasha/slovnet#morphology">разбора морфологии</a>, <a href="https://github.com/natasha/slovnet#syntax">синтаксиса</a> и <a href="https://github.com/natasha/slovnet#ner">извлечения именованных сущностей</a> работают на пословных Navec-эмбедингах, <a href="https://github.com/natasha/slovnet#evaluation">показывают качество выше других открытых решений</a>.
 	  </p>
 	</div>
       </div>
@@ -131,7 +125,7 @@
 	  </p>
 
 	  <p>
-	    На практике использовать такие эмбединги неудобно. Недостаточно разделить текст на токены, для каждого нужно как-то определить POS-тег. Таблица эмбедингов разбухает. Вместо одного слова «стать», мы храним 6: 2 разумных «стать_VERB», «стать_NOUN» и 4 странных «стать_ADV», «стать_PROPN», «стать_NUM», «стать_ADJ». В таблице на 250&nbsp;000 записей 195&nbsp;000 уникальных слов. Покрытие словаря меньше, модель работает хуже.
+	    На практике использовать такие эмбединги неудобно. Недостаточно разделить текст на токены, для каждого нужно как-то определить POS-тег. Таблица эмбедингов разбухает. Вместо одного слова «стать», мы храним 6: 2 разумных «стать_VERB», «стать_NOUN» и 4 странных «стать_ADV», «стать_PROPN», «стать_NUM», «стать_ADJ». В таблице на 250&nbsp;000 записей 195&nbsp;000 уникальных слов.
 	  </p>
 
 	</div>
@@ -147,7 +141,7 @@
 	  </p>
 
 	  <p>
-	    RusVectores использует небольшие <a href="https://arxiv.org/abs/1801.06407">аккуратно проверенные</a> тестовые списки пар: <a href="https://github.com/natasha/corus#load_simlex">SimLex965</a> и <a href="https://github.com/natasha/corus#load_russe_hj">HJ</a>. Добавим свежий <a href="https://github.com/natasha/corus#load_toloka_lrwc">LRWC</a> и большие датасеты из <a href="https://russe.nlpub.org/downloads/">проекта RUSSE</a>: <a href="https://github.com/natasha/corus#load_russe_rt">RT</a>, <a href="https://github.com/natasha/corus#load_russe_ae">AE</a>, <a href="https://github.com/natasha/corus#load_russe_ae">AE2</a>:
+	    RusVectores использует небольшие <a href="https://arxiv.org/abs/1801.06407">аккуратно проверенные</a> тестовые списки пар: <a href="https://github.com/natasha/corus#load_simlex">SimLex965</a> и <a href="https://github.com/natasha/corus#load_russe_hj">HJ</a>. Добавим свежий яндексовый <a href="https://github.com/natasha/corus#load_toloka_lrwc">LRWC</a> и большие датасеты из <a href="https://russe.nlpub.org/downloads/">проекта RUSSE</a>: <a href="https://github.com/natasha/corus#load_russe_rt">RT</a>, <a href="https://github.com/natasha/corus#load_russe_ae">AE</a>, <a href="https://github.com/natasha/corus#load_russe_ae">AE2</a>:
 	  </p>
 	</div>
       </div>
@@ -250,7 +244,7 @@
       <div class="row">
 	<div class="col-6">
 	  <p>
-	    <code>hudlit_12B_500K_300d_100q</code> — <a href="https://nlp.stanford.edu/projects/glove/">GloVe-эмбединги</a> обученные на <a href="https://github.com/natasha/corus#load_librusec">145ГБ художественной литературы</a>. Возьмём архив с текстами из <a href="https://russe.nlpub.org/downloads/">проекта RUSSE</a>. Используем <a href="https://github.com/stanfordnlp/GloVe">оригинальную реализацию GloVe на C</a>, обернём её в <a href="https://github.com/natasha/navec/blob/master/navec/train/glove.py">удобный Python-интерфейс</a>.
+	    <code>hudlit_12B_500K_300d_100q</code> — <a href="https://nlp.stanford.edu/projects/glove/">GloVe-эмбединги</a> обученные на <a href="https://github.com/natasha/corus#load_librusec">145ГБ художественной литературы</a>. Архив с текстами возьмём из <a href="https://russe.nlpub.org/downloads/">проекта RUSSE</a>. Используем <a href="https://github.com/stanfordnlp/GloVe">оригинальную реализацию GloVe на C</a>, обернём её в <a href="https://github.com/natasha/navec/blob/master/navec/train/glove.py">удобный Python-интерфейс</a>.
 	  </p>
 	</div>
       </div>
@@ -258,13 +252,13 @@
       <div class="row">
 	<div class="col-6">
 	  <p>
-	    Почему не word2vec? Эксперименты на большом датасете быстрее с GloVe. Один раз считаем таблицу коллокаций, по ней готовим эмбединги разных размерностей, выбираем оптимальный вариант.
+	    Почему не word2vec? Эксперименты на большом датасете быстрее с GloVe. Один раз считаем матрицу коллокаций, по ней готовим эмбединги разных размерностей, выбираем оптимальный вариант.
 	  </p>
 	</div>
 
 	<div class="col-4">
 	  <p class="note">
-	    Про матрицу коллокаций написано в оригинальной статье <a href="https://nlp.stanford.edu/pubs/glove.pdf">GloVe: Global Vectors for Word Representation</a>.
+	    Оригинальная статья про GloVe: <a href="https://nlp.stanford.edu/pubs/glove.pdf">Global Vectors for Word Representation</a>
 	  </p>
 	</div>
       </div>
@@ -286,7 +280,7 @@
       <div class="row">
 	<div class="col-6">
 	  <p>
-	    Размер словаря <code>hudlit_12B_500K_300d_100q</code> — 500&nbsp;000 записей, он покрывает 98% слов в художественных текстах. Оптимальная размерность векторов — 300. Таблица 500&nbsp;000 × 300 из float-чисел занимает 1.1ГБ, размер архива с весами <code>hudlit_12B_500K_300d_100q</code> в 24 раза меньше (48МБ). Дело в квантизации.
+	    Размер словаря <code>hudlit_12B_500K_300d_100q</code> — 500&nbsp;000 записей, он покрывает 98% слов в художественных текстах. Оптимальная размерность векторов — 300. Таблица 500&nbsp;000 × 300 из float-чисел занимает 578МБ, размер архива с весами <code>hudlit_12B_500K_300d_100q</code> в 12 раз меньше (48МБ). Дело в квантизации.
 	  </p>
 	</div>
       </div>
@@ -296,7 +290,7 @@
       <div class="row">
 	<div class="col-6">
 	  <p>
-	    Заменим 64-битные float-числа на 8-битные коды: [−∞, −0.86) — код 0, [−0.86, -0.79) — код 1, [-0.79, -0.74) — 2, …, [0.86, ∞) — 255. Размер таблицы уменьшится в 8 раз (143МБ):
+	    Заменим 32-битные float-числа на 8-битные коды: [−∞, −0.86) — код 0, [−0.86, -0.79) — код 1, [-0.79, -0.74) — 2, …, [0.86, ∞) — 255. Размер таблицы уменьшится в 4 раз (143МБ):
 	  <p>
 	</div>
       </div>
@@ -321,7 +315,7 @@
 
 	<div class="col-4">
 	  <p class="note">
-	    Данные огрубляются, разные значения -0.005 и -0.003 заменяет один код 127, -0.030 и -0.031 — 118.
+	    Данные огрубляются, разные значения -0.005 и -0.003 заменяет один код 127, -0.030 и -0.031 — 118
 	  </p>
 	</div>
       </div>
@@ -329,11 +323,21 @@
       <div class="row">
 	<div class="col-6">
 	  <p>
-	    Заменим кодом не одно, а 3 числа. Таблица уменьшится ещё в 3 раза (48МБ). Используем библиотеку <a href="http://yusukematsui.me/project/pqkmeans/pqkmeans.html">PQk-means</a>, подберём оптимальное разбиение на группы, качество на синтетических тестах упадёт на 1 процентный пункт.
+	    Заменим кодом не одно, а 3 числа. Используем <a href="http://yusukematsui.me/project/pqkmeans/pqkmeans.html">библиотеку PQk-means</a>, кластеризуем все тройки чисел из таблицы эмбедингов <a href="https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D1%82%D0%BE%D0%B4_k-%D1%81%D1%80%D0%B5%D0%B4%D0%BD%D0%B8%D1%85">алгоритмом k-means</a> на 256 кластеров, вместо каждой тройки будем хранить код от 0 до 255. Таблица уменьшится ещё в 3 раза (48МБ), качество на синтетических тестах упадёт на 1 процентный пункт.
 	  </p>
+	</div>
 
+	<div class="col-4">
+	  <p class="note">
+	    Понятно про квантизацию в статье Chris McCormick <a href="http://mccormickml.com/2017/10/13/product-quantizer-tutorial-part-1/">Product Quantizers for k-NN Tutorial</a>
+	  </p>
+	</div>
+      </div>
+
+      <div class="row">
+	<div class="col-6">
 	  <p>
-	    Квантованные эмбединги проигрывают обычным по скорости. Сжатый вектор перед использованием нужно распаковать. Аккуратно реализуем процедуру, <a href="https://github.com/natasha/navec/blob/master/navec/pq.py#L40-L43">применим Numpy-магию</a> в PyTorch <a href="https://github.com/natasha/slovnet/blob/master/slovnet/model/emb.py#L29-L39">используем <code>torch.gather</code></a>. В Slovnet NER доступ к таблице эмбедингов занимает 0.1% от общего времени вычислений.
+	    Квантованные эмбединги проигрывают обычным по скорости. Сжатый вектор перед использованием нужно распаковать. Аккуратно реализуем процедуру, <a href="https://github.com/natasha/navec/blob/master/navec/pq.py#L40-L43">применим Numpy-магию</a>, в PyTorch <a href="https://github.com/natasha/slovnet/blob/master/slovnet/model/emb.py#L29-L39">используем <code>torch.gather</code></a>. В Slovnet NER доступ к таблице эмбедингов занимает 0.1% от общего времени вычислений.
 	  </p>
 	</div>
       </div>

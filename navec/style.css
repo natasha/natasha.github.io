@@ -79,6 +79,10 @@ img.inline {
     font-weight: normal;
 }
 
+table#hero {   /* compensate cell padding */
+    margin-left: -0.75em;
+}
+
 /* EVAL */
 
 #eval td, #eval th {
