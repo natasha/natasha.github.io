@@ -222,14 +222,14 @@
 	    <dt>У всех датасетов разный формат разметки</dt>
 	    <dd>
 	      <p>
-		Collection5 использует <a href="https://brat.nlplab.org/standoff.html">Standoff-формат</a> утилиты <a href="https://brat.nlplab.org/index.html">Brat</a>, Gareev и WiNER — разные диалекты <a href="https://en.wikipedia.org/wiki/Inside%E2%80%93outside%E2%80%93beginning_(tagging)">BIO-разметки</a>, BSNLP-2019 — <a href="http://bsnlp.cs.helsinki.fi/Guidelines_20190122.pdf">свой формат</a>, factRuEval-2016 — <a href="https://github.com/dialogue-evaluation/factRuEval-2016#%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%82-%D0%B4%D0%B5%D0%BC%D0%BE%D0%BD%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%BE%D0%B9-%D1%80%D0%B0%D0%B7%D0%BC%D0%B5%D1%82%D0%BA%D0%B8">своя нетривиальная спецификация</a>. Naeval приводит все источники к общему формату. Разметка состоит из спанов. Спан — тройка: тип сущности, начало и конец подстроки.
+		Collection5 использует <a href="https://brat.nlplab.org/standoff.html">Standoff-формат</a> утилиты <a href="https://brat.nlplab.org/index.html">Brat</a>, Gareev и WiNER — разные диалекты <a href="https://en.wikipedia.org/wiki/Inside%E2%80%93outside%E2%80%93beginning_(tagging)">BIO-разметки</a>, у BSNLP-2019 <a href="http://bsnlp.cs.helsinki.fi/Guidelines_20190122.pdf">свой формат</a>, у factRuEval-2016 тоже <a href="https://github.com/dialogue-evaluation/factRuEval-2016#%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%82-%D0%B4%D0%B5%D0%BC%D0%BE%D0%BD%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%BE%D0%B9-%D1%80%D0%B0%D0%B7%D0%BC%D0%B5%D1%82%D0%BA%D0%B8">своя нетривиальная спецификация</a>. Naeval приводит все источники к общему формату. Разметка состоит из спанов. Спан — тройка: тип сущности, начало и конец подстроки.
 	      </p>
 	    </dd>
 
 	    <dt>Типы сущностей</dt>
 	    <dd>
 	      <p>
-		factRuEval-2016 и Collection5 отдельно помечают полутопонимы полуорганизации: «Кремль», «ЕС», «СССР». BSNLP-2019 и WiNER выделяют названия событий:  «Чемпионат России», «Брексит». Naeval адаптирует и удаляет часть меток, оставляет эталонную тройку: имена людей, названия топонимов и организаций.
+		factRuEval-2016 и Collection5 отдельно помечают полутопонимы-полуорганизации: «Кремль», «ЕС», «СССР». BSNLP-2019 и WiNER выделяют названия событий: «Чемпионат России», «Брексит». Naeval адаптирует и удаляет часть меток, оставляет эталонные метки PER, LOC, ORG: имена людей, названия топонимов и организаций.
 	      </p>
 
 	      <!-- factru locorg -->
@@ -307,7 +307,7 @@ $ curl -X POST http://localhost:8080 --data \
 &lt;/document></pre>
 
 	  <p>
-	    Некоторые решения так тяжело запустить и настроить, что мало людей ими пользуется. <a href="http://pullenti.ru/">PullEnti</a> — сложная система, построенная на правилах, заняла первой место на конкурсе factRuEval в 2016 году. Инструмент распространяется как SDK для C#. Работа над Naeval вылилась в <a href="http://github.com/pullenti">отдельный проект на Github</a> с набором обёрток для PullEnti: <a href="https://github.com/pullenti/PullentiServer">PullentiServer</a> — веб-сервер на С#, <a href="https://github.com/pullenti/pullenti-client">pullenti-client</a> — Python-клиент для PullentiServer.
+	    Некоторые решения так тяжело запустить и настроить, что мало людей ими пользуется. <a href="http://pullenti.ru/">PullEnti</a> — сложная система, построенная на правилах, заняла первой место на конкурсе factRuEval в 2016 году. Инструмент распространяется как SDK для C#. Работа над Naeval вылилась в <a href="http://github.com/pullenti">отдельный проект на Github</a> с набором обёрток для PullEnti: <a href="https://github.com/pullenti/PullentiServer">PullentiServer</a> — веб-сервер на С#, <a href="https://github.com/pullenti/pullenti-client">pullenti-client</a> — Python-клиент для PullentiServer:
 	  </p>
 
 	  <pre>
@@ -333,7 +333,7 @@ $ docker run -p 8080:8080 pullenti/pullenti-server
 	  </p>
 
 	  <pre>
-Было
+Было (PullEnti)
 Напомним, парламент Южной Осетии на состоявшемся 19 декабря 
           ORGANIZATION──────────                            
                     GEO─────────                            
@@ -349,7 +349,7 @@ $ docker run -p 8080:8080 pullenti/pullenti-server
 
 Стало
 Напомним, парламент Южной Осетии на состоявшемся 19 декабря 
-                    LOC─────────                            
+          ORG────── LOC─────────
 заседании одобрил представление президента Республики 
 Леонида Тибилова об отставке председателя Верховного суда 
 PER─────────────                          ORG────────────
