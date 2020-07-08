@@ -64,7 +64,8 @@
       	  <p>
 	    <a href="https://github.com/natasha/corus">Corus</a> — коллекция ссылок на публичные русскоязычные NLP-датасеты + Python-пакет с функциями-загрузчиками:
       	  </p>
-	  <pre><code>>>> from corus import <a href="https://github.com/natasha/corus#load_lenta">load_lenta</a>
+	  <pre>
+>>> from corus import <a href="https://github.com/natasha/corus#load_lenta">load_lenta</a>
 
 # wget https://github.com/yutkin/Lenta.Ru-News-Dataset/...
 >>> path = 'lenta-ru-news.csv.gz'
@@ -145,7 +146,8 @@ LentaRecord(
 	    Для каждого источника в Python-пакете Corus есть функция-загрузчик. Интерфейс доступа к Taiga не сложнее, чем к дампу Lenta.ru:
 	  </p>
 
-	  <pre><code>>>> from corus import load_taiga_proza_metas, load_taiga_proza
+	  <pre>
+>>> from corus import load_taiga_proza_metas, <a href="https://github.com/natasha/corus#load_taiga_proza">load_taiga_proza</a>
 
 >>> path = taiga/proza_ru.zip'
 >>> metas = load_taiga_proza_metas(path)
@@ -168,8 +170,8 @@ TaigaRecord(
         title='С Новым Годом!',
         url='http://www.proza.ru/2015/12/31/1875'
     ),
-    text='...Искры улыбок...\n... затмят фейерверки..\n..Смех и веселье...\n... прокатят по миру..\n..Праздник разносят... многие клерки..\n..Дух мандаринов... подарки...зефирки....\n\nС Новым годом всех Вас!\n\n..с уважением к вам...Я...'
-)</code></pre>
+    text='...Искры улыбок...\n... затмят фейерверки..\n...
+)</pre>
 	  
 	</div>
       </div>
