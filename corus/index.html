@@ -62,26 +62,28 @@
       <div class="row">
       	<div class="col-6">
       	  <p>
-	    <a href="https://github.com/natasha/corus">Corus</a> — коллекция ссылок на публичные русскоязычные NLP-датасеты + Python-пакет с функциями-загрузчиками:
+	    <a href="https://github.com/natasha/corus">Библиотека Corus</a> — часть <a href="https://github.com/natasha">проекта Natasha</a>, коллекция ссылок на публичные русскоязычные NLP-датасеты + Python-пакет с функциями-загрузчиками:
       	  </p>
 	  <pre>
 >>> from corus import <a href="https://github.com/natasha/corus#load_lenta">load_lenta</a>
 
+# Находим в <a href="https://github.com/natasha/corus#reference">реестре Corus</a> ссылку на Lenta.ru, загружаем:
 # wget https://github.com/yutkin/Lenta.Ru-News-Dataset/...
+
 >>> path = 'lenta-ru-news.csv.gz'
 >>> records = load_lenta(path)  # 2ГБ, 750K articles
 >>> next(records)
 
 LentaRecord(
     url='https://lenta.ru/news/2018/12/14/cancer/',
-    title='Названы регионы России с\xa0самой высокой смертностью от\xa0рака',
-    text='Вице-премьер по социальным вопросам Татьяна Голикова рассказала, в каких регионах России зафиксирована наиболее высокая смертность от рака, сооб...',
+    title='Названы регионы России с\xa0самой высокой ...
+    text='Вице-премьер по социальным вопросам Татьяна ...
     topic='Россия',
     tags='Общество'
-)</code></pre>
+)</pre>
 
 	  <p>
-	    Некоторые полезные открытые датасеты для русского языка так хорошо спрятаны, что мало людей про них знает.
+	    Полезные открытые датасеты для русского языка так хорошо спрятаны, что мало людей про них знает.
 	  </p>
 	</div>
       </div>
@@ -93,7 +95,7 @@ LentaRecord(
       <div class="row">
       	<div class="col-6">
 	  <p>
-	    Хотим обучить языковую модель на новостных статьях, нужно много текстов. Первым приходит в голову новостной срез <a href="https://tatianashavrina.github.io/taiga_site/">датасета Taiga</a> (~1ГБ). Многие знают про <a href="https://github.com/yutkin/Lenta.Ru-News-Dataset">дамп Lenta.ru на Github</a> (2ГБ). Остальные источники найти сложнее. В 2019 году на Диалоге проходил <a href="https://vk.com/headline_gen">конкурс про генерацию заголовков</a>, организаторы подготовили <a href="https://github.com/RossiyaSegodnya/ria_news_dataset">дамп РИА Новостей</a> за 4 года (3.7ГБ). В 2018 году Юрий Бабуров опубликовал <a href="https://github.com/buriy/russian-nlp-datasets/releases/tag/r4">выгрузку с 40 русскоязычных новостных ресурсов</a> (7.5ГБ). Волонтёры из <a href="http://ods.ai/">ODS</a> <a href="https://github.com/ods-ai-ml4sg/proj_news_viz/releases/tag/data">делятся архивами</a> (7ГБ), собранными для <a href="https://proj-news-viz-flask.herokuapp.com/">проекта про анализ новостной повестки</a>.
+	    Хотим обучить языковую модель на новостных статьях, нужно много текстов. Первым приходит в голову новостной срез <a href="https://tatianashavrina.github.io/taiga_site/">датасета Taiga</a> (~1ГБ). Многие знают про <a href="https://github.com/yutkin/Lenta.Ru-News-Dataset">дамп Lenta.ru</a> (2ГБ). Остальные источники найти сложнее. В 2019 году на Диалоге проходил <a href="https://vk.com/headline_gen">конкурс про генерацию заголовков</a>, организаторы подготовили <a href="https://github.com/RossiyaSegodnya/ria_news_dataset">дамп РИА Новостей</a> за 4 года (3.7ГБ). В 2018 году Юрий Бабуров опубликовал <a href="https://github.com/buriy/russian-nlp-datasets/releases/tag/r4">выгрузку с 40 русскоязычных новостных ресурсов</a> (7.5ГБ). Волонтёры из <a href="http://ods.ai/">ODS</a> <a href="https://github.com/ods-ai-ml4sg/proj_news_viz/releases/tag/data">делятся архивами</a> (7ГБ), собранными для <a href="https://proj-news-viz-flask.herokuapp.com/">проекта про анализ новостной повестки</a>.
 	  </p>
 	</div>
       </div>
@@ -116,7 +118,7 @@ LentaRecord(
       <div class="row">
       	<div class="col-6">
 	  <p>
-	    Хотим обучить NER для русского языка, нужна разметка. Первым делом вспоминаем про <a href="https://github.com/dialogue-evaluation/factRuEval-2016/">данные конкурса factRuEval-2016</a>. У разметки есть недостатки: свой сложный формат, спаны сущностей пересекаются, есть неоднозначная категориям «LocOrg». Не все знают про <a href="http://labinform.ru/pub/named_entities/descr_ne.htm">коллекцию Named Entities 5</a> наследницу <a href="http://ai-center.botik.ru/Airec/index.php/ru/collections/28-persons-1000">Persons-1000</a>. Разметка в <a href="https://brat.nlplab.org/standoff.html">стандартном формате</a>, спаны не пересекаются, красота! Остальные три источника известны только самым преданным фанатам русскоязычного NER. Напишем на почту Ринату Гарееву, приложим ссылку на его <a href="https://www.researchgate.net/publication/262203599_Introducing_Baselines_for_Russian_Named_Entity_Recognition">статью 2013 года</a>, в ответ получим 250 новостных статей с помеченными именами и организациями. В 2019 году проводился <a href="http://bsnlp.cs.helsinki.fi/shared_task.html">конкурс BSNLP-2019</a> про NER для славянских языков, напишем организаторам, получим ещё 450 размеченных статей. В проекте WiNER <a href="https://www.aclweb.org/anthology/I17-1042/">придумали делать полуавтоматическую разметку NER из дампов Wikipedia</a>, <a href="https://github.com/dice-group/FOX/tree/master/input/Wikiner">большая выгрузка для русского доступна на Github</a>.
+	    Хотим обучить NER для русского языка, нужны аннотированные тексты. Первым делом вспоминаем про <a href="https://github.com/dialogue-evaluation/factRuEval-2016/">данные конкурса factRuEval-2016</a>. У разметки есть недостатки: свой сложный формат, спаны сущностей пересекаются, есть неоднозначная категориям «LocOrg». Не все знают про <a href="http://labinform.ru/pub/named_entities/descr_ne.htm">коллекцию Named Entities 5</a> наследницу <a href="http://ai-center.botik.ru/Airec/index.php/ru/collections/28-persons-1000">Persons-1000</a>. Разметка в <a href="https://brat.nlplab.org/standoff.html">стандартном формате</a>, спаны не пересекаются, красота! Остальные три источника известны только самым преданным фанатам русскоязычного NER. Напишем на почту Ринату Гарееву, приложим ссылку на его <a href="https://www.researchgate.net/publication/262203599_Introducing_Baselines_for_Russian_Named_Entity_Recognition">статью 2013 года</a>, в ответ получим 250 новостных статей с помеченными именами и организациями. В 2019 году проводился <a href="http://bsnlp.cs.helsinki.fi/shared_task.html">конкурс BSNLP-2019</a> про NER для славянских языков, напишем организаторам, получим ещё 450 размеченных текстов. В проекте WiNER <a href="https://www.aclweb.org/anthology/I17-1042/">придумали делать полуавтоматическую разметку NER из дампов Wikipedia</a>, <a href="https://github.com/dice-group/FOX/tree/master/input/Wikiner">большая выгрузка для русского доступна на Github</a>.
 	  </p>
 	</div>
       </div>
@@ -139,7 +141,7 @@ LentaRecord(
       <div class="row">
       	<div class="col-6">
 	  <p>
-	    Для загрузки простого датасета код легко написать самому. <a href="https://github.com/yutkin/Lenta.Ru-News-Dataset">Дамп Lenta.ru</a> оформлен грамотно, <a href="https://github.com/natasha/corus/blob/master/corus/sources/lenta.py#L28-L30">код простой</a>. <a href="https://tatianashavrina.github.io/taiga_site/">Taiga</a> состоит из ~15 миллионов <a href="https://universaldependencies.org/format.html">CoNLL-U</a>-файлов, запакованных в zip-архивы. Чтобы загрузка работала быстро, не использовала много памяти и не угробила файловую систему, нужно аккуратно на низком уровне <a href="https://github.com/natasha/corus/blob/master/corus/zip.py">реализовать работу с zip-файлами</a>.
+	    Код для простого датасета легко написать самому. <a href="https://github.com/yutkin/Lenta.Ru-News-Dataset">Дамп Lenta.ru</a> оформлен грамотно, <a href="https://github.com/natasha/corus/blob/master/corus/sources/lenta.py#L28-L30">реализация простая</a>. <a href="https://tatianashavrina.github.io/taiga_site/">Taiga</a> состоит из ~15 миллионов <a href="https://universaldependencies.org/format.html">CoNLL-U</a>-файлов, запакованных в zip-архивы. Чтобы загрузка работала быстро, не использовала много памяти и не угробила файловую систему, нужно заморочиться, аккуратно на низком уровне <a href="https://github.com/natasha/corus/blob/master/corus/zip.py">реализовать работу с zip-файлами</a>.
 	  </p>
 
 	  <p>
