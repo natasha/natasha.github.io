@@ -121,7 +121,7 @@
       <div class="row">
 	<div class="col-6">
 	  <p>
-	    Для русского языка принято использовать <a href="https://rusvectores.org/ru/models/">предобученные эмбединги от RusVectores</a>, у них есть неприятная особенность: в таблице записаны не слова, а пары «слово_POS-тег». Идея хорошая, для пары «стали_VERB» ожидаем вектор, похожий на «стал_VERB», «превратились_VERB», а для «стали_NOUN» — «медь_NOUN», «сталь_NOUN».
+	    Для русского языка принято использовать <a href="https://rusvectores.org/ru/models/">предобученные эмбединги от RusVectores</a>, у них есть неприятная особенность: в таблице записаны не слова, а пары «слово_POS-тег». Идея хорошая, для пары «печь_VERB» ожидаем вектор, похожий на «готовить_VERB», «варить_VERB», а для «печь_NOUN» — «изба_NOUN», «топка_NOUN».
 	  </p>
 
 	  <p>
@@ -137,13 +137,30 @@
       <div class="row">
 	<div class="col-6">
 	  <p>
-	    Оценим качество эмбедингов на синтетической задаче классификации. Возьмём пару слов, например, «чашка», «кувшин», для обоих найдём вектора-эмбединги, посчитаем косинусную меру близости, если она больше 0.5, ответ правильный, вектора хорошие.
-	  </p>
-
-	  <p>
-	    RusVectores использует небольшие <a href="https://arxiv.org/abs/1801.06407">аккуратно проверенные</a> тестовые списки пар: <a href="https://github.com/natasha/corus#load_simlex">SimLex965</a> и <a href="https://github.com/natasha/corus#load_russe_hj">HJ</a>. Добавим свежий яндексовый <a href="https://github.com/natasha/corus#load_toloka_lrwc">LRWC</a> и большие датасеты из <a href="https://russe.nlpub.org/downloads/">проекта RUSSE</a>: <a href="https://github.com/natasha/corus#load_russe_rt">RT</a>, <a href="https://github.com/natasha/corus#load_russe_ae">AE</a>, <a href="https://github.com/natasha/corus#load_russe_ae">AE2</a>:
+	    Оценим качество эмбедингов на синтетической задаче классификации. Возьмём пару слов, например, «чашка», «кувшин», для каждого найдём вектор-эмбединг, посчитаем косинусную меру близости, если она больше 0.5, ответ правильный. Для слов «фрукт» и «печь» ожидаем число меньше 0.5. Соберём много пар с эталонными метками похожести, посчитаем корреляцию Спирмена с нашими ответами.
 	  </p>
 	</div>
+
+      	<div class="col-4">
+	  <p class="note">
+	    Кроме классификации для оценки качества эмбедингов используют <a href="https://aclweb.org/aclwiki/Analogy_(State_of_the_art)">задачу решения аналогий</a>. RusVectores публикует <a href="https://rusvectores.org/static/testsets/ru_analogy_tagged_PROPN.txt">переведённый датасет Google Analogies</a>. Прогнать на нём Navec пока не дошли руки.
+	  </p>
+	</div>
+      </div>
+
+      <div class="row">
+	<div class="col-6">
+	  <p>
+	    Авторы RusVectores публикуют небольшие <a href="https://arxiv.org/abs/1801.06407">аккуратно проверенные и исправленные</a> тестовые списки пар: <a href="https://github.com/natasha/corus#load_simlex">SimLex965</a> и <a href="https://github.com/natasha/corus#load_russe_hj">HJ</a>. Добавим свежий яндексовый <a href="https://github.com/natasha/corus#load_toloka_lrwc">LRWC</a> и большие датасеты из <a href="https://russe.nlpub.org/downloads/">проекта RUSSE</a>: <a href="https://github.com/natasha/corus#load_russe_rt">RT</a>, <a href="https://github.com/natasha/corus#load_russe_ae">AE</a>, <a href="https://github.com/natasha/corus#load_russe_ae">AE2</a>:
+	  </p>
+	</div>
+
+      	<div class="col-4">
+	  <p class="note">
+	    <a href="https://github.com/natasha/navec#evaluation">Таблица с разбивкой по датасетам</a> в репозитории Navec.
+	  </p>
+	</div>
+
       </div>
 
       <div class="row">
