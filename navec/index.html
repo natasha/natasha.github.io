@@ -137,13 +137,13 @@
       <div class="row">
 	<div class="col-6">
 	  <p>
-	    Оценим качество эмбедингов на синтетической задаче классификации. Возьмём пару слов, например, «чашка», «кувшин», для каждого найдём вектор-эмбединг, посчитаем косинусную меру близости, если она больше 0.5, ответ правильный. Для слов «фрукт» и «печь» ожидаем число меньше 0.5. Соберём много пар с эталонными метками похожести, посчитаем корреляцию Спирмена с нашими ответами.
+	    Оценим качество эмбедингов на задаче семантической близости. Возьмём пару слов, для каждого найдём вектор-эмбединг, посчитаем косинусное сходство. Navec для похожих слов «чашка» и «кувшин» возвращет 0.49, для «фрукт» и «печь» — −0.0047. Соберём много пар с эталонными метками похожести, посчитаем корреляцию Спирмена с нашими ответами.
 	  </p>
 	</div>
 
       	<div class="col-4">
 	  <p class="note">
-	    Кроме классификации для оценки качества эмбедингов используют <a href="https://aclweb.org/aclwiki/Analogy_(State_of_the_art)">задачу решения аналогий</a>. RusVectores публикует <a href="https://rusvectores.org/static/testsets/ru_analogy_tagged_PROPN.txt">переведённый датасет Google Analogies</a>. Прогнать на нём Navec пока не дошли руки.
+	    Кроме семантической близости для оценки качества эмбедингов используют <a href="https://aclweb.org/aclwiki/Analogy_(State_of_the_art)">задачу решения аналогий</a>. RusVectores публикует <a href="https://rusvectores.org/static/testsets/ru_analogy_tagged_PROPN.txt">переведённый датасет Google Analogies</a>. Прогнать на нём Navec пока не дошли руки.
 	  </p>
 	</div>
       </div>
@@ -151,7 +151,7 @@
       <div class="row">
 	<div class="col-6">
 	  <p>
-	    Авторы RusVectores публикуют небольшие <a href="https://arxiv.org/abs/1801.06407">аккуратно проверенные и исправленные</a> тестовые списки пар: <a href="https://github.com/natasha/corus#load_simlex">SimLex965</a> и <a href="https://github.com/natasha/corus#load_russe_hj">HJ</a>. Добавим свежий яндексовый <a href="https://github.com/natasha/corus#load_toloka_lrwc">LRWC</a> и большие датасеты из <a href="https://russe.nlpub.org/downloads/">проекта RUSSE</a>: <a href="https://github.com/natasha/corus#load_russe_rt">RT</a>, <a href="https://github.com/natasha/corus#load_russe_ae">AE</a>, <a href="https://github.com/natasha/corus#load_russe_ae">AE2</a>:
+	    Авторы RusVectores используют небольшой <a href="https://arxiv.org/abs/1801.06407">аккуратно проверенный и исправленный</a> тестовый список пар <a href="https://github.com/natasha/corus#load_simlex">SimLex965</a>. Добавим свежий яндексовый <a href="https://github.com/natasha/corus#load_toloka_lrwc">LRWC</a> и датасеты из <a href="https://russe.nlpub.org/downloads/">проекта RUSSE</a>: <a href="https://github.com/natasha/corus#load_russe_hj">HJ</a>, <a href="https://github.com/natasha/corus#load_russe_rt">RT</a>, <a href="https://github.com/natasha/corus#load_russe_ae">AE</a>, <a href="https://github.com/natasha/corus#load_russe_ae">AE2</a>:
 	  </p>
 	</div>
 
@@ -340,11 +340,14 @@
       <div class="row">
 	<div class="col-6">
 	  <p>
-	    Заменим кодом не одно, а 3 числа. Используем <a href="http://yusukematsui.me/project/pqkmeans/pqkmeans.html">библиотеку PQk-means</a>, кластеризуем все тройки чисел из таблицы эмбедингов <a href="https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D1%82%D0%BE%D0%B4_k-%D1%81%D1%80%D0%B5%D0%B4%D0%BD%D0%B8%D1%85">алгоритмом k-means</a> на 256 кластеров, вместо каждой тройки будем хранить код от 0 до 255. Таблица уменьшится ещё в 3 раза (48МБ), качество на синтетических тестах упадёт на 1 процентный пункт.
+	    Заменим кодом не одно, а 3 числа. Кластеризуем все тройки чисел из таблицы эмбедингов <a href="https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D1%82%D0%BE%D0%B4_k-%D1%81%D1%80%D0%B5%D0%B4%D0%BD%D0%B8%D1%85">алгоритмом k-means</a> на 256 кластеров, вместо каждой тройки будем хранить код от 0 до 255. Таблица уменьшится ещё в 3 раза (48МБ). Navec использует <a href="http://yusukematsui.me/project/pqkmeans/pqkmeans.html">библиотеку PQk-means</a>, она разбивает таблицу на 100 колонок, каждую кластериует отдельно, качество на синтетических тестах падёт на 1 процентный пункт.
 	  </p>
 	</div>
 
 	<div class="col-4">
+	  <p class="note">
+	    
+	  </p>
 	  <p class="note">
 	    Понятно про квантизацию в статье Chris McCormick <a href="http://mccormickml.com/2017/10/13/product-quantizer-tutorial-part-1/">Product Quantizers for k-NN Tutorial</a>
 	  </p>
