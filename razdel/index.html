@@ -70,11 +70,11 @@
 >>> text = 'Кружка-термос на 0.5л (50/64 см³, 516;...)'
 >>> tokens = list(tokenize(text))
 >>> tokens
-[Substring(0, 13, 'Кружка-термос'),
- Substring(14, 16, 'на'),
- Substring(17, 20, '0.5'),
- Substring(20, 21, 'л'),
- Substring(22, 23, '(')
+[Substring(start=0, stop=13, text='Кружка-термос'),
+ Substring(start=14, stop=16, text='на'),
+ Substring(start=17, stop=20, text='0.5'),
+ Substring(start=20, stop=21, text='л'),
+ Substring(start=22, stop=23, text='(')
  ...]
 
 >>> text = '''
@@ -82,10 +82,10 @@
 ... И т. д. и т. п. В общем, вся газета
 ... '''
 >>> list(sentenize(text))
-[Substring(1, 23, '- "Так в чем же дело?"'),
- Substring(24, 40, '- "Не ра-ду-ют".'),
- Substring(41, 56, 'И т. д. и т. п.'),
- Substring(57, 76, 'В общем, вся газета')]</pre>
+[Substring(start=1, stop=23, text='- "Так в чем же дело?"'),
+ Substring(start=24, stop=40, text='- "Не ра-ду-ют".'),
+ Substring(start=41, stop=56, text='И т. д. и т. п.'),
+ Substring(start=57, stop=76, text='В общем, вся газета')]</pre>
       	</div>
       </div>
 
