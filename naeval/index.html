@@ -203,7 +203,7 @@
       <div class="row">
 	<div class="col-6">
 	  <p class="note">
-	    Сетка датасетов и решений из <a href="https://github.com/natasha/naeval">репозитория Naeval</a>. Подробнее в разделах «Evaluation» репозиториев <a href="https://github.com/natasha/razdel#evaluation">Razdel</a>, <a href="https://github.com/natasha/navec#evaluation">Navec</a>, <a href="https://github.com/natasha/slovnet#evaluation">Slovnet</a>.
+	    Сетка решений и текстовых датасетов из <a href="https://github.com/natasha/naeval">репозитория Naeval</a>.
 	  </p>
 
 	  Дальше подробнее рассмотрим задачу NER.
@@ -215,11 +215,11 @@
       <div class="row">
 	<div class="col-6">
 	  <p>
-	    Для русскоязычного NER существует 5 публичных бенчмарков: factRuEval-2016, Collection5, Gareev, BSNLP-2019, WiNER. Ссылки на источники собраны в <a href="https://github.com/natasha/corus">реестре Corus</a>. Все датасеты состоят из новостных статей, в текстах отмечены подстроки с именами, названиями организаций и топонимов. Что может быть проще?
+	    Для русскоязычного NER существует 5 публичных бенчмарков: <a href="https://github.com/natasha/corus#load_factru">factRuEval-2016</a>, <a href="https://github.com/natasha/corus#load_ne5">Collection5</a>, <a href="https://github.com/natasha/corus#load_gareev">Gareev</a>, <a href="https://github.com/natasha/corus#load_bsnlp">BSNLP-2019</a>, <a href="https://github.com/natasha/corus#load_wikiner">WiNER</a>. Ссылки на источники собраны в <a href="https://github.com/natasha/corus">реестре Corus</a>. Все датасеты состоят из новостных статей, в текстах отмечены подстроки с именами, названиями организаций и топонимов. Что может быть проще?
 	  </p>
 
 	  <dl>
-	    <dt>У всех датасетов разный формат разметки</dt>
+	    <dt>У всех источников разный формат разметки</dt>
 	    <dd>
 	      <p>
 		Collection5 использует <a href="https://brat.nlplab.org/standoff.html">Standoff-формат</a> утилиты <a href="https://brat.nlplab.org/index.html">Brat</a>, Gareev и WiNER — разные диалекты <a href="https://en.wikipedia.org/wiki/Inside%E2%80%93outside%E2%80%93beginning_(tagging)">BIO-разметки</a>, у BSNLP-2019 <a href="http://bsnlp.cs.helsinki.fi/Guidelines_20190122.pdf">свой формат</a>, у factRuEval-2016 тоже <a href="https://github.com/dialogue-evaluation/factRuEval-2016#%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%82-%D0%B4%D0%B5%D0%BC%D0%BE%D0%BD%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%BE%D0%B9-%D1%80%D0%B0%D0%B7%D0%BC%D0%B5%D1%82%D0%BA%D0%B8">своя нетривиальная спецификация</a>. Naeval приводит все источники к общему формату. Разметка состоит из спанов. Спан — тройка: тип сущности, начало и конец подстроки.
@@ -307,7 +307,7 @@ $ curl -X POST http://localhost:8080 --data \
 &lt;/document></pre>
 
 	  <p>
-	    Некоторые решения так тяжело запустить и настроить, что мало людей ими пользуется. <a href="http://pullenti.ru/">PullEnti</a> — сложная система, построенная на правилах, заняла первой место на конкурсе factRuEval в 2016 году. Инструмент распространяется как SDK для C#. Работа над Naeval вылилась в <a href="http://github.com/pullenti">отдельный проект на Github</a> с набором обёрток для PullEnti: <a href="https://github.com/pullenti/PullentiServer">PullentiServer</a> — веб-сервер на С#, <a href="https://github.com/pullenti/pullenti-client">pullenti-client</a> — Python-клиент для PullentiServer:
+	    Некоторые решения так тяжело запустить и настроить, что мало людей ими пользуется. <a href="http://pullenti.ru/">PullEnti</a> — сложная система, построенная на правилах, заняла первой место на конкурсе factRuEval в 2016 году. Инструмент распространяется в виде SDK для C#. Работа над Naeval вылилась в <a href="http://github.com/pullenti">отдельный проект на Github</a> с набором обёрток для PullEnti: <a href="https://github.com/pullenti/PullentiServer">PullentiServer</a> — веб-сервер на С#, <a href="https://github.com/pullenti/pullenti-client">pullenti-client</a> — Python-клиент для PullentiServer:
 	  </p>
 
 	  <pre>
@@ -364,7 +364,7 @@ PER─────────────</pre>
       <div class="row">
 	<div class="col-6">
 	  <p>
-	    Для каждой пары «система, датасет» Naeval вычисляет <a href="https://github.com/natasha/naeval/blob/master/naeval/ner/score.py">F1-меру по токенам</a>, публикует <a href="https://github.com/natasha/naeval#ner">таблицу с оценками качества</a>.
+	    Для каждой пары «модель, датасет» Naeval вычисляет <a href="https://github.com/natasha/naeval/blob/master/naeval/ner/score.py">F1-меру по токенам</a>, публикует <a href="https://github.com/natasha/naeval#ner">таблицу с оценками качества</a>.
 	  </p>
 
 	  <p>
@@ -372,7 +372,7 @@ PER─────────────</pre>
 	  </p>
 
 	  <p>
-	    Мы подготовили датасеты, завернули системы в Docker-контейнеры и посчитали метрики для 5 других задач русскоязычного NLP, результаты в репозитории Naeval: <a href="https://github.com/natasha/naeval#tokenization">токенизация</a>, <a href="https://github.com/natasha/naeval#sentence-segmentation">сегментация на предложения</a>, <a href="https://github.com/natasha/naeval#pretrained-embeddings">эмбединги</a>, <a href="https://github.com/natasha/naeval#morphology-taggers">анализ морфологии</a> и <a href="https://github.com/natasha/naeval#syntax-parser">синтаксиса</a>.
+	    Мы подготовили датасеты, завернули 20 систем в Docker-контейнеры и посчитали метрики для 5 других задач русскоязычного NLP, результаты в репозитории Naeval: <a href="https://github.com/natasha/naeval#tokenization">токенизация</a>, <a href="https://github.com/natasha/naeval#sentence-segmentation">сегментация на предложения</a>, <a href="https://github.com/natasha/naeval#pretrained-embeddings">эмбединги</a>, <a href="https://github.com/natasha/naeval#morphology-taggers">анализ морфологии</a> и <a href="https://github.com/natasha/naeval#syntax-parser">синтаксиса</a>.
 	  </p>
 
 	  <p>
