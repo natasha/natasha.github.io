@@ -29,12 +29,7 @@ h3 {
 
 a {
     color: #1f77b4;
-    border-bottom: 1px solid #1f77b4;
-}
-
-/* Disable bootstrap link underlining */
-a:hover, a:focus {
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 a.disabled {
@@ -42,7 +37,6 @@ a.disabled {
     cursor: default;
 
     color: #6e7074;
-    border-color: #6e7074;
 }
 
 img.inline {
@@ -98,10 +92,6 @@ img.inline {
 
 #demo #examples {
     margin-top: 1em;
-}
-
-#demo #examples a {
-    border-bottom: 1px dashed;
 }
 
 /* OTHER */
