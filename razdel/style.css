@@ -30,6 +30,7 @@ h3 {
 a {
     color: #1f77b4;
     border-bottom: 1px solid #1f77b4;
+    padding-bottom: 0;
 }
 
 /* Disable bootstrap link underlining */
