@@ -307,7 +307,7 @@ $ curl -X POST http://localhost:8080 --data \
 &lt;/document></pre>
 
 	  <p>
-	    Некоторые решения так тяжело запустить и настроить, что мало людей ими пользуется. <a href="http://pullenti.ru/">PullEnti</a> — сложная система, построенная на правилах, заняла первой место на конкурсе factRuEval в 2016 году. Инструмент распространяется в виде SDK для C#. Работа над Naeval вылилась в <a href="http://github.com/pullenti">отдельный проект на Github</a> с набором обёрток для PullEnti: <a href="https://github.com/pullenti/PullentiServer">PullentiServer</a> — веб-сервер на С#, <a href="https://github.com/pullenti/pullenti-client">pullenti-client</a> — Python-клиент для PullentiServer:
+	    Некоторые решения так тяжело запустить и настроить, что мало людей ими пользуется. <a href="http://pullenti.ru/">PullEnti</a> — сложная система, построенная на правилах, заняла первой место на конкурсе factRuEval в 2016 году. Инструмент распространяется в виде SDK для C#. Работа над Naeval вылилась в <a href="http://github.com/pullenti">отдельный проект</a> с набором обёрток для PullEnti: <a href="https://github.com/pullenti/PullentiServer">PullentiServer</a> — веб-сервер на С#, <a href="https://github.com/pullenti/pullenti-client">pullenti-client</a> — Python-клиент для PullentiServer:
 	  </p>
 
 	  <pre>
@@ -329,7 +329,7 @@ $ docker run -p 8080:8080 pullenti/pullenti-server
 	  <img src="images/graph.svg">
 	  
 	  <p>
-	    Формат разметки у всех инструментов немного отличается. Naeval загружает результаты, адаптирует типы сущностей, линеаризует спаны:
+	    Формат разметки у всех инструментов немного отличается. Naeval загружает результаты, адаптирует типы сущностей, упрощает структуру спанов:
 	  </p>
 
 	  <pre>
@@ -355,6 +355,10 @@ $ docker run -p 8080:8080 pullenti/pullenti-server
 PER─────────────                          ORG────────────
 Ацамаза Биченова.
 PER─────────────</pre>
+
+	  <p class="note">
+	    Результат работы PullEnti сложнее адаптировать, чем разметку factRuEval-2016. Алгоритм убирает тег PERSONPROPERTY, разбивает вложенные PERSON, ORGANIZATION и GEO на непересекающиеся PER, LOC, ORG.
+	  </p>
 
 	</div>
       </div>
