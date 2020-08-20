@@ -221,7 +221,7 @@
       	  </p>
 
       	  <p class="highlight">
-      	    Natasha (<a href="https://github.com/natasha/slovnet#ner">Slovnet NER</a>) = <a href="https://github.com/natasha/slovnet/blob/master/scripts/02_bert_ner/main.ipynb">Slovnet BERT NER</a> — аналог DeepPavlov BERT NER + дистилляция через синтетическую разметку (<a href="https://github.com/natasha/nerus">Nerus</a>) в WordCNN-CRF c квантованными эмбедингами (<a href="https://github.com/natasha/navec">Navec</a>) + движок для инференса на NumPy.
+      	    Natasha (<a href="https://github.com/natasha/slovnet#ner">Slovnet NER</a>) = <a href="https://github.com/natasha/slovnet/blob/master/scripts/02_bert_ner/main.ipynb">Slovnet BERT NER</a> — аналог DeepPavlov BERT NER + дистилляция через синтетическую разметку (<a href="https://github.com/natasha/nerus">Nerus</a>) в WordCNN-CRF c квантованными эмбеддингами (<a href="https://github.com/natasha/navec">Navec</a>) + движок для инференса на NumPy.
       	  </p>
       	</div>
       </div>
@@ -353,7 +353,7 @@ p	    -->
 	  </p>
 
 	  <p>
-	    Варианты с CharCNN, CharRNN пропускаем, запускать маленькую нейронную сеть по символам на каждом токене — не наш путь, слишком медленно. WordRNN тоже хотелось бы избежать, решение должно работать на CPU, перемножать матрицы на каждом токене медленно. Для NER выбор между Linear и CRF условный. Мы используем BIO-кодировку, порядок тегов важен. Приходится терпеть жуткие тормоза, использовать CRF. Остаётся один вариант — Embedding-WordCNN-CRF. Такая модель не учитывает регистр токенов, для NER это важно, "надежда" — просто слово, "Надежда" — возможно, имя. Добавим ShapeEmbedding — эмбединг с очертаниями токенов, например: "NER" — EN_XX, "Вайнович" — RU_Xx, "!" — PUNCT_!, "и" — RU_x, "5.1" — NUM, "Нью-Йорк" — RU_Xx-Xx. Схема Slovnet NER — (WordEmbedding + ShapeEmbedding)-WordCNN-CRF.
+	    Варианты с CharCNN, CharRNN пропускаем, запускать маленькую нейронную сеть по символам на каждом токене — не наш путь, слишком медленно. WordRNN тоже хотелось бы избежать, решение должно работать на CPU, перемножать матрицы на каждом токене медленно. Для NER выбор между Linear и CRF условный. Мы используем BIO-кодировку, порядок тегов важен. Приходится терпеть жуткие тормоза, использовать CRF. Остаётся один вариант — Embedding-WordCNN-CRF. Такая модель не учитывает регистр токенов, для NER это важно, "надежда" — просто слово, "Надежда" — возможно, имя. Добавим ShapeEmbedding — эмбеддинг с очертаниями токенов, например: "NER" — EN_XX, "Вайнович" — RU_Xx, "!" — PUNCT_!, "и" — RU_x, "5.1" — NUM, "Нью-Йорк" — RU_Xx-Xx. Схема Slovnet NER — (WordEmbedding + ShapeEmbedding)-WordCNN-CRF.
 	  </p>
 	</div>
 
@@ -437,7 +437,7 @@ p	    -->
       <div class="row">
 	<div class="col-6">
 	  <p>
-	    Размер Slovnet NER — 289МБ. 287МБ занимает таблица с эмбедингами. Модель использует большой словарь на 250&nbsp;000 строк, он покрывает 98% слов в новостных текстах. Используем <a href="http://mccormickml.com/2017/10/13/product-quantizer-tutorial-part-1/">квантизацию</a>, заменим 300-мерные float-вектора на 100-мерные 8-битные. Размер модели уменьшится в 10 раз (27МБ), качество не изменится. <a href="https://github.com/natasha/navec">Библиотека Navec</a> — часть проекта Natasha, коллекция квантованных предобученных эмбедингов. <a href="https://github.com/natasha/navec#hudlit">Веса обученные на художественной литературе</a> занимают 50МБ, обходят по <a href="https://github.com/natasha/navec/#evaluation">синтетическим оценкам</a> все <a href="https://rusvectores.org/ru/models/">статические модели RusVectores</a>.
+	    Размер Slovnet NER — 289МБ. 287МБ занимает таблица с эмбеддингами. Модель использует большой словарь на 250&nbsp;000 строк, он покрывает 98% слов в новостных текстах. Используем <a href="http://mccormickml.com/2017/10/13/product-quantizer-tutorial-part-1/">квантизацию</a>, заменим 300-мерные float-вектора на 100-мерные 8-битные. Размер модели уменьшится в 10 раз (27МБ), качество не изменится. <a href="https://github.com/natasha/navec">Библиотека Navec</a> — часть проекта Natasha, коллекция квантованных предобученных эмбеддингов. <a href="https://github.com/natasha/navec#hudlit">Веса обученные на художественной литературе</a> занимают 50МБ, обходят по <a href="https://github.com/natasha/navec/#evaluation">синтетическим оценкам</a> все <a href="https://rusvectores.org/ru/models/">статические модели RusVectores</a>.
 	  </p>
 	</div>
 
@@ -456,13 +456,13 @@ p	    -->
 	    Slovnet NER использует PyTorch для обучения. Пакет PyTorch весит 700МБ, не хочется тянуть его в продакшн для инференса. Ещё PyTorch <a href="https://github.com/pytorch/pytorch/issues/17835">не работает с интерпретатором PyPy</a>. Slovnet используется в связке с <a href="https://github.com/natasha/yargy">Yargy-парсером</a> аналогом <a href="https://yandex.ru/dev/tomita/">яндексового Tomita-парсера</a>. С PyPy Yargy работает в 2-10 раз быстрее, зависит от сложности грамматик. Не хочется терять скорость из-за зависимости от PyTorch.
 	  </p>
 	  <p>
-	    Стандартное решение — использовать <a href="https://pytorch.org/docs/stable/jit.html">TorchScript</a> или <a href="https://pytorch.org/docs/stable/onnx.html">сконвертировать модель в ONNX</a>, инференс делать в <a href="https://github.com/microsoft/onnxruntime">ONNXRuntime</a>. Slovnet NER использует нестандартные блоки: квантованные эмбединги, CRF-декодер. TorchScript и ONNXRuntime не поддерживают PyPy.
+	    Стандартное решение — использовать <a href="https://pytorch.org/docs/stable/jit.html">TorchScript</a> или <a href="https://pytorch.org/docs/stable/onnx.html">сконвертировать модель в ONNX</a>, инференс делать в <a href="https://github.com/microsoft/onnxruntime">ONNXRuntime</a>. Slovnet NER использует нестандартные блоки: квантованные эмбеддинги, CRF-декодер. TorchScript и ONNXRuntime не поддерживают PyPy.
 	  </p>
 	  <p>
-	    Slovnet NER — простая модель, <a href="https://github.com/natasha/slovnet/blob/master/slovnet/exec/model.py">вручную реализуем все блоки на NumPy</a>, используем веса, посчитанные PyTorch. Применим немного NumPy-магии, аккуратно реализуем <a href="https://github.com/natasha/slovnet/blob/master/slovnet/exec/model.py#L82-L112">блок CNN</a>, <a href="https://github.com/natasha/slovnet/blob/master/slovnet/exec/model.py#L154-L184">CRF-декодер</a>, распаковка квантованного эмбединга <a href="https://github.com/natasha/slovnet/blob/master/slovnet/exec/model.py#L229-L234">занимает 5 строк</a>. Скорость инференса на CPU такая же как с ONNXRuntime и PyTorch, 25 новостных статей в секунду на Core i5.
+	    Slovnet NER — простая модель, <a href="https://github.com/natasha/slovnet/blob/master/slovnet/exec/model.py">вручную реализуем все блоки на NumPy</a>, используем веса, посчитанные PyTorch. Применим немного NumPy-магии, аккуратно реализуем <a href="https://github.com/natasha/slovnet/blob/master/slovnet/exec/model.py#L82-L112">блок CNN</a>, <a href="https://github.com/natasha/slovnet/blob/master/slovnet/exec/model.py#L154-L184">CRF-декодер</a>, распаковка квантованного эмбеддинга <a href="https://github.com/natasha/slovnet/blob/master/slovnet/exec/model.py#L229-L234">занимает 5 строк</a>. Скорость инференса на CPU такая же как с ONNXRuntime и PyTorch, 25 новостных статей в секунду на Core i5.
 	  </p>
 	  <p>
-	    Техника работает на более сложных моделях: Slovnet Morph и Slovnet Syntax тоже реализованы на NumPy. Slovnet NER, Morph и Syntax используют общую таблицу эмбедингов. Вынесем веса в отдельный файл, таблица не дублируется в памяти и на диске:
+	    Техника работает на более сложных моделях: Slovnet Morph и Slovnet Syntax тоже реализованы на NumPy. Slovnet NER, Morph и Syntax используют общую таблицу эмбеддингов. Вынесем веса в отдельный файл, таблица не дублируется в памяти и на диске:
 	    <pre>
 >>> navec = Navec.load('navec_news_v1_1B.tar')  # 25MB
 >>> morph = Morph.load('slovnet_morph_news_v1.tar')  # 2MB
@@ -492,7 +492,7 @@ p	    -->
 		<a href="https://github.com/natasha/razdel">Razdel</a> — сегментация текста на предложения и токены;
 	      </li>
 	      <li>
-		<a href="https://github.com/natasha/navec">Navec</a> — качественный компактные эмбединги;
+		<a href="https://github.com/natasha/navec">Navec</a> — качественный компактные эмбеддинги;
 	      </li>
 	      <li>
 		<a href="https://github.com/natasha/slovnet">Slovnet</a> — современные компактные модели для морфологии, синтаксиса, NER;
@@ -513,7 +513,7 @@ p	    -->
 	  </p>
 
 	  <p>
-	    Natasha извлекает стандартные сущности: имена, названия топонимов и организаций. Решение показывает хорошее качество на новостях. Как работать с другими сущностями и типами текстов? Нужно обучить новую модель. Сделать это непросто. За компактный размер и скорость работы мы платим сложностью подготовки модели. <a href="https://github.com/natasha/slovnet/blob/master/scripts/02_bert_ner/main.ipynb">Скрипт-ноутбук для подготовки тяжёлой модели учителя</a>, <a href="https://github.com/natasha/slovnet/blob/master/scripts/05_ner/main.ipynb">скрипт-ноутбук для модели-ученика</a>, <a href="https://github.com/natasha/navec#development">инструкции по подготовке квантованных эмбедингов</a>.
+	    Natasha извлекает стандартные сущности: имена, названия топонимов и организаций. Решение показывает хорошее качество на новостях. Как работать с другими сущностями и типами текстов? Нужно обучить новую модель. Сделать это непросто. За компактный размер и скорость работы мы платим сложностью подготовки модели. <a href="https://github.com/natasha/slovnet/blob/master/scripts/02_bert_ner/main.ipynb">Скрипт-ноутбук для подготовки тяжёлой модели учителя</a>, <a href="https://github.com/natasha/slovnet/blob/master/scripts/05_ner/main.ipynb">скрипт-ноутбук для модели-ученика</a>, <a href="https://github.com/natasha/navec#development">инструкции по подготовке квантованных эмбеддингов</a>.
 	  </p>
 
 	  <p>

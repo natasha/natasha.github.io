@@ -3,16 +3,16 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Navec — компактные эмбединги для русского языка</title>
-    <meta name="title" content="Navec — компактные эмбединги для русского языка">
-    <meta property="og:title" content="Navec — компактные эмбединги для русского языка">
-    <meta property="twitter:title" content="Navec — компактные эмбединги для русского языка">
+    <title>Navec — компактные эмбеддинги для русского языка</title>
+    <meta name="title" content="Navec — компактные эмбеддинги для русского языка">
+    <meta property="og:title" content="Navec — компактные эмбеддинги для русского языка">
+    <meta property="twitter:title" content="Navec — компактные эмбеддинги для русского языка">
 
-    <meta name="description" content="Часть проекта Natasha, коллекция предобученных эмбедингов для русского языка, имеют компактный размер, высокое качество">
-    <meta property="og:description" content="Часть проекта Natasha, коллекция предобученных эмбедингов для русского языка, имеют компактный размер, высокое качество">
-    <meta property="twitter:description" content="Часть проекта Natasha, коллекция предобученных эмбедингов для русского языка, имеют компактный размер, высокое качество">
+    <meta name="description" content="Часть проекта Natasha, коллекция предобученных эмбеддингов для русского языка, имеют компактный размер, высокое качество">
+    <meta property="og:description" content="Часть проекта Natasha, коллекция предобученных эмбеддингов для русского языка, имеют компактный размер, высокое качество">
+    <meta property="twitter:description" content="Часть проекта Natasha, коллекция предобученных эмбеддингов для русского языка, имеют компактный размер, высокое качество">
 
-    <meta name="keywords" content="русский язык, эмбединги, glove, квантизация, embeddings, quantization">
+    <meta name="keywords" content="русский язык, эмбеддинги, glove, квантизация, embeddings, quantization">
 
     <meta property="og:type" content="website">
     <meta property="twitter:card" content="summary_large_image">
@@ -51,14 +51,14 @@
       	    </a>
       	  </p>
 
-      	  <h1>Navec — компактные эмбединги для русского языка</h1>
+      	  <h1>Navec — компактные эмбеддинги для русского языка</h1>
       	</div>
       </div>
 
       <div class="row">
       	<div class="col-6">
       	  <p>
-	    <a href="https://github.com/natasha/navec">Библиотека Navec</a> — часть <a href="https://github.com/natasha">проекта Natasha</a>, коллекция предобученных эмбедингов для русского языка. <a class="local" href="#evaluation">Качество решения сравнимо или выше</a>, чем у <a href="https://rusvectores.org/ru/models/">статических моделей от RusVectores</a>, размер в 5–6 раз меньше:
+	    <a href="https://github.com/natasha/navec">Библиотека Navec</a> — часть <a href="https://github.com/natasha">проекта Natasha</a>, коллекция предобученных эмбеддингов для русского языка. <a class="local" href="#evaluation">Качество решения сравнимо или выше</a>, чем у <a href="https://rusvectores.org/ru/models/">статических моделей от RusVectores</a>, размер в 5–6 раз меньше:
       	  </p>
 
 	  <table id="hero" class="table table-borderless">
@@ -93,7 +93,7 @@
       <div class="row">
 	<div class="col-6">
 	  <p>
-	    В этой статье поговорим про старые добрые пословные эмбединги, совершившие революцию в NLP в 2013 году.
+	    В этой статье поговорим про старые добрые пословные эмбеддинги, совершившие революцию в NLP в 2013 году.
 	  </p>
 	</div>
 
@@ -107,7 +107,7 @@
       <div class="row">
 	<div class="col-6">
 	  <p>
-	    Технология актуальна до сих пор. В проекте Natasha модели для <a href="https://github.com/natasha/slovnet#morphology">разбора морфологии</a>, <a href="https://github.com/natasha/slovnet#syntax">синтаксиса</a> и <a href="https://github.com/natasha/slovnet#ner">извлечения именованных сущностей</a> работают на пословных Navec-эмбедингах, <a href="https://github.com/natasha/slovnet#evaluation">показывают качество выше других открытых решений</a>.
+	    Технология актуальна до сих пор. В проекте Natasha модели для <a href="https://github.com/natasha/slovnet#morphology">разбора морфологии</a>, <a href="https://github.com/natasha/slovnet#syntax">синтаксиса</a> и <a href="https://github.com/natasha/slovnet#ner">извлечения именованных сущностей</a> работают на пословных Navec-эмбеддингах, <a href="https://github.com/natasha/slovnet#evaluation">показывают качество выше других открытых решений</a>.
 	  </p>
 	</div>
       </div>
@@ -117,11 +117,11 @@
       <div class="row">
 	<div class="col-6">
 	  <p>
-	    Для русского языка принято использовать <a href="https://rusvectores.org/ru/models/">предобученные эмбединги от RusVectores</a>, у них есть неприятная особенность: в таблице записаны не слова, а пары «слово_POS-тег». Идея хорошая, для пары «печь_VERB» ожидаем вектор, похожий на «готовить_VERB», «варить_VERB», а для «печь_NOUN» — «изба_NOUN», «топка_NOUN».
+	    Для русского языка принято использовать <a href="https://rusvectores.org/ru/models/">предобученные эмбеддинги от RusVectores</a>, у них есть неприятная особенность: в таблице записаны не слова, а пары «слово_POS-тег». Идея хорошая, для пары «печь_VERB» ожидаем вектор, похожий на «готовить_VERB», «варить_VERB», а для «печь_NOUN» — «изба_NOUN», «топка_NOUN».
 	  </p>
 
 	  <p>
-	    На практике использовать такие эмбединги неудобно. Недостаточно разделить текст на токены, для каждого нужно как-то определить POS-тег. Таблица эмбедингов разбухает. Вместо одного слова «стать», мы храним 6: 2 разумных «стать_VERB», «стать_NOUN» и 4 странных «стать_ADV», «стать_PROPN», «стать_NUM», «стать_ADJ». В таблице на 250&nbsp;000 записей 195&nbsp;000 уникальных слов.
+	    На практике использовать такие эмбеддинги неудобно. Недостаточно разделить текст на токены, для каждого нужно как-то определить POS-тег. Таблица эмбеддингов разбухает. Вместо одного слова «стать», мы храним 6: 2 разумных «стать_VERB», «стать_NOUN» и 4 странных «стать_ADV», «стать_PROPN», «стать_NUM», «стать_ADJ». В таблице на 250&nbsp;000 записей 195&nbsp;000 уникальных слов.
 	  </p>
 
 	</div>
@@ -133,13 +133,13 @@
       <div class="row">
 	<div class="col-6">
 	  <p>
-	    Оценим качество эмбедингов на задаче семантической близости. Возьмём пару слов, для каждого найдём вектор-эмбединг, посчитаем косинусное сходство. Navec для похожих слов «чашка» и «кувшин» возвращет 0.49, для «фрукт» и «печь» — −0.0047. Соберём много пар с эталонными метками похожести, посчитаем корреляцию Спирмена с нашими ответами.
+	    Оценим качество эмбеддингов на задаче семантической близости. Возьмём пару слов, для каждого найдём вектор-эмбеддинг, посчитаем косинусное сходство. Navec для похожих слов «чашка» и «кувшин» возвращет 0.49, для «фрукт» и «печь» — −0.0047. Соберём много пар с эталонными метками похожести, посчитаем корреляцию Спирмена с нашими ответами.
 	  </p>
 	</div>
 
       	<div class="col-4">
 	  <p class="note">
-	    Кроме семантической близости для оценки качества эмбедингов используют <a href="https://aclweb.org/aclwiki/Analogy_(State_of_the_art)">задачу решения аналогий</a>. RusVectores публикует <a href="https://rusvectores.org/static/testsets/ru_analogy_tagged_PROPN.txt">переведённый датасет Google Analogies</a>. Прогнать на нём Navec пока не дошли руки.
+	    Кроме семантической близости для оценки качества эмбеддингов используют <a href="https://aclweb.org/aclwiki/Analogy_(State_of_the_art)">задачу решения аналогий</a>. RusVectores публикует <a href="https://rusvectores.org/static/testsets/ru_analogy_tagged_PROPN.txt">переведённый датасет Google Analogies</a>. Прогнать на нём Navec пока не дошли руки.
 	  </p>
 	</div>
       </div>
@@ -257,7 +257,7 @@
       <div class="row">
 	<div class="col-6">
 	  <p>
-	    <code>hudlit_12B_500K_300d_100q</code> — <a href="https://nlp.stanford.edu/projects/glove/">GloVe-эмбединги</a> обученные на <a href="https://github.com/natasha/corus#load_librusec">145ГБ художественной литературы</a>. Архив с текстами возьмём из <a href="https://russe.nlpub.org/downloads/">проекта RUSSE</a>. Используем <a href="https://github.com/stanfordnlp/GloVe">оригинальную реализацию GloVe на C</a>, обернём её в <a href="https://github.com/natasha/navec/blob/master/navec/train/glove.py">удобный Python-интерфейс</a>.
+	    <code>hudlit_12B_500K_300d_100q</code> — <a href="https://nlp.stanford.edu/projects/glove/">GloVe-эмбеддинги</a> обученные на <a href="https://github.com/natasha/corus#load_librusec">145ГБ художественной литературы</a>. Архив с текстами возьмём из <a href="https://russe.nlpub.org/downloads/">проекта RUSSE</a>. Используем <a href="https://github.com/stanfordnlp/GloVe">оригинальную реализацию GloVe на C</a>, обернём её в <a href="https://github.com/natasha/navec/blob/master/navec/train/glove.py">удобный Python-интерфейс</a>.
 	  </p>
 	</div>
       </div>
@@ -265,7 +265,7 @@
       <div class="row">
 	<div class="col-6">
 	  <p>
-	    Почему не word2vec? Эксперименты на большом датасете быстрее с GloVe. Один раз считаем матрицу коллокаций, по ней готовим эмбединги разных размерностей, выбираем оптимальный вариант.
+	    Почему не word2vec? Эксперименты на большом датасете быстрее с GloVe. Один раз считаем матрицу коллокаций, по ней готовим эмбеддинги разных размерностей, выбираем оптимальный вариант.
 	  </p>
 	</div>
 
@@ -336,7 +336,7 @@
       <div class="row">
 	<div class="col-6">
 	  <p>
-	    Заменим кодом не одно, а 3 числа. Кластеризуем все тройки чисел из таблицы эмбедингов <a href="https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D1%82%D0%BE%D0%B4_k-%D1%81%D1%80%D0%B5%D0%B4%D0%BD%D0%B8%D1%85">алгоритмом k-means</a> на 256 кластеров, вместо каждой тройки будем хранить код от 0 до 255. Таблица уменьшится ещё в 3 раза (48МБ). Navec использует <a href="http://yusukematsui.me/project/pqkmeans/pqkmeans.html">библиотеку PQk-means</a>, она разбивает матрицу на 100 колонок, каждую кластеризует отдельно, качество на синтетических тестах падёт на 1 процентный пункт.
+	    Заменим кодом не одно, а 3 числа. Кластеризуем все тройки чисел из таблицы эмбеддингов <a href="https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D1%82%D0%BE%D0%B4_k-%D1%81%D1%80%D0%B5%D0%B4%D0%BD%D0%B8%D1%85">алгоритмом k-means</a> на 256 кластеров, вместо каждой тройки будем хранить код от 0 до 255. Таблица уменьшится ещё в 3 раза (48МБ). Navec использует <a href="http://yusukematsui.me/project/pqkmeans/pqkmeans.html">библиотеку PQk-means</a>, она разбивает матрицу на 100 колонок, каждую кластеризует отдельно, качество на синтетических тестах падёт на 1 процентный пункт.
 	  </p>
 	</div>
 
@@ -353,7 +353,7 @@
       <div class="row">
 	<div class="col-6">
 	  <p>
-	    Квантованные эмбединги проигрывают обычным по скорости. Сжатый вектор перед использованием нужно распаковать. Аккуратно реализуем процедуру, <a href="https://github.com/natasha/navec/blob/master/navec/pq.py#L40-L43">применим Numpy-магию</a>, в PyTorch <a href="https://github.com/natasha/slovnet/blob/master/slovnet/model/emb.py#L29-L39">используем <code>torch.gather</code></a>. В Slovnet NER доступ к таблице эмбедингов занимает 0.1% от общего времени вычислений.
+	    Квантованные эмбеддинги проигрывают обычным по скорости. Сжатый вектор перед использованием нужно распаковать. Аккуратно реализуем процедуру, <a href="https://github.com/natasha/navec/blob/master/navec/pq.py#L40-L43">применим Numpy-магию</a>, в PyTorch <a href="https://github.com/natasha/slovnet/blob/master/slovnet/model/emb.py#L29-L39">используем <code>torch.gather</code></a>. В Slovnet NER доступ к таблице эмбеддингов занимает 0.1% от общего времени вычислений.
 	  </p>
 	</div>
       </div>
