@@ -1,5 +1,5 @@
 
-var HOST = 'https://natasha-demo.herokuapp.com'
+var HOST = 'https://bbae7714ctds8cfj0g51.containers.yandexcloud.net'
 // HOST = 'http://localhost:4000'
 var ENDPOINT = HOST + '/api/doc/viz';
 
